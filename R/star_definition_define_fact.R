@@ -1,0 +1,108 @@
+
+#' Define facts in a `star_definition` object
+#'
+#' To define facts in a `star_definition` object, the essential data is a name
+#' and a set of measurements that can be empty (factless fact does not have
+#' explicit measurements). Associated with each measurement, an aggregation
+#' function is required, which by default is SUM.
+#'
+#' To get a star schema (a `star_schema` object) we need a flat table (implemented
+#' through a `tibble`) and a `star_definition` object. The definition of facts in
+#' the `star_definition` object is made from the flat table column names. Using
+#' the `dput` function we can list the column names of the flat table so that we
+#' do not have to type their names.
+#'
+#' Associated with each measurement there is an aggregation function that can be
+#' SUM, MAX or MIN. AVG (mean) is not considered among the possible aggregation
+#' functions: The reason is that calculating the mean by considering subsets of
+#' data does not necessarily yield the mean of the total data.
+#'
+#' An additional measurement corresponding to the number of aggregated rows is
+#' always added which, together with SUM, allows us to obtain the mean if
+#' needed.
+#'
+#' @param st A `star_definition` object.
+#' @param name A string, name of the fact.
+#' @param measures A vector of measurement names.
+#' @param agg_functions A vector of aggregation function names. If none is
+#'   indicated, the default is SUM. Additionally they can be MAX or MIN.
+#' @param nrow_agg A string, measurement name for the number of rows aggregated.
+#'
+#' @return A `star_definition` object.
+#'
+#' @family star definition functions
+#' @seealso
+#'
+#' @examples
+#' library(tidyr)
+#'
+#' # dput(colnames(mrs_age))
+#' #
+#' # c(
+#' #   "Reception Year",
+#' #   "Reception Week",
+#' #   "Reception Date",
+#' #   "Data Availability Year",
+#' #   "Data Availability Week",
+#' #   "Data Availability Date",
+#' #   "Year",
+#' #   "WEEK",
+#' #   "Week Ending Date",
+#' #   "REGION",
+#' #   "State",
+#' #   "City",
+#' #   "Age Range",
+#' #   "Deaths"
+#' # )
+#'
+#' sd <- star_definition() %>%
+#'   define_fact(
+#'     name = "mrs_age",
+#'     measures = c("Deaths"),
+#'     agg_functions = c("SUM"),
+#'     nrow_agg = "nrow_agg"
+#'   )
+#'
+#' sd <- star_definition() %>%
+#'   define_fact(
+#'     name = "mrs_age",
+#'     measures = c("Deaths")
+#'   )
+#'
+#' sd <- star_definition() %>%
+#'   define_fact(name = "Factless fact")
+#'
+#' @export
+define_fact <- function(st,
+                        name = NULL,
+                        measures = NULL,
+                        agg_functions = NULL,
+                        nrow_agg = "nrow_agg") {
+  UseMethod("define_fact")
+}
+
+
+#' @rdname define_fact
+#' @export
+define_fact.star_definition <- function(st,
+                                        name = NULL,
+                                        measures = NULL,
+                                        agg_functions = NULL,
+                                        nrow_agg = "nrow_agg") {
+  stopifnot(!is.null(name))
+  if (is.null(agg_functions)) {
+    agg_functions <-  rep("SUM", length(measures))
+  }
+  stopifnot(length(measures) == length(agg_functions))
+  for (af in agg_functions) {
+    stopifnot(af %in% c("SUM", "MAX", "MIN"))
+  }
+  st$fact <-
+    list(
+      name = name,
+      measures = measures,
+      agg_functions = agg_functions,
+      nrow_agg = nrow_agg
+    )
+  st
+}
