@@ -1,0 +1,30 @@
+Package: starschemar
+Title: Obtaining a Star Schema from a Flat Table
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Jose",
+           family = "Samos",
+           role = c("aut", "cre"),
+           email = "jsamos@ugr.es",
+           comment = c(ORCID = "0000-0002-4457-3439"))
+Description: Transformations that allow obtaining a star schema from 
+    a flat table.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en-GB
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    readr,
+    tibble,
+    tidyr,
+    tidyselect,
+    snakecase,
+    purrr,
+    rlang
+Suggests: 
+    testthat
+Depends: 
+    R (>= 2.10)
