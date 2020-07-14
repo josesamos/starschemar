@@ -180,6 +180,50 @@
 #' Definition of facts and dimensions for the Mortality Reporting System
 #' considering the age classification.
 #'
+#' @examples
+#' # Defined by:
+#' sd_mrs_age <- star_definition() %>%
+#'   define_fact(
+#'     name = "mrs_age",
+#'     measures = c(
+#'       "Deaths"
+#'     ),
+#'     agg_functions = c(
+#'       "SUM"
+#'     ),
+#'     nrow_agg = "nrow_agg"
+#'   ) %>%
+#'   define_dimension(
+#'     name = "when",
+#'     attributes = c(
+#'       "Week Ending Date",
+#'       "WEEK",
+#'       "Year"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "when_available",
+#'     attributes = c(
+#'       "Data Availability Date",
+#'       "Data Availability Week",
+#'       "Data Availability Year"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "where",
+#'     attributes = c(
+#'       "REGION",
+#'       "State",
+#'       "City"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "who",
+#'     attributes = c(
+#'       "Age Range"
+#'     )
+#'   )
+#'
 #' @format A `star_definition` object.
 "sd_mrs_age"
 
@@ -188,6 +232,107 @@
 #' Definition of facts and dimensions for the Mortality Reporting System
 #' considering the cause classification.
 #'
+#' @examples
+#' # Defined by:
+#' sd_mrs_cause <- star_definition() %>%
+#'   define_fact(
+#'     name = "mrs_cause",
+#'     measures = c(
+#'       "Pneumonia and Influenza Deaths",
+#'       "Other Deaths"
+#'     ),
+#'   ) %>%
+#'   define_dimension(
+#'     name = "when",
+#'     attributes = c(
+#'       "Week Ending Date",
+#'       "WEEK",
+#'       "Year"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "when_received",
+#'     attributes = c(
+#'       "Reception Date",
+#'       "Reception Week",
+#'       "Reception Year"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "when_available",
+#'     attributes = c(
+#'       "Data Availability Date",
+#'       "Data Availability Week",
+#'       "Data Availability Year"
+#'     )
+#'   ) %>%
+#'   define_dimension(
+#'     name = "where",
+#'     attributes = c(
+#'       "REGION",
+#'       "State",
+#'       "City"
+#'     )
+#'   )
+#'
 #' @format A `star_definition` object.
 "sd_mrs_cause"
+
+#' Star Schema for Mortality Reporting System by Age
+#'
+#' Star Schema for the Mortality Reporting System considering the age
+#' classification.
+#'
+#' @examples
+#' # Defined by:
+#' st_mrs_age <- star_schema(mrs_age, sd_mrs_age) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_available"),
+#'     name = "When Common",
+#'     attributes = c("date", "week", "year")
+#'   ) %>%
+#'   snake_case() %>%
+#'   character_dimensions(NA_replacement_value = "Unknown",
+#'                        length_integers = list(week = 2))
+#'
+#' @format A `star_schema` object.
+"st_mrs_age"
+
+#' Star Schema for Mortality Reporting System by Cause
+#'
+#' Star Schema for the Mortality Reporting System considering the cause
+#' classification.
+#'
+#' @examples
+#' # Defined by:
+#' st_mrs_cause <- star_schema(mrs_cause, sd_mrs_cause) %>%
+#'   snake_case() %>%
+#'   character_dimensions(
+#'     NA_replacement_value = "Unknown",
+#'     length_integers = list(
+#'       week = 2,
+#'       data_availability_week = 2,
+#'       reception_week = 2
+#'     )
+#'   ) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_received", "when_available"),
+#'     name = "when_common",
+#'     attributes = c("date", "week", "year")
+#'   )
+#'
+#' @format A `star_schema` object.
+"st_mrs_cause"
+
+#' Constellation for Mortality Reporting System
+#'
+#' Constellation for the Mortality Reporting System considering age and cause
+#' classification.
+#'
+#' @examples
+#' # Defined by:
+#' ct_mrs <- constellation(list(st_mrs_age, st_mrs_cause), name = "mrs")
+#'
+#' @format A `constellation` object.
+"ct_mrs"
 

@@ -5,6 +5,7 @@
 #'
 #' @return A `record_update_set` object.
 #'
+#' @keywords internal
 new_record_update_set <- function() {
   update_set <- list()
 
@@ -18,7 +19,6 @@ new_record_update_set <- function() {
 #' A `record_update_set` object is created.
 #'
 #' @return A `record_update_set` object.
-#' @export
 #'
 #' @family dimension update functions
 #' @seealso
@@ -26,6 +26,7 @@ new_record_update_set <- function() {
 #' @examples
 #'
 #'
+#' @export
 record_update_set <- function() {
   new_record_update_set()
 }
