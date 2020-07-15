@@ -91,7 +91,7 @@ update_facts_with_role_dimension <-
       }
     }
 
-    dim <- set_role_playing_dimension_type(dim)
+    dim <- set_dimension_type_role_playing(dim)
     dim <- set_dimension_name(dim, rp_dim_name)
     names(dim) <- names(st$dimension[[rp_dim_name]])
     st$dimension[[rp_dim_name]] <- dim # dimension with unique rows

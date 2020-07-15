@@ -1,16 +1,17 @@
 
-
-#' Title
+#' Homogenize a dimension
 #'
-#' @param dim
-#' @param attributes
+#' To merge dimensions, they must first be homogenized: the generated primary
+#' key must be removed and, if necessary, its attributes (columns) must be
+#' renamed.
 #'
-#' @return
+#' @param dimension A `dimension_table` object.
+#' @param attributes A vector of attribute names of the dimension.
 #'
-#' @examples
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-homogenize <- function(dim, attributes = NULL) {
+homogenize <- function(dimension, attributes = NULL) {
   UseMethod("homogenize")
 }
 
@@ -18,10 +19,10 @@ homogenize <- function(dim, attributes = NULL) {
 #' @rdname homogenize
 #' @export
 #' @keywords internal
-homogenize.dimension_table <- function(dim, attributes = NULL) {
-  dim <- dim[,-1]
+homogenize.dimension_table <- function(dimension, attributes = NULL) {
+  dimension <- dimension[,-1]
   if (!is.null(attributes)) {
-    names(dim) <- attributes
+    names(dimension) <- attributes
   }
-  dim
+  dimension
 }

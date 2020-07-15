@@ -1,17 +1,15 @@
 
 #' Title
 #'
-#' @param ft
-#' @param dim
+#' @param ft A `fact_table` object.
+#' @param dimension A `dimension_table` object.
 #' @param conversion
 #'
-#' @return
-#'
-#' @examples
+#' @return A `fact_table` object.
 #'
 #' @keywords internal
 dereference_dimension <-
-  function(ft, dim, conversion = TRUE) {
+  function(ft, dimension, conversion = TRUE) {
     UseMethod("dereference_dimension")
   }
 
@@ -19,6 +17,6 @@ dereference_dimension <-
 #' @export
 #' @keywords internal
 dereference_dimension.fact_table <-
-  function(ft, dim, conversion = TRUE) {
-    reference_dimension(ft, dim, names(dim)[1], conversion)
+  function(ft, dimension, conversion = TRUE) {
+    reference_dimension(ft, dimension, names(dimension)[1], conversion)
   }

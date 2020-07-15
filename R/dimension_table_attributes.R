@@ -1,16 +1,20 @@
 
 # is_role_dimension -------------------------------------------------------
 
-#' Title
+#' Is it role dimension?
 #'
-#' @param dim
+#' Indicates by means of a boolean if the dimension is a role dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A boolean.
 #'
 #' @keywords internal
-is_role_dimension <- function(dim) {
+is_role_dimension <- function(dimension) {
   UseMethod("is_role_dimension")
 }
 
@@ -18,23 +22,27 @@ is_role_dimension <- function(dim) {
 #' @rdname is_role_dimension
 #' @export
 #' @keywords internal
-is_role_dimension.dimension_table <- function(dim) {
-  ("role" %in% attr(dim, "type"))
+is_role_dimension.dimension_table <- function(dimension) {
+  ("role" %in% attr(dimension, "type"))
 }
 
 
 # is_role_playing_dimension -----------------------------------------------
 
-#' Title
+#' Is it role-playing dimension?
 #'
-#' @param dim
+#' Indicates by means of a boolean if the dimension is a role-playing dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A boolean.
 #'
 #' @keywords internal
-is_role_playing_dimension <- function(dim) {
+is_role_playing_dimension <- function(dimension) {
   UseMethod("is_role_playing_dimension")
 }
 
@@ -42,22 +50,54 @@ is_role_playing_dimension <- function(dim) {
 #' @rdname is_role_playing_dimension
 #' @export
 #' @keywords internal
-is_role_playing_dimension.dimension_table <- function(dim) {
-  ("role_playing" %in% attr(dim, "type"))
+is_role_playing_dimension.dimension_table <- function(dimension) {
+  ("role_playing" %in% attr(dimension, "type"))
+}
+
+# is_conformed_dimension --------------------------------------------------
+
+#' Is it conformed dimension?
+#'
+#' Indicates by means of a boolean if the dimension is a conformed dimension.
+#'
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
+#'
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A boolean.
+#'
+#' @keywords internal
+is_conformed_dimension <- function(dimension) {
+  UseMethod("is_conformed_dimension")
+}
+
+
+#' @rdname is_conformed_dimension
+#' @export
+#' @keywords internal
+is_conformed_dimension.dimension_table <- function(dimension) {
+  ("conformed" %in% attr(dimension, "type"))
 }
 
 # get_role_playing_dimension_name -----------------------------------------
 
-#' Title
+#' Get the associated role-playing dimension name
 #'
-#' @param dim
+#' Each role dimension has the name of the role-playing dimension associated.
+#' This function allows us to obtain its name.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A string, name of the dimension.
 #'
 #' @keywords internal
-get_role_playing_dimension_name <- function(dim) {
+get_role_playing_dimension_name <- function(dimension) {
   UseMethod("get_role_playing_dimension_name")
 }
 
@@ -65,8 +105,8 @@ get_role_playing_dimension_name <- function(dim) {
 #' @rdname get_role_playing_dimension_name
 #' @export
 #' @keywords internal
-get_role_playing_dimension_name.dimension_table <- function(dim) {
-  rp_name <- attr(dim, "role_playing")
+get_role_playing_dimension_name.dimension_table <- function(dimension) {
+  rp_name <- attr(dimension, "role_playing")
   if (is.null(rp_name)) {
     rp_name <- ""
   }
@@ -76,17 +116,22 @@ get_role_playing_dimension_name.dimension_table <- function(dim) {
 
 # set_role_playing_dimension_name -----------------------------------------
 
-#' Title
+#' Set the associated role-playing dimension name
 #'
-#' @param dim
-#' @param name
+#' Each role dimension has the name of the role-playing dimension associated.
+#' This function allows us to set its name.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#' @param name A string, name of role-playing dimension.
+#'
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-set_role_playing_dimension_name <- function(dim, name) {
+set_role_playing_dimension_name <- function(dimension, name) {
   UseMethod("set_role_playing_dimension_name")
 }
 
@@ -95,47 +140,28 @@ set_role_playing_dimension_name <- function(dim, name) {
 #' @export
 #' @keywords internal
 set_role_playing_dimension_name.dimension_table <-
-  function(dim, name) {
-    attr(dim, "role_playing") <- name
-    dim
+  function(dimension, name) {
+    attr(dimension, "role_playing") <- name
+    dimension
   }
 
-# set_role_playing_dimension_type -----------------------------------------
-
-#' Title
-#'
-#' @param dim
-#'
-#' @return
-#'
-#' @examples
-#'
-#' @keywords internal
-set_role_playing_dimension_type <- function(dim) {
-  UseMethod("set_role_playing_dimension_type")
-}
-
-
-#' @rdname set_role_playing_dimension_type
-#' @export
-#' @keywords internal
-set_role_playing_dimension_type.dimension_table <- function(dim) {
-  attr(dim, "type") <- "role_playing"
-  dim
-}
 
 # get_dimension_name ------------------------------------------------------
 
-#' Title
+#' Get the dimension name
 #'
-#' @param dim
+#' Returns the name of the dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A string, name of the dimension.
 #'
 #' @keywords internal
-get_dimension_name <- function(dim) {
+get_dimension_name <- function(dimension) {
   UseMethod("get_dimension_name")
 }
 
@@ -143,23 +169,27 @@ get_dimension_name <- function(dim) {
 #' @rdname get_dimension_name
 #' @export
 #' @keywords internal
-get_dimension_name.dimension_table <- function(dim) {
-  attr(dim, "name")
+get_dimension_name.dimension_table <- function(dimension) {
+  attr(dimension, "name")
 }
 
 # set_dimension_name ------------------------------------------------------
 
-#' Title
+#' Set the dimension name
 #'
-#' @param dim
-#' @param name
+#' It allows us to define the name of the dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#' @param name A string, name of the dimension.
+#'
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-set_dimension_name <- function(dim, name) {
+set_dimension_name <- function(dimension, name) {
   UseMethod("set_dimension_name")
 }
 
@@ -167,23 +197,27 @@ set_dimension_name <- function(dim, name) {
 #' @rdname set_dimension_name
 #' @export
 #' @keywords internal
-set_dimension_name.dimension_table <- function(dim, name) {
-  attr(dim, "name") <- name
-  dim
+set_dimension_name.dimension_table <- function(dimension, name) {
+  attr(dimension, "name") <- name
+  dimension
 }
 
 # get_dimension_type ------------------------------------------------------
 
-#' Title
+#' Get the dimension type
 #'
-#' @param dim
+#' Returns the type of the dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A string, type of the dimension.
 #'
 #' @keywords internal
-get_dimension_type <- function(dim) {
+get_dimension_type <- function(dimension) {
   UseMethod("get_dimension_type")
 }
 
@@ -191,23 +225,27 @@ get_dimension_type <- function(dim) {
 #' @rdname get_dimension_type
 #' @export
 #' @keywords internal
-get_dimension_type.dimension_table <- function(dim) {
-  attr(dim, "type")
+get_dimension_type.dimension_table <- function(dimension) {
+  attr(dimension, "type")
 }
 
 # set_dimension_type ------------------------------------------------------
 
-#' Title
+#' Set the dimension type
 #'
-#' @param dim
-#' @param type
+#' It allows us to define the type of the dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#' @param type A string, type of the dimension.
+#'
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-set_dimension_type <- function(dim, type) {
+set_dimension_type <- function(dimension, type) {
   UseMethod("set_dimension_type")
 }
 
@@ -215,23 +253,54 @@ set_dimension_type <- function(dim, type) {
 #' @rdname set_dimension_type
 #' @export
 #' @keywords internal
-set_dimension_type.dimension_table <- function(dim, type) {
-  attr(dim, "type") <- type
-  dim
+set_dimension_type.dimension_table <- function(dimension, type) {
+  attr(dimension, "type") <- type
+  dimension
+}
+
+# set_dimension_type_role_playing -----------------------------------------
+
+#' Set the type of a role-playing dimension
+#'
+#' It allows us to define the type of a role-playing dimension.
+#'
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
+#'
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A `dimension_table` object.
+#'
+#' @keywords internal
+set_dimension_type_role_playing <- function(dimension) {
+  UseMethod("set_dimension_type_role_playing")
+}
+
+
+#' @rdname set_dimension_type_role_playing
+#' @export
+#' @keywords internal
+set_dimension_type_role_playing.dimension_table <- function(dimension) {
+  set_dimension_type(dimension, "role_playing")
 }
 
 # set_dimension_type_conformed --------------------------------------------
 
-#' Title
+#' Set the type of a conformed dimension
 #'
-#' @param dim
+#' It allows us to define the type of a conformed dimension.
 #'
-#' @return
+#' Attributes can be accessed directly but this function has been defined
+#' because it is used from other classes and is thus done in a more controlled
+#' way.
 #'
-#' @examples
+#' @param dimension A `dimension_table` object.
+#'
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-set_dimension_type_conformed <- function(dim) {
+set_dimension_type_conformed <- function(dimension) {
   UseMethod("set_dimension_type_conformed")
 }
 
@@ -239,31 +308,9 @@ set_dimension_type_conformed <- function(dim) {
 #' @rdname set_dimension_type_conformed
 #' @export
 #' @keywords internal
-set_dimension_type_conformed.dimension_table <- function(dim) {
-  attr(dim, "type") <- unique(append(attr(dim, "type"), "conformed"))
-  dim
+set_dimension_type_conformed.dimension_table <- function(dimension) {
+  attr(dimension, "type") <- unique(append(attr(dimension, "type"), "conformed"))
+  dimension
 }
 
-# is_conformed_dimension --------------------------------------------------
-
-#' Title
-#'
-#' @param dim
-#'
-#' @return
-#'
-#' @examples
-#'
-#' @keywords internal
-is_conformed_dimension <- function(dim) {
-  UseMethod("is_conformed_dimension")
-}
-
-
-#' @rdname is_conformed_dimension
-#' @export
-#' @keywords internal
-is_conformed_dimension.dimension_table <- function(dim) {
-  ("conformed" %in% attr(dim, "type"))
-}
 

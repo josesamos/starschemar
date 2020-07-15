@@ -11,9 +11,6 @@
 #'
 #' @return A boolean, indicating if the dimension appears in the list of update
 #'   operations.
-#' @keywords internal
-#'
-#' @examples
 #'
 #' @keywords internal
 dimension_in_updates <- function(updates, name) {

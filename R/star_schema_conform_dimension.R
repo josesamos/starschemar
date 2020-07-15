@@ -84,7 +84,7 @@ conform_role_dimension <- function(st, name_dims, dim_name, dim, incremental_upd
     }
   }
 
-  dim <- set_role_playing_dimension_type(dim)
+  dim <- set_dimension_type_role_playing(dim)
   names(dim) <- names(st$dimension[[rp_dim_name]])
   st$dimension[[rp_dim_name]] <- dim
 

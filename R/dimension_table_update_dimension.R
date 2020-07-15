@@ -1,15 +1,13 @@
 
 #' Title
 #'
-#' @param dim
-#' @param updates
+#' @param dimension A `dimension_table` object.
+#' @param updates A `record_update_set` object.
 #'
-#' @return
-#'
-#' @examples
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-update_dimension <- function(dim, updates) {
+update_dimension <- function(dimension, updates) {
   UseMethod("update_dimension")
 }
 
@@ -17,10 +15,10 @@ update_dimension <- function(dim, updates) {
 #' @rdname update_dimension
 #' @export
 #' @keywords internal
-update_dimension.dimension_table <- function(dim, updates) {
-  mod_dim <- dim
-  name <- get_dimension_name(dim)
-  dim_txt <- dim
+update_dimension.dimension_table <- function(dimension, updates) {
+  mod_dim <- dimension
+  name <- get_dimension_name(dimension)
+  dim_txt <- dimension
   dim_txt[, -1] <- prepare_join(dim_txt[, -1])
   for (m in seq_along(updates)) {
     match <- updates[[m]]
@@ -41,17 +39,16 @@ update_dimension.dimension_table <- function(dim, updates) {
 
 #' Title
 #'
-#' @param dim
+#' @param dimension A `dimension_table` object.
 #' @param values
 #'
 #' @return
-#' @keywords internal
-#' @noRd
 #'
-find_values <- function(dim, values) {
-  record <- rep(TRUE, nrow(dim))
+#' @keywords internal
+find_values <- function(dimension, values) {
+  record <- rep(TRUE, nrow(dimension))
   for (n in names(values)) {
-    record <- record & (dim[, n] == values[n])
+    record <- record & (dimension[, n] == values[n])
   }
   record
 }
@@ -62,9 +59,8 @@ find_values <- function(dim, values) {
 #' @param type
 #'
 #' @return
-#' @keywords internal
-#' @noRd
 #'
+#' @keywords internal
 typed_value <- function(value, type) {
   if (value == "___UNKNOWN___") {
     return(NA)

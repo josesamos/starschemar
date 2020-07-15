@@ -1,15 +1,15 @@
 
-
-#' Title
+#' Transform names according to the snake case style in a dimension
 #'
-#' @param dim
+#' Transform column, attribute and dimension names according to the snake case
+#' style.
 #'
-#' @return
+#' @param dimension A `dimension_table` object.
 #'
-#' @examples
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-snake_case_dimension <- function(dim) {
+snake_case_dimension <- function(dimension) {
   UseMethod("snake_case_dimension")
 }
 
@@ -17,15 +17,15 @@ snake_case_dimension <- function(dim) {
 #' @rdname snake_case_dimension
 #' @export
 #' @keywords internal
-snake_case_dimension.dimension_table <- function(dim) {
+snake_case_dimension.dimension_table <- function(dimension) {
   sep = "_"
-  attr(dim, "name") <-
-    snakecase::to_snake_case(attr(dim, "name"), sep_out = sep)
-  names(dim) <-
-    snakecase::to_snake_case(names(dim), sep_out = sep)
-  if (is_role_dimension(dim)) {
-    attr(dim, "role_playing") <-
-      snakecase::to_snake_case(attr(dim, "role_playing"), sep_out = sep)
+  attr(dimension, "name") <-
+    snakecase::to_snake_case(attr(dimension, "name"), sep_out = sep)
+  names(dimension) <-
+    snakecase::to_snake_case(names(dimension), sep_out = sep)
+  if (is_role_dimension(dimension)) {
+    attr(dimension, "role_playing") <-
+      snakecase::to_snake_case(attr(dimension, "role_playing"), sep_out = sep)
   }
-  dim
+  dimension
 }

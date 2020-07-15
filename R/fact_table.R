@@ -1,16 +1,23 @@
-#' fact_table S3 class
+#' `fact_table` S3 class
 #'
 #' Internal low-level constructor that creates new objects with the correct
 #' structure.
 #'
-#' type: general, role-playing, conformed, shared (common dimension)
+#' @param ft A `tibble`, contains the fact table.
+#' @param name A string, name of the fact.
+#' @param measures A vector of measurement names.
+#' @param agg_functions A vector of aggregation function names.
+#' @param nrow_agg A string, measurement name for the number of rows aggregated.
 #'
-#' @param ft A tibble, contains a dimension.
+#' @return A `fact_table` object.
 #'
-#' @return A fact_table object.
-#'
+#' @keywords internal
 new_fact_table <-
-  function(ft = tibble::tibble(), name = NULL, measures = NULL, agg_functions = NULL, nrow_agg = NULL) {
+  function(ft = tibble::tibble(),
+           name = NULL,
+           measures = NULL,
+           agg_functions = NULL,
+           nrow_agg = NULL) {
     # Check the type of the base object
     stopifnot(tibble::is_tibble(ft))
     stopifnot(!is.null(name))
@@ -32,4 +39,3 @@ new_fact_table <-
       nrow_agg = nrow_agg
     )
   }
-

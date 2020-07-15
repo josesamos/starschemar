@@ -1,15 +1,17 @@
 
-#' Title
+#' Transform a dimension into a role dimension
 #'
-#' @param dim
-#' @param d_new_name
+#' Once the role-playing dimension has been generated, the dimensions from which
+#' it has been defined are transformed into role dimensions. Records are removed
+#' as they are obtained from the role-playing dimension.
 #'
-#' @return
+#' @param dimension A `dimension_table` object.
+#' @param role_playing_name A string, name of role-playing dimension.
 #'
-#' @examples
+#' @return A `dimension_table` object.
 #'
 #' @keywords internal
-role_dimension <- function(dim, d_new_name) {
+role_dimension <- function(dimension, role_playing_name) {
   UseMethod("role_dimension")
 }
 
@@ -17,16 +19,16 @@ role_dimension <- function(dim, d_new_name) {
 #' @rdname role_dimension
 #' @export
 #' @keywords internal
-role_dimension.dimension_table <- function(dim, d_new_name) {
-  name <- attr(dim, "name")
-  class <- attr(dim, "class")
-  dim <-
-    tibble::as_tibble(setNames(data.frame(matrix(
-      ncol = length(names(dim)), nrow = 0
-    )), names(dim)))
-  attr(dim, "name") <- name
-  attr(dim, "class") <- class
-  attr(dim, "type") <- "role"
-  attr(dim, "role_playing") <- d_new_name
-  dim
+role_dimension.dimension_table <- function(dimension, role_playing_name) {
+  name <- attr(dimension, "name")
+  class <- attr(dimension, "class")
+  dimension <-
+    tibble::as_tibble(stats::setNames(data.frame(matrix(
+      ncol = length(names(dimension)), nrow = 0
+    )), names(dimension)))
+  attr(dimension, "name") <- name
+  attr(dimension, "class") <- class
+  attr(dimension, "type") <- "role"
+  attr(dimension, "role_playing") <- role_playing_name
+  dimension
 }

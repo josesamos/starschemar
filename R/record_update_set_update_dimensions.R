@@ -1,16 +1,13 @@
 
-#' Modify dimensions in the list
+#' Apply update operations to dimensions
 #'
 #' Apply dimension record update operations to the dimensions in the list.
 #' Returns the list of modified dimensions.
 #'
-#' @param updates A `record_update_set` object, list of dimension record update
-#'   operations to apply.
+#' @param updates A `record_update_set` object.
 #' @param dimensions List of `dimension_table` objects to update.
 #'
 #' @return List of updated `dimension_table` objects.
-#'
-#' @examples
 #'
 #' @keywords internal
 update_dimensions <- function(updates, dimensions) {

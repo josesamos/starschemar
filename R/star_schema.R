@@ -10,6 +10,7 @@
 #'
 #' @importFrom rlang :=
 #'
+#' @keywords internal
 new_star_schema <-
   function(ft = tibble::tibble(),
            sd = star_definition()) {
@@ -74,7 +75,6 @@ new_star_schema <-
 #' @inheritParams new_star_schema
 #'
 #' @return A `star_schema` object.
-#' @export
 #'
 #' @family star schema functions
 #' @seealso \code{\link{star_definition}}
@@ -83,6 +83,7 @@ new_star_schema <-
 #'
 #' st <- star_schema(mrs_age, sd_mrs_age)
 #'
+#' @export
 star_schema <- function(ft, sd) {
   new_star_schema(tibble::as_tibble(ft), sd)
 }

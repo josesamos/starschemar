@@ -182,6 +182,9 @@
 #'
 #' @examples
 #' # Defined by:
+#'
+#' library(tidyr)
+#'
 #' sd_mrs_age <- star_definition() %>%
 #'   define_fact(
 #'     name = "mrs_age",
@@ -234,6 +237,9 @@
 #'
 #' @examples
 #' # Defined by:
+#'
+#' library(tidyr)
+#'
 #' sd_mrs_cause <- star_definition() %>%
 #'   define_fact(
 #'     name = "mrs_cause",
@@ -285,6 +291,9 @@
 #'
 #' @examples
 #' # Defined by:
+#'
+#' library(tidyr)
+#'
 #' st_mrs_age <- star_schema(mrs_age, sd_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
@@ -298,6 +307,29 @@
 #' @format A `star_schema` object.
 "st_mrs_age"
 
+#' Star Schema for Mortality Reporting System by Age Test
+#'
+#' Star Schema for the Mortality Reporting System considering the age
+#' classification data test.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_age_test <- star_schema(mrs_age_test, sd_mrs_age) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_available"),
+#'     name = "When Common",
+#'     attributes = c("date", "week", "year")
+#'   ) %>%
+#'   snake_case() %>%
+#'   character_dimensions(NA_replacement_value = "Unknown",
+#'                        length_integers = list(week = 2))
+#'
+#' @format A `star_schema` object.
+"st_mrs_age_test"
+
 #' Star Schema for Mortality Reporting System by Cause
 #'
 #' Star Schema for the Mortality Reporting System considering the cause
@@ -305,6 +337,9 @@
 #'
 #' @examples
 #' # Defined by:
+#'
+#' library(tidyr)
+#'
 #' st_mrs_cause <- star_schema(mrs_cause, sd_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
@@ -324,6 +359,35 @@
 #' @format A `star_schema` object.
 "st_mrs_cause"
 
+#' Star Schema for Mortality Reporting System by Cause Test
+#'
+#' Star Schema for the Mortality Reporting System considering the cause
+#' classification data test.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_cause_test <- star_schema(mrs_cause_test, sd_mrs_cause) %>%
+#'   snake_case() %>%
+#'   character_dimensions(
+#'     NA_replacement_value = "Unknown",
+#'     length_integers = list(
+#'       week = 2,
+#'       data_availability_week = 2,
+#'       reception_week = 2
+#'     )
+#'   ) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_received", "when_available"),
+#'     name = "when_common",
+#'     attributes = c("date", "week", "year")
+#'   )
+#'
+#' @format A `star_schema` object.
+"st_mrs_cause_test"
+
 #' Constellation for Mortality Reporting System
 #'
 #' Constellation for the Mortality Reporting System considering age and cause
@@ -331,8 +395,23 @@
 #'
 #' @examples
 #' # Defined by:
+#'
 #' ct_mrs <- constellation(list(st_mrs_age, st_mrs_cause), name = "mrs")
 #'
 #' @format A `constellation` object.
 "ct_mrs"
+
+#' Constellation for Mortality Reporting System Test
+#'
+#' Constellation for the Mortality Reporting System considering age and cause
+#' classification data test.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' ct_mrs_test <-
+#'   constellation(list(st_mrs_age_test, st_mrs_cause_test), name = "mrs_test")
+#'
+#' @format A `constellation` object.
+"ct_mrs_test"
 
