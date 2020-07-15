@@ -23,7 +23,8 @@ Imports:
     tidyselect,
     snakecase,
     purrr,
-    rlang
+    rlang,
+    stats
 Suggests: 
     testthat
 Depends: 
