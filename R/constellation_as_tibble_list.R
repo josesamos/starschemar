@@ -1,15 +1,25 @@
-#' Title
+#' Export a constellation as a tibble list
+#'
+#' Once we have refined the format or content of facts and dimensions, we can
+#' obtain a `tibble` list with them. Role playing dimensions can be optionally
+#' included.
 #'
 #' @param ct A `constellation` object.
-#' @param include_role_playing
+#' @param include_role_playing A boolean.
 #'
-#' @return A `star_export` object.
+#' @return A list of `tibble` objects.
 #'
-#' @family constellation functions
+#' @family constellation export functions
 #' @seealso
 #'
 #' @examples
+#' library(tidyr)
 #'
+#' tl <- ct_mrs %>%
+#'   constellation_as_tibble_list()
+#'
+#' tl <- ct_mrs %>%
+#'   constellation_as_tibble_list(include_role_playing = TRUE)
 #'
 #' @export
 constellation_as_tibble_list <-
@@ -31,7 +41,7 @@ constellation_as_tibble_list.constellation <-
     names(tl) <- names
     for (s in seq_along(ct$star)) {
       tl <-
-        star_schema_as_tibble_list(ct$star[[s]], tl, names, include_role_playing)
+        star_schema_as_tl(ct$star[[s]], tl, names, include_role_playing)
     }
     tl
   }

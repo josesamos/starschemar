@@ -52,11 +52,11 @@ match_records.record_update_set <-
   function(updates, dimension, old, new) {
     stopifnot(!is_role_playing_dimension(dimension))
     dim_txt <- dimension
-    dim_txt[,-1] <- prepare_join(dim_txt[,-1])
+    dim_txt[, -1] <- prepare_join(dim_txt[, -1])
     dru <- new_record_update(
       dimension = attr(dimension, "name"),
-      old = unlist(dim_txt[old, -1]),
-      new = unlist(dim_txt[new, -1])
+      old = unlist(dim_txt[old,-1]),
+      new = unlist(dim_txt[new,-1])
     )
     class <- class(updates)
     updates <- c(updates, list(dru))

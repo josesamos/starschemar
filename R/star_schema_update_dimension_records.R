@@ -13,10 +13,10 @@
 #' modifications to facts.
 #'
 #' The list of update operations can be applied repeatedly to new data received
-#' to be incorporated into the star_schema object.
+#' to be incorporated into the `star_schema` object.
 #'
 #' @param st A `star_schema` object.
-#' @param updates List of dimension record update operations to apply.
+#' @param updates A `record_update_set` object.
 #'
 #' @return A `star_schema` object.
 #'
@@ -26,6 +26,8 @@
 #' @examples
 #' library(tidyr)
 #'
+#' st <- st_mrs_age %>%
+#'   update_dimension_records(updates_st_mrs_age)
 #'
 #' @export
 update_dimension_records <-
@@ -39,20 +41,20 @@ update_dimension_records <-
 update_dimension_records.star_schema <-
   function(st, updates = record_update_set()) {
     dimensions <- get_all_dimensions(st)
-    mod_dim <- update_dimensions(updates, dimensions)
+    mod_dim <- update_dimensions(dimensions, updates)
     st <- update_facts_with_dimensions(st, mod_dim)
     st
   }
 
 
-#' Title
+#' Get all dimensions
 #'
-#' @param st
+#' Get all the dimensions of a star schema.
 #'
-#' @return
+#' @param st A `star_schema` object.
+#'
+#' @return A list of `dimension_table` objects.
 #' @keywords internal
-#' @noRd
-#'
 get_all_dimensions <- function(st) {
   names <- get_dimension_names(st)
   dimensions <- st$dimension[names]
@@ -61,3 +63,5 @@ get_all_dimensions <- function(st) {
   }
   dimensions
 }
+
+

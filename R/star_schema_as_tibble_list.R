@@ -1,24 +1,30 @@
 
-#' Title
+#' Export a star schema as a tibble list
+#'
+#' Once we have refined the format or content of facts and dimensions, we can
+#' obtain a `tibble` list with them. Role playing dimensions can be optionally
+#' included.
 #'
 #' @param st A `star_schema` object.
-#' @param tl_prev
-#' @param commondim
-#' @param include_role_playing
+#' @param include_role_playing A boolean.
 #'
-#' @return
+#' @return A list of `tibble` objects.
 #'
-#' @family star schema functions
+#' @family star schema export functions
 #' @seealso
 #'
 #' @examples
 #' library(tidyr)
 #'
+#' tl <- st_mrs_age %>%
+#'   star_schema_as_tibble_list()
+#'
+#' tl <- st_mrs_age %>%
+#'   star_schema_as_tibble_list(include_role_playing = TRUE)
+#'
 #' @export
 star_schema_as_tibble_list <-
   function(st,
-           tl_prev = NULL,
-           commondim = NULL,
            include_role_playing = FALSE) {
     UseMethod("star_schema_as_tibble_list")
   }
@@ -28,12 +34,42 @@ star_schema_as_tibble_list <-
 #' @export
 star_schema_as_tibble_list.star_schema <-
   function(st,
+           include_role_playing = FALSE) {
+    star_schema_as_tl(st, include_role_playing = include_role_playing)
+  }
+
+
+# Star schema as a tibble list (common) -----------------------------------
+
+#' Export a star schema as a tibble list (common)
+#'
+#' @param st A `star_schema` object.
+#' @param tl_prev A list of `tibble` objects.
+#' @param commondim A list of dimension names already included.
+#' @param include_role_playing A boolean.
+#'
+#' @return A `tibble` list.
+#' @keywords internal
+star_schema_as_tl <-
+  function(st,
            tl_prev = NULL,
            commondim = NULL,
-           include_role_playing = FALSE) {
+           include_role_playing) {
+    UseMethod("star_schema_as_tl")
+  }
+
+
+#' @rdname star_schema_as_tl
+#' @export
+#' @keywords internal
+star_schema_as_tl.star_schema <-
+  function(st,
+           tl_prev = NULL,
+           commondim = NULL,
+           include_role_playing) {
     names_prev <- names(tl_prev)
     tl <- c(tl_prev, list(tibble::as_tibble(st$fact[[1]])))
-    names <- attr(st$fact[[1]], "name")
+    names <- c(names_prev, attr(st$fact[[1]], "name"))
     dim <- get_all_dimensions(st)
     for (d in seq_along(dim)) {
       name_dim <- attr(dim[[d]], "name")
@@ -45,27 +81,24 @@ star_schema_as_tibble_list.star_schema <-
     if (include_role_playing) {
       rp_names <- get_name_of_role_playing_dimensions(st)
       for (d in rp_names) {
-        tl <- c(tl, list(tibble::as_tibble(st$dimension[[d]])))
-        if (d %in% names) {
-          names <- c(names, paste(attr(st$fact[[1]], "name"), d, sep = "_"))
-        } else {
+        if (!(d %in% names)) {
+          tl <- c(tl, list(tibble::as_tibble(st$dimension[[d]])))
           names <- c(names, d)
         }
       }
     }
-    names(tl) <- c(names_prev, names)
+    names(tl) <- names
     tl
   }
 
 
-#' Title
+
+#' Get the name of the role playing dimensions
 #'
-#' @param st
+#' @param st A `star_schema` object.
 #'
-#' @return
+#' @return A vector of dimension names.
 #' @keywords internal
-#' @noRd
-#'
 get_name_of_role_playing_dimensions <- function(st) {
   res <- c()
   names <- names(st$dimension)

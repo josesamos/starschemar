@@ -1,5 +1,9 @@
 
-#' Title
+#' Apply dimension record update operations to a dimension
+#'
+#' Given a list of dimension record update operations, they are applied on the
+#' `dimension_table` object. Update operations must be defined with the set of
+#' functions available for that purpose.
 #'
 #' @param dimension A `dimension_table` object.
 #' @param updates A `record_update_set` object.
@@ -37,12 +41,14 @@ update_dimension.dimension_table <- function(dimension, updates) {
 }
 
 
-#' Title
+#' Find values in a dimension
+#'
+#' Find a vector of named values in a dimension.
 #'
 #' @param dimension A `dimension_table` object.
-#' @param values
+#' @param values A vector of named values.
 #'
-#' @return
+#' @return A vector of boolean.
 #'
 #' @keywords internal
 find_values <- function(dimension, values) {
@@ -53,12 +59,16 @@ find_values <- function(dimension, values) {
   record
 }
 
-#' Title
+
+
+#' Transform a value according to its type
 #'
-#' @param value
-#' @param type
+#' Transform a string value according to its given type.
 #'
-#' @return
+#' @param value A string.
+#' @param type A string
+#'
+#' @return A typed value.
 #'
 #' @keywords internal
 typed_value <- function(value, type) {

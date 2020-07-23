@@ -1,12 +1,12 @@
 
-
-#' Title
+#' Transform names according to the snake case style in a fact table
 #'
-#' @param ft
+#' Transform foreign keys, measures and fact table names according to the snake
+#' case style.
 #'
-#' @return
+#' @param ft A `fact_table` object.
 #'
-#' @examples
+#' @return A `fact_table` object.
 #'
 #' @keywords internal
 snake_case_fact <- function(ft) {

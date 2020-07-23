@@ -330,6 +330,78 @@
 #' @format A `star_schema` object.
 "st_mrs_age_test"
 
+#' Star Schema for Mortality Reporting System by Age for Week Test
+#'
+#' Star Schema for the Mortality Reporting System considering the age
+#' classification data test, for week 4 of 1962. It also includes some isolated
+#' data from previous weeks that is supposed to be corrections for data errors.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_age_w_test <- star_schema(mrs_age_w_test, sd_mrs_age) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_available"),
+#'     name = "When Common",
+#'     attributes = c("date", "week", "year")
+#'   ) %>%
+#'   snake_case() %>%
+#'   character_dimensions(NA_replacement_value = "Unknown",
+#'                        length_integers = list(week = 2))
+#'
+#' @format A `star_schema` object.
+"st_mrs_age_w_test"
+
+#' Star Schema for Mortality Reporting System by Age for Week 10
+#'
+#' Star Schema for the Mortality Reporting System considering the age
+#' classification data, for week 10 of 1962. It also includes some isolated data
+#' from previous weeks that is supposed to be corrections for data errors.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_age_w10 <- star_schema(mrs_age_w10, sd_mrs_age) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_available"),
+#'     name = "When Common",
+#'     attributes = c("date", "week", "year")
+#'   ) %>%
+#'   snake_case() %>%
+#'   character_dimensions(NA_replacement_value = "Unknown",
+#'                        length_integers = list(week = 2))
+#'
+#' @format A `star_schema` object.
+"st_mrs_age_w10"
+
+#' Star Schema for Mortality Reporting System by Age for Week 11
+#'
+#' Star Schema for the Mortality Reporting System considering the age
+#' classification data, for week 11 of 1962. It also includes some isolated data
+#' from previous weeks that is supposed to be corrections for data errors.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_age_w11 <- star_schema(mrs_age_w11, sd_mrs_age) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_available"),
+#'     name = "When Common",
+#'     attributes = c("date", "week", "year")
+#'   ) %>%
+#'   snake_case() %>%
+#'   character_dimensions(NA_replacement_value = "Unknown",
+#'                        length_integers = list(week = 2))
+#'
+#' @format A `star_schema` object.
+"st_mrs_age_w11"
+
 #' Star Schema for Mortality Reporting System by Cause
 #'
 #' Star Schema for the Mortality Reporting System considering the cause
@@ -388,6 +460,99 @@
 #' @format A `star_schema` object.
 "st_mrs_cause_test"
 
+#' Star Schema for Mortality Reporting System by Cause for Week Test
+#'
+#' Star Schema for the Mortality Reporting System considering the cause
+#' classification data test, for week 4 of 1962. It also includes some isolated
+#' data from previous weeks that is supposed to be additional data not
+#' considered before.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, sd_mrs_cause) %>%
+#'   snake_case() %>%
+#'   character_dimensions(
+#'     NA_replacement_value = "Unknown",
+#'     length_integers = list(
+#'       week = 2,
+#'       data_availability_week = 2,
+#'       reception_week = 2
+#'     )
+#'   ) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_received", "when_available"),
+#'     name = "when_common",
+#'     attributes = c("date", "week", "year")
+#'   )
+#'
+#' @format A `star_schema` object.
+"st_mrs_cause_w_test"
+
+#' Star Schema for Mortality Reporting System by Cause for Week 10
+#'
+#' Star Schema for the Mortality Reporting System considering the cause
+#' classification data, for week 10 of 1962. It also includes some isolated data
+#' from previous weeks that is supposed to be additional data not considered
+#' before.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_cause_w10 <- star_schema(mrs_cause_w10, sd_mrs_cause) %>%
+#'   snake_case() %>%
+#'   character_dimensions(
+#'     NA_replacement_value = "Unknown",
+#'     length_integers = list(
+#'       week = 2,
+#'       data_availability_week = 2,
+#'       reception_week = 2
+#'     )
+#'   ) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_received", "when_available"),
+#'     name = "when_common",
+#'     attributes = c("date", "week", "year")
+#'   )
+#'
+#' @format A `star_schema` object.
+"st_mrs_cause_w10"
+
+#' Star Schema for Mortality Reporting System by Cause for Week 11
+#'
+#' Star Schema for the Mortality Reporting System considering the cause
+#' classification data, for week 11 of 1962. It also includes some isolated data
+#' from previous weeks that is supposed to be additional data not considered
+#' before.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' st_mrs_cause_w11 <- star_schema(mrs_cause_w11, sd_mrs_cause) %>%
+#'   snake_case() %>%
+#'   character_dimensions(
+#'     NA_replacement_value = "Unknown",
+#'     length_integers = list(
+#'       week = 2,
+#'       data_availability_week = 2,
+#'       reception_week = 2
+#'     )
+#'   ) %>%
+#'   role_playing_dimension(
+#'     dim_names = c("when", "when_received", "when_available"),
+#'     name = "when_common",
+#'     attributes = c("date", "week", "year")
+#'   )
+#'
+#' @format A `star_schema` object.
+"st_mrs_cause_w11"
+
 #' Constellation for Mortality Reporting System
 #'
 #' Constellation for the Mortality Reporting System considering age and cause
@@ -414,4 +579,149 @@
 #'
 #' @format A `constellation` object.
 "ct_mrs_test"
+
+
+#' Updates for the Star Schema for Mortality Reporting System by Age
+#'
+#' Example of updates on some dimensions of the star schema for Mortality Reporting
+#' System by age.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' (dim_names <- st_mrs_age %>%
+#'     get_dimension_names())
+#'
+#' where <- st_mrs_age %>%
+#'   get_dimension("where")
+#'
+#' when <- st_mrs_age %>%
+#'   get_dimension("when")
+#'
+#' who <- st_mrs_age %>%
+#'   get_dimension("who")
+#'
+#' updates_st_mrs_age <- record_update_set() %>%
+#'   update_selection_general(
+#'     dimension = where,
+#'     columns_old = c("state", "city"),
+#'     old_values = c("CT", "Bridgepor"),
+#'     columns_new = c("city"),
+#'     new_values = c("Bridgeport")
+#'   ) %>%
+#'   match_records(dimension = when,
+#'                 old = 37,
+#'                 new = 36) %>%
+#'   update_record(
+#'     dimension = when,
+#'     old = 73,
+#'     values = c("1962-02-17", "07", "1962")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("<1 year"),
+#'     new_values = c("1: <1 year")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("1-24 years"),
+#'     new_values = c("2: 1-24 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("25-44 years"),
+#'     new_values = c("3: 25-44 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("45-64 years"),
+#'     new_values = c("4: 45-64 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("65+ years"),
+#'     new_values = c("5: 65+ years")
+#'   )
+#'
+#' @format A `record_update_set` object.
+"updates_st_mrs_age"
+
+#' Updates for the Star Schema for Mortality Reporting System by Age Test
+#'
+#' Example of updates on some dimensions of the star schema for Mortality Reporting
+#' System by age test.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' (dim_names <- st_mrs_age_test %>%
+#'     get_dimension_names())
+#'
+#' where <- st_mrs_age_test %>%
+#'   get_dimension("where")
+#'
+#' when <- st_mrs_age_test %>%
+#'   get_dimension("when")
+#'
+#' who <- st_mrs_age_test %>%
+#'   get_dimension("who")
+#'
+#' updates_st_mrs_age_test <- record_update_set() %>%
+#'   update_selection_general(
+#'     dimension = where,
+#'     columns_old = c("state", "city"),
+#'     old_values = c("CT", "Bridgepor"),
+#'     columns_new = c("city"),
+#'     new_values = c("Bridgeport")
+#'   ) %>%
+#'   match_records(dimension = when,
+#'                 old = 4,
+#'                 new = 3) %>%
+#'   update_record(
+#'     dimension = when,
+#'     old = 9,
+#'     values = c("1962-01-20", "03", "1962")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("<1 year"),
+#'     new_values = c("1: <1 year")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("1-24 years"),
+#'     new_values = c("2: 1-24 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("25-44 years"),
+#'     new_values = c("3: 25-44 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("45-64 years"),
+#'     new_values = c("4: 45-64 years")
+#'   ) %>%
+#'   update_selection(
+#'     dimension = who,
+#'     columns = c("age_range"),
+#'     old_values = c("65+ years"),
+#'     new_values = c("5: 65+ years")
+#'   )
+#'
+#' @format A `record_update_set` object.
+"updates_st_mrs_age_test"
 

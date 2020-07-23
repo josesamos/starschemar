@@ -1,7 +1,7 @@
 
-#' Incrementally refresh one dimension with another
+#' Incrementally refresh a dimension with another
 #'
-#' Incrementally refresh one dimension with the content of a new one that is
+#' Incrementally refresh a dimension with the content of a new one that is
 #' integrated into the first.
 #'
 #' @param dimension A `dimension_table` object.

@@ -1,16 +1,17 @@
-#' star_export S3 class
+#' `multistar` S3 class
 #'
 #' Internal low-level constructor that creates new objects with the correct
 #' structure.
 #'
+#' It only distinguishes between general and conformed dimensions, each
+#' dimension has its own data. It can contain multiple fact tables.
+#'
 #' @param fl A `fact_table` list.
 #' @param dl A `dimension_table` list.
 #'
-#' @return A `star_export` object.
+#' @return A `multistar` object.
 #' @keywords internal
-#' @noRd
-#'
-new_star_export <-
+new_multistar <-
   function(fl = list(), dl = list) {
     star <-
       list(
@@ -40,6 +41,6 @@ new_star_export <-
     }
 
     structure(star,
-              class = "star_export")
+              class = "multistar")
   }
 

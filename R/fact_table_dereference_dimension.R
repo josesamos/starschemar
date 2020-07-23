@@ -1,9 +1,14 @@
 
-#' Title
+#' Dereference a dimension
+#'
+#' Given a dimension, transform the fact table so that the primary key of the
+#' dimension (which is a foreign key in the fact table) is replaced by the other
+#' attributes of the dimension.
 #'
 #' @param ft A `fact_table` object.
 #' @param dimension A `dimension_table` object.
-#' @param conversion
+#' @param conversion A boolean, indicates whether the attributes need to be
+#'   transformed.
 #'
 #' @return A `fact_table` object.
 #'

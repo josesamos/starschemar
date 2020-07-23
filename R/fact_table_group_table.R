@@ -1,12 +1,12 @@
 
-
-#' Title
+#' Group the records in the table
 #'
-#' @param ft
+#' Group the records in the table using the aggregation functions for the
+#' measurements.
 #'
-#' @return
+#' @param ft A `fact_table` object.
 #'
-#' @examples
+#' @return A `fact_table` object.
 #'
 #' @keywords internal
 group_table <- function(ft) {

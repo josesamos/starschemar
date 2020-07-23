@@ -1,15 +1,16 @@
 
-#' Title
+#' Update facts with a list of modified dimensions
 #'
-#' @param st
-#' @param mod_dim
+#' Update the fact table with the modified dimensions. New dimensions are
+#' generated from the modified ones.
 #'
-#' @return
+#' @param st A `star_schema` object.
+#' @param dimensions A list of `dimension_table` objects.
 #'
-#' @examples
+#' @return A `star_schema` object.
 #'
 #' @keywords internal
-update_facts_with_dimensions <- function(st, mod_dim) {
+update_facts_with_dimensions <- function(st, dimensions) {
   UseMethod("update_facts_with_dimensions")
 }
 
@@ -17,87 +18,91 @@ update_facts_with_dimensions <- function(st, mod_dim) {
 #' @rdname update_facts_with_dimensions
 #' @export
 #' @keywords internal
-update_facts_with_dimensions.star_schema <- function(st, mod_dim) {
-  name_dims <- get_dimension_names(st)
-  for (mod_d in seq_along(mod_dim)) {
-    dim_name <- names(mod_dim)[mod_d]
-    if (dim_name %in% name_dims) {
-      dim <-
-        new_dimension_table(tibble::as_tibble(mod_dim[[mod_d]][,-1]), name = dim_name)
-      if (!is_role_dimension(st$dimension[[dim_name]])) {
-        st <-
-          update_facts_with_general_dimension(st, dim_name, mod_dim[[mod_d]], dim)
-      } else {
-        st <-
-          update_facts_with_role_dimension(st, name_dims, dim_name, mod_dim[[mod_d]], dim)
+update_facts_with_dimensions.star_schema <-
+  function(st, dimensions) {
+    dimension_names <- get_dimension_names(st)
+    for (mod_d in seq_along(dimensions)) {
+      name <- names(dimensions)[mod_d]
+      if (name %in% dimension_names) {
+        dim <-
+          new_dimension_table(tibble::as_tibble(dimensions[[mod_d]][, -1]), name = name)
+        if (is_role_dimension(st$dimension[[name]])) {
+          st <-
+            update_facts_with_role_dimension(st, name, dimensions[[mod_d]], dim, dimension_names)
+        } else {
+          st <-
+            update_facts_with_general_dimension(st, name, dimensions[[mod_d]], dim)
+        }
       }
     }
+    st$fact[[1]] <- group_table(st$fact[[1]])
+    st
   }
-  st$fact[[1]] <- group_table(st$fact[[1]])
-  st
-}
 
 
 
-#' Title
+#' Update facts with a general dimension
 #'
-#' @param st
-#' @param dim_name
-#' @param old_dim
-#' @param dim
+#' @param st A `star_schema` object.
+#' @param name A string, name of the dimension.
+#' @param old_dimension A `dimension_table` object.
+#' @param dimension A `dimension_table` object.
 #'
-#' @return
+#' @return A `star_schema` object.
 #' @keywords internal
-#' @noRd
-#'
-update_facts_with_general_dimension <- function(st, dim_name, old_dim, dim) {
-  st$fact[[1]] <-
-    dereference_dimension(st$fact[[1]], old_dim)
-  type = get_dimension_type(st$dimension[[dim_name]])
-  st$dimension[[dim_name]] <- dim
-  st$dimension[[dim_name]] <-
-    set_dimension_type(st$dimension[[dim_name]], type)
-  st$fact[[1]] <-
-    reference_dimension(st$fact[[1]], dim, names(dim)[-1])
-  st
-}
+update_facts_with_general_dimension <-
+  function(st, name, old_dimension, dimension) {
+    st$fact[[1]] <-
+      dereference_dimension(st$fact[[1]], old_dimension)
+    type = get_dimension_type(st$dimension[[name]])
+    st$dimension[[name]] <- dimension
+    st$dimension[[name]] <-
+      set_dimension_type(st$dimension[[name]], type)
+    st$fact[[1]] <-
+      reference_dimension(st$fact[[1]], dimension, names(dimension)[-1])
+    st
+  }
 
 
-#' Title
+#' Update facts with a role dimension
 #'
-#' @param st
-#' @param name_dims
-#' @param dim_name
-#' @param old_dim
-#' @param dim
+#' @param st A `star_schema` object.
+#' @param name A string, name of the dimension.
+#' @param old_dimension A `dimension_table` object.
+#' @param dimension A `dimension_table` object.
+#' @param dimension_names A vector of dimension names.
 #'
-#' @return
+#' @return A `star_schema` object.
 #' @keywords internal
-#' @noRd
-#'
 update_facts_with_role_dimension <-
-  function(st, name_dims, dim_name, old_dim, dim) {
-    rp_dim_name <-
-      get_role_playing_dimension_name(st$dimension[[dim_name]])
-    tmp <- names(st$dimension[[rp_dim_name]])
-    st$dimension[[rp_dim_name]] <- old_dim # dimension with matches
-    names(st$dimension[[rp_dim_name]]) <- tmp
+  function(st,
+           name,
+           old_dimension,
+           dimension,
+           dimension_names) {
+    rp_name <-
+      get_role_playing_dimension_name(st$dimension[[name]])
+    tmp <- names(st$dimension[[rp_name]])
+    st$dimension[[rp_name]] <-
+      old_dimension # dimension with matches
+    names(st$dimension[[rp_name]]) <- tmp
 
-    for (d in name_dims) {
-      if (get_role_playing_dimension_name(st$dimension[[d]]) == rp_dim_name) {
+    for (d in dimension_names) {
+      if (get_role_playing_dimension_name(st$dimension[[d]]) == rp_name) {
         od <- get_dimension(st, d)
         st$fact[[1]] <-
           dereference_dimension(st$fact[[1]], od)
       }
     }
 
-    dim <- set_dimension_type_role_playing(dim)
-    dim <- set_dimension_name(dim, rp_dim_name)
-    names(dim) <- names(st$dimension[[rp_dim_name]])
-    st$dimension[[rp_dim_name]] <- dim # dimension with unique rows
+    dimension <- set_dimension_type_role_playing(dimension)
+    dimension <- set_dimension_name(dimension, rp_name)
+    names(dimension) <- names(st$dimension[[rp_name]])
+    st$dimension[[rp_name]] <-
+      dimension # dimension with unique rows
 
-    for (d in name_dims) {
-      if (get_role_playing_dimension_name(st$dimension[[d]]) == rp_dim_name) {
+    for (d in dimension_names) {
+      if (get_role_playing_dimension_name(st$dimension[[d]]) == rp_name) {
         nd <- get_dimension(st, d)
         st$fact[[1]] <-
           reference_dimension(st$fact[[1]], nd, names(nd)[-1])
@@ -105,5 +110,3 @@ update_facts_with_role_dimension <-
     }
     st
   }
-
-

@@ -1,17 +1,32 @@
 
 
-#' Title
+#' Apply dimension record update operations to conformed dimensions
 #'
-#' @param ct
-#' @param updates
+#' Given a list of dimension record update operations, they are applied on the conformed
+#' dimensions of the `constellation` object. Update operations must be defined
+#' with the set of functions available for that purpose.
 #'
-#' @return
+#' When dimensions are defined, records can be detected that must be modified as
+#' part of the data cleaning process: frequently to unify two or more records
+#' due to data errors or missing data. This is not immediate because facts must
+#' be adapted to the new set of dimension instances.
+#'
+#' This operation allows us to unify records and automatically propagate
+#' modifications to facts in star schemas.
+#'
+#' @param ct A `constellation` object.
+#' @param updates A `record_update_set` object.
+#'
+#' @return A `constellation` object.
 #'
 #' @family constellation functions
 #' @seealso
 #'
 #' @examples
+#' library(tidyr)
 #'
+#' ct <- ct_mrs %>%
+#'   update_conformed_dimension_records(updates_st_mrs_age)
 #'
 #' @export
 update_conformed_dimension_records <-
@@ -24,7 +39,7 @@ update_conformed_dimension_records <-
 #' @export
 update_conformed_dimension_records.constellation <-
   function(ct, updates = record_update_set()) {
-    mod_dim <- update_dimensions(updates, ct$dimension)
+    mod_dim <- update_dimensions(ct$dimension, updates)
 
     for (s in seq_along(ct$star)) {
       ct$star[[s]] <- update_facts_with_dimensions(ct$star[[s]], mod_dim)
@@ -32,7 +47,7 @@ update_conformed_dimension_records.constellation <-
     dimensions <- names(ct$dimension)
     ct$dimension <- list()
     for (d in dimensions) {
-      ct <- conform_dimensions(ct, dim_name = d)
+      ct <- conform_dimensions(ct, name = d)
     }
     ct
   }

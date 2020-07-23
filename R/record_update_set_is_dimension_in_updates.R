@@ -1,5 +1,5 @@
 
-#' Dimension in set of updates
+#' Is dimension in set of updates?
 #'
 #' Given a set of dimension record update operations and the name of a
 #' dimension, it checks if there is any update operation to perform on the
@@ -13,15 +13,15 @@
 #'   operations.
 #'
 #' @keywords internal
-dimension_in_updates <- function(updates, name) {
-  UseMethod("dimension_in_updates")
+is_dimension_in_updates <- function(updates, name) {
+  UseMethod("is_dimension_in_updates")
 }
 
 
-#' @rdname dimension_in_updates
+#' @rdname is_dimension_in_updates
 #' @export
 #' @keywords internal
-dimension_in_updates.record_update_set <- function(updates, name) {
+is_dimension_in_updates.record_update_set <- function(updates, name) {
   for (m in seq_along(updates)) {
     match <- updates[[m]]
     if (match$dimension == name) {

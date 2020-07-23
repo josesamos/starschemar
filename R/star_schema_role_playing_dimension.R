@@ -77,34 +77,3 @@ role_playing_dimension.star_schema <-
     }
     st
   }
-
-
-#' Perform union of dimensions
-#'
-#' Generates a new dimension from the instances of the dimensions in a list, as
-#' the union of the dimensions.
-#'
-#' @param dl List of `dimension_table` objects.
-#' @param name A string, name of the dimension.
-#' @param type A string, type of the dimension.
-#'
-#' @return A `dimension_table` object.
-#' @keywords internal
-#' @noRd
-#'
-union_of_dimensions <-
-  function(dl = list(),
-           name = NULL,
-           type = "role_playing") {
-    d_new = dl[1]
-    if (length(dl) > 1) {
-      dim_union <- as.data.frame(dl[1])
-      for (i in 2:length(dl)) {
-        dim_union <- dplyr::union_all(dim_union, as.data.frame(dl[[i]]))
-      }
-      dim_union <- tibble::as_tibble(dim_union)
-      d_new <-
-        new_dimension_table(dim_union, name = name, type = type)
-    }
-    d_new
-  }

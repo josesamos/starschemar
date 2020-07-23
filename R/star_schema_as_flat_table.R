@@ -1,16 +1,21 @@
 
-
-#' Title
+#' Export a star schema as a flat table
+#'
+#' Once we have refined the format or content of facts and dimensions, we can
+#' again obtain a flat table, implemented using a `tibble`, from a star schema.
 #'
 #' @param st A `star_schema` object.
 #'
-#' @return
+#' @return A `tibble`.
 #'
-#' @family star schema functions
+#' @family star schema export functions
 #' @seealso
 #'
 #' @examples
 #' library(tidyr)
+#'
+#' ft <- st_mrs_age %>%
+#'   star_schema_as_flat_table()
 #'
 #' @export
 star_schema_as_flat_table <- function(st) {
