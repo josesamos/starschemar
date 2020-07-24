@@ -9,7 +9,7 @@
 #'
 #' @return A `multistar` object.
 #'
-#' @family constellation export functions
+#' @family results export functions
 #' @seealso
 #'
 #' @examples

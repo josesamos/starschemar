@@ -17,7 +17,7 @@
 #'
 #' @return A `star_schema` object.
 #'
-#' @family star schema functions
+#' @family star schema and constellation definition functions
 #' @seealso
 #'
 #' @examples

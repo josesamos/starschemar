@@ -15,25 +15,30 @@
 #' @param existing A string, operation to be performed with records in the fact
 #'   table whose keys match.
 #'
+#' @return A `star_schema` object.
+#'
+#' @family incremental refresh functions
+#' @seealso
+#'
 #' @examples
 #' library(tidyr)
 #'
 #' st <- st_mrs_age %>%
-#'   incremental_refresh(st_mrs_age_w10, existing = "replace")
+#'   incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace")
 #'
 #' st <- st_mrs_cause %>%
-#'   incremental_refresh(st_mrs_cause_w10, existing = "group")
+#'   incremental_refresh_star_schema(st_mrs_cause_w10, existing = "group")
 #'
 #' @export
-incremental_refresh <- function(st, st_new, existing = "ignore") {
-  UseMethod("incremental_refresh")
+incremental_refresh_star_schema <- function(st, st_new, existing = "ignore") {
+  UseMethod("incremental_refresh_star_schema")
 }
 
 
-#' @rdname incremental_refresh
+#' @rdname incremental_refresh_star_schema
 #' @export
 #' @keywords internal
-incremental_refresh.star_schema <-
+incremental_refresh_star_schema.star_schema <-
   function(st, st_new, existing = "ignore") {
     stopifnot(existing %in% c("ignore", "replace", "group", "delete"))
 

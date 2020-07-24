@@ -45,7 +45,7 @@ new_constellation <-
 #'
 #' @return A `constellation` object.
 #'
-#' @family constellation functions
+#' @family star schema and constellation definition functions
 #' @seealso
 #'
 #' @examples

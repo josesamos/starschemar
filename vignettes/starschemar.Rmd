@@ -1,0 +1,23 @@
+---
+title: "starschemar: Obtaining Star Schemas from Flat Tables in R"
+author: "Jose Samos (jsamos@ugr.es)"
+date: "2020-07-24"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{starschemar: Obtaining Star Schemas from Flat Tables in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(starschemar)
+```
+
+# Introduction

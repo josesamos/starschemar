@@ -19,25 +19,25 @@
 #'
 #' @return A `constellation` object.
 #'
-#' @family constellation functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples
 #' library(tidyr)
 #'
 #' ct <- ct_mrs %>%
-#'   update_conformed_dimension_records(updates_st_mrs_age)
+#'   modify_conformed_dimension_records(updates_st_mrs_age)
 #'
 #' @export
-update_conformed_dimension_records <-
+modify_conformed_dimension_records <-
   function(ct, updates = record_update_set()) {
-    UseMethod("update_conformed_dimension_records")
+    UseMethod("modify_conformed_dimension_records")
   }
 
 
-#' @rdname update_conformed_dimension_records
+#' @rdname modify_conformed_dimension_records
 #' @export
-update_conformed_dimension_records.constellation <-
+modify_conformed_dimension_records.constellation <-
   function(ct, updates = record_update_set()) {
     mod_dim <- update_dimensions(ct$dimension, updates)
 

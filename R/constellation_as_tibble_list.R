@@ -9,7 +9,7 @@
 #'
 #' @return A list of `tibble` objects.
 #'
-#' @family constellation export functions
+#' @family results export functions
 #' @seealso
 #'
 #' @examples

@@ -8,7 +8,7 @@
 #'
 #' @return A `tibble`.
 #'
-#' @family star schema export functions
+#' @family results export functions
 #' @seealso
 #'
 #' @examples

@@ -10,7 +10,7 @@
 #'
 #' @return A `constellation` object.
 #'
-#' @family constellation functions
+#' @family incremental refresh functions
 #' @seealso
 #'
 #' @examples
@@ -35,7 +35,7 @@ incremental_refresh_constellation.constellation <-
     stopifnot(existing %in% c("ignore", "replace", "group", "delete"))
 
     st_name <- get_fact_name(st)
-    ct$star[[st_name]] <- incremental_refresh(ct$star[[st_name]], st, existing)
+    ct$star[[st_name]] <- incremental_refresh_star_schema(ct$star[[st_name]], st, existing)
     conformed_dimensions <-
       get_conformed_dimension_names_st(ct$star[[st_name]])
     for (d in conformed_dimensions) {

@@ -20,7 +20,7 @@
 #'
 #' @return A `record_update_set` object.
 #'
-#' @family dimension update definition functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples

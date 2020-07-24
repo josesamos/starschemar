@@ -1,6 +1,6 @@
-context("test incremental_refresh")
+context("test incremental_refresh_star_schema")
 
-test_that("incremental_refresh works", {
+test_that("incremental_refresh_star_schema works", {
   st <- st_mrs_age_test
   st$fact$mrs_age$deaths <- 1
   st$fact$mrs_age$nrow_agg <- 1
@@ -13,10 +13,10 @@ test_that("incremental_refresh works", {
   stw$fact$mrs_age$nrow_agg
 
 
-  st1 <- incremental_refresh(st, stw, existing = "ignore")
-  st2 <- incremental_refresh(st, stw, existing = "replace")
-  st3 <- incremental_refresh(st, stw, existing = "group")
-  st4 <- incremental_refresh(st, stw, existing = "delete")
+  st1 <- incremental_refresh_star_schema(st, stw, existing = "ignore")
+  st2 <- incremental_refresh_star_schema(st, stw, existing = "replace")
+  st3 <- incremental_refresh_star_schema(st, stw, existing = "group")
+  st4 <- incremental_refresh_star_schema(st, stw, existing = "delete")
 
   r1 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
           1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)

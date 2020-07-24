@@ -1,8 +1,8 @@
-context("test update_conformed_dimension_records")
+context("test modify_conformed_dimension_records")
 
-test_that("update_conformed_dimension_records works", {
+test_that("modify_conformed_dimension_records works", {
   ct <-
-    update_conformed_dimension_records(ct_mrs_test, updates_st_mrs_age_test)
+    modify_conformed_dimension_records(ct_mrs_test, updates_st_mrs_age_test)
 
   expect_equal(ct$dimension$when$week_ending_date,
                structure(c(-2917, -2916, -2915, -2910, -2905, -2903, -2898,

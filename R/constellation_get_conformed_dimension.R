@@ -11,7 +11,7 @@
 #'
 #' @return A `dimension_table` object.
 #'
-#' @family constellation functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples
@@ -48,7 +48,7 @@ get_conformed_dimension.constellation <- function(ct, name) {
 #'
 #' @return A vector of dimension names.
 #'
-#' @family constellation functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples

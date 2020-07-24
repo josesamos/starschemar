@@ -20,25 +20,25 @@
 #'
 #' @return A `star_schema` object.
 #'
-#' @family star schema functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples
 #' library(tidyr)
 #'
 #' st <- st_mrs_age %>%
-#'   update_dimension_records(updates_st_mrs_age)
+#'   modify_dimension_records(updates_st_mrs_age)
 #'
 #' @export
-update_dimension_records <-
+modify_dimension_records <-
   function(st, updates = record_update_set()) {
-    UseMethod("update_dimension_records")
+    UseMethod("modify_dimension_records")
   }
 
 
-#' @rdname update_dimension_records
+#' @rdname modify_dimension_records
 #' @export
-update_dimension_records.star_schema <-
+modify_dimension_records.star_schema <-
   function(st, updates = record_update_set()) {
     dimensions <- get_all_dimensions(st)
     mod_dim <- update_dimensions(dimensions, updates)

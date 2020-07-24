@@ -10,7 +10,7 @@
 #'
 #' @return A `multistar` object.
 #'
-#' @family star schema export functions
+#' @family results export functions
 #' @seealso
 #'
 #' @examples

@@ -10,7 +10,7 @@
 #'
 #' @return A list of `tibble` objects.
 #'
-#' @family star schema export functions
+#' @family results export functions
 #' @seealso
 #'
 #' @examples

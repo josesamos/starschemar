@@ -13,7 +13,7 @@
 #'
 #' @return A `dimension_table` object.
 #'
-#' @family star schema functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples
@@ -63,7 +63,7 @@ get_dimension.star_schema <- function(st, name) {
 #'
 #' @return A vector of dimension names.
 #'
-#' @family star schema functions
+#' @family data cleaning functions
 #' @seealso
 #'
 #' @examples
