@@ -1,7 +1,7 @@
 citHeader("To cite starschemar in publications use:")
 
 citEntry(entry = "Manual",
-  title        = "{starschemar}: Obtaining a Star Schema from a Flat Table in R",
+  title        = "{starschemar}: Obtaining Star Schemas from Flat Tables in R",
   author       = personList(as.person("Jose Samos")),
   year         = "2020",
   note         = "R package version 1.0.0",
@@ -9,6 +9,6 @@ citEntry(entry = "Manual",
 
   textVersion  =
   paste("Jose Samos (2020).",
-        "starschemar: Obtaining a Star Schema from a Flat Table in R.",
+        "starschemar: Obtaining Star Schemas from Flat Tables in R.",
         "https://github.com/josesamos/starschemar.")
 )
