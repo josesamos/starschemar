@@ -13,4 +13,8 @@ test_that("character_dimensions works", {
     sort(st$dimension$when_available$`Data Availability Week`),
     c("01", "02", "03", "04", "04", "05")
   )
+  expect_equal(
+    sort(st$dimension$when_available$`Data Availability Date`),
+    structure(c(-2916, -2910, -2898, -2895, -2892, 2932896), class = "Date")
+  )
 })

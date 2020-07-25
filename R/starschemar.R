@@ -3,36 +3,36 @@
 #' Transformations that allow obtaining star schemas from flat tables.
 #'
 #' From flat tables star schemas can be defined that can form constellations
-#' (*star definition, star schema generation and transformation, and
-#' constellation definition functions*). Dimensions contain data without
-#' duplicates, operations to do data cleaning can be applied on them (*data
-#' cleaning functions*). When new data is obtained, it is necessary to refresh
-#' the existing data with them by means of incremental refresh operations
-#' (*incremental refresh functions*). Finally, the results obtained can be
-#' exported to be consulted with other tools (*results export functions*).
+#' (*star schema and constellation definition functions*). Dimensions contain
+#' data without duplicates, operations to do data cleaning can be applied on
+#' them (*data cleaning functions*). When new data is obtained, it is necessary
+#' to refresh the existing data with them by means of incremental refresh
+#' operations (*incremental refresh functions*). Finally, the results obtained
+#' can be exported to be consulted with other tools (*results export
+#' functions*).
 #'
-#' @section Star definition: Starting from a flat table, a star is defined
-#'   specifying the attributes that make up each of the dimensions and the
-#'   measurements in the facts. The result is a `star_definition` object. It is
-#'   carried out through the following functions:
+#' @section Star schema and constellation definition: Starting from a flat
+#'   table, a star is defined specifying the attributes that make up each of the
+#'   dimensions and the measurements in the facts. The result is a
+#'   `star_definition` object. It is carried out through the following *star
+#'   definition functions*:
 #' - [star_definition()]
 #' - [define_dimension()]
 #' - [define_fact()]
 #'
-#' @section Star schema generation and transformation: A star schema is
-#'   generated from a flat table and a star definition. Once defined, a star
-#'   schema can be transformed by defining role playing dimensions, changing the
-#'   writing style of element names or the type of dimension attributes. These
-#'   operations are carried out through the following functions:
+#' A star schema is defined from a flat table and a star definition. Once
+#' defined, a star schema can be transformed by defining role playing
+#' dimensions, changing the writing style of element names or the type of
+#' dimension attributes. These operations are carried out through the following
+#' *star schema definition and transformation functions*:
 #' - [star_schema()]
 #' - [role_playing_dimension()]
 #' - [snake_case()]
 #' - [character_dimensions()]
 #'
-#' @section Constellation definition: Based on various star schemas, a
-#'   constellation can be defined in which star schemas share common dimensions.
-#'   Dimensions with the same name must be shared. It is defined by the
-#'   following function:
+#' Based on various star schemas, a constellation can be defined in which star
+#' schemas share common dimensions. Dimensions with the same name must be
+#' shared. It is defined by the following *constellation definition function*:
 #' - [constellation()]
 #'
 #' @section Data cleaning: Once the star schemas and constellations are defined,
@@ -41,20 +41,20 @@
 #'   constellations; another to define data cleaning operations over dimensions;
 #'   and one more to apply operations to star schemas or constellations.
 #'
-#' Obtaining dimensions:
+#' *Obtaining dimensions*:
 #' - [get_dimension_names()]
 #' - [get_dimension()]
 #' - [get_conformed_dimension_names()]
 #' - [get_conformed_dimension()]
 #'
-#' Operations definition functions:
+#' *Operations definition functions*:
 #' - [record_update_set()]
 #' - [match_records()]
 #' - [update_record()]
 #' - [update_selection()]
 #' - [update_selection_general()]
 #'
-#' Modification application functions:
+#' *Modification application functions*:
 #' - [modify_dimension_records()]
 #' - [modify_conformed_dimension_records()]
 #'
