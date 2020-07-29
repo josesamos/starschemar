@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(starschemar)
+b <- utf8::utf8_valid("José")
 ```
 
 # Introduction
@@ -215,6 +216,7 @@ The definition of the dimensional model for the data considered is shown below.
 
 ```{r}
 library(tidyr)
+library(starschemar)
 
 dm_mrs_age <- dimensional_model() %>%
   define_fact(
