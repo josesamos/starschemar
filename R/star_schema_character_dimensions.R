@@ -19,7 +19,7 @@
 #' on it.
 #'
 #' @param st A `star_schema` object.
-#' @param length_integers A `list` of pairs name = lenght, for each attribute name its length.
+#' @param length_integers A `list` of pairs name = length, for each attribute name its length.
 #' @param NA_replacement_value A string, value to replace NA values.
 #'
 #' @return A `star_schema` object.

@@ -3,7 +3,7 @@
 \name{star_schema_as_mst}
 \alias{star_schema_as_mst}
 \alias{star_schema_as_mst.star_schema}
-\title{Star schema as multistar export (common)}
+\title{Star schema as \code{multistar} export (common)}
 \usage{
 star_schema_as_mst(st, fl = NULL, dl = NULL, commondim = NULL)
 
@@ -22,6 +22,6 @@ star_schema_as_mst(st, fl = NULL, dl = NULL, commondim = NULL)
 A \code{multistar} object.
 }
 \description{
-Star schema as multistar export (common)
+Star schema as \code{multistar} export (common)
 }
 \keyword{internal}

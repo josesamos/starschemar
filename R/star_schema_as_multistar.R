@@ -1,5 +1,5 @@
 
-#' Export a star schema as a multistar
+#' Export a star schema as a `multistar`
 #'
 #' Once we have refined the format or content of facts and dimensions, we can
 #' obtain a `multistar`. A `multistar` only distinguishes between general and
@@ -34,7 +34,7 @@ star_schema_as_multistar.star_schema <- function(st) {
 
 # Star schema as multistar export (common) --------------------------------
 
-#' Star schema as multistar export (common)
+#' Star schema as `multistar` export (common)
 #'
 #' @param st A `star_schema` object.
 #' @param fl A list of `fact_table` objects.

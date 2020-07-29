@@ -12,7 +12,7 @@ character_dimensions(st, length_integers = list(), NA_replacement_value = NULL)
 \arguments{
 \item{st}{A \code{star_schema} object.}
 
-\item{length_integers}{A \code{list} of pairs name = lenght, for each attribute name its length.}
+\item{length_integers}{A \code{list} of pairs name = length, for each attribute name its length.}
 
 \item{NA_replacement_value}{A string, value to replace NA values.}
 }

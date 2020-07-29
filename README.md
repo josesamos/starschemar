@@ -14,11 +14,12 @@ of supporting data analysis. Data in multidimensional systems is
 obtained from operational systems and is transformed to adapt it to the
 new structure.
 
-Transformations can be carried out using professional ETL tools.
-Recently, tools aimed at end users have emerged, which are also aimed at
-performing transformation operations. All these tools are very useful to
-carry out the transformation process, they provide a development
-environment to define the transformation operations in a general way.
+Transformations can be carried out using professional ETL (extract,
+transform and load) tools. Recently, tools aimed at end users have
+emerged, which are also aimed at performing transformation operations.
+All these tools are very useful to carry out the transformation process,
+they provide a development environment to define the transformation
+operations in a general way.
 
 Frequently, the operations to be performed aim to transform a flat table
 (with data that comes from operational systems) into a star schema

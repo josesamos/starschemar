@@ -3,7 +3,7 @@
 \name{constellation_as_tibble_list}
 \alias{constellation_as_tibble_list}
 \alias{constellation_as_tibble_list.constellation}
-\title{Export a constellation as a tibble list}
+\title{Export a constellation as a \code{tibble} list}
 \usage{
 constellation_as_tibble_list(ct, include_role_playing = FALSE)
 

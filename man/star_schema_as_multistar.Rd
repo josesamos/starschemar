@@ -3,7 +3,7 @@
 \name{star_schema_as_multistar}
 \alias{star_schema_as_multistar}
 \alias{star_schema_as_multistar.star_schema}
-\title{Export a star schema as a multistar}
+\title{Export a star schema as a \code{multistar}}
 \usage{
 star_schema_as_multistar(st)
 

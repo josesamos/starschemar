@@ -38,9 +38,9 @@ A \code{dimensional_model} object.
 }
 \description{
 To define facts in a \code{dimensional_model} object, the essential data is a name
-and a set of measurements that can be empty (factless fact does not have
-explicit measurements). Associated with each measurement, an aggregation
-function is required, which by default is SUM.
+and a set of measurements that can be empty (does not have explicit
+measurements). Associated with each measurement, an aggregation function is
+required, which by default is SUM.
 }
 \details{
 To get a star schema (a \code{star_schema} object) we need a flat table
@@ -50,7 +50,7 @@ table column names. Using the \code{dput} function we can list the column names 
 the flat table so that we do not have to type their names.
 
 Associated with each measurement there is an aggregation function that can be
-SUM, MAX or MIN. AVG (mean) is not considered among the possible aggregation
+SUM, MAX or MIN. Mean is not considered among the possible aggregation
 functions: The reason is that calculating the mean by considering subsets of
 data does not necessarily yield the mean of the total data.
 

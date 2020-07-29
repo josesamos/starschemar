@@ -1,7 +1,7 @@
 
 # prepare_join ------------------------------------------------------------
 
-#' Transform a tibble to join
+#' Transform a `tibble` to join
 #'
 #' Transform all fields in a `tibble` to character type and replace the `NA`
 #' with a specific value.

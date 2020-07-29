@@ -3,7 +3,7 @@
 \name{constellation_as_multistar}
 \alias{constellation_as_multistar}
 \alias{constellation_as_multistar.constellation}
-\title{Export a constellation as a multistar}
+\title{Export a constellation as a \code{multistar}}
 \usage{
 constellation_as_multistar(ct)
 

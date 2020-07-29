@@ -1,4 +1,4 @@
-#' Export a constellation as a tibble list
+#' Export a constellation as a `tibble` list
 #'
 #' Once we have refined the format or content of facts and dimensions, we can
 #' obtain a `tibble` list with them. Role playing dimensions can be optionally

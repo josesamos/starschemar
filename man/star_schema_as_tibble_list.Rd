@@ -3,7 +3,7 @@
 \name{star_schema_as_tibble_list}
 \alias{star_schema_as_tibble_list}
 \alias{star_schema_as_tibble_list.star_schema}
-\title{Export a star schema as a tibble list}
+\title{Export a star schema as a \code{tibble} list}
 \usage{
 star_schema_as_tibble_list(st, include_role_playing = FALSE)
 

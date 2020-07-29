@@ -25,7 +25,7 @@ library(starschemar)
 
 The *multidimensional data model* was defined in the 1990s with the aim of supporting data analysis. Data in multidimensional systems is obtained from operational systems and is transformed to adapt it to the new structure.
 
-Transformations can be carried out using professional ETL tools. Recently, tools aimed at end users have emerged, which are also aimed at performing transformation operations. All these tools are very useful to carry out the transformation process, they provide a development environment to define the transformation operations in a general way.
+Transformations can be carried out using professional ETL (extract, transform and load) tools. Recently, tools aimed at end users have emerged, which are also aimed at performing transformation operations. All these tools are very useful to carry out the transformation process, they provide a development environment to define the transformation operations in a general way.
 
 Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process. 
 
@@ -78,7 +78,7 @@ Other possible implementations on RDBMS normalize dimensions and are known as *s
 
 Dimension tables contain the context associated with business process measures. Although they can contain any type of data, numerical data is generally not used for dimension attributes because some query tools consider any numeric data as a measure.
 
-Dimension attributes with NULL value are a source of problems when querying since DBMS and query tools sometimes handle them inconsistently, the result depends on the product. It is recommended to avoid the use of NULLs and replace them with a descriptive text. In the case of dates, it is recommended to replace the NULL values with an arbitrary date in the very far future.
+Dimension attributes with NULL value are a source of problems when querying since DBMS and query tools sometimes handle them inconsistently, the result depends on the product. It is recommended to avoid the use of NULL and replace them with a descriptive text. In the case of dates, it is recommended to replace the NULL values with an arbitrary date in the very far future.
 
 #### Surrogate keys
 
@@ -706,7 +706,7 @@ dm <- dimensional_model() %>%
 ```
 
 
-- `define_fact()`: To define facts in a `dimensional_model` object, the essential data is a name and a set of measurements that can be empty (factless fact does not have explicit measurements). Associated with each measurement, an aggregation function is required, which by default is SUM. Examples:
+- `define_fact()`: To define facts in a `dimensional_model` object, the essential data is a name and a set of measurements that can be empty (does not have explicit measurements). Associated with each measurement, an aggregation function is required, which by default is SUM. Examples:
 ```{r}
 dm <- dimensional_model() %>%
   define_fact(

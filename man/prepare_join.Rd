@@ -2,7 +2,7 @@
 % Please edit documentation in R/common.R
 \name{prepare_join}
 \alias{prepare_join}
-\title{Transform a tibble to join}
+\title{Transform a \code{tibble} to join}
 \usage{
 prepare_join(tb)
 }

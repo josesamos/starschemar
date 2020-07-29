@@ -21,9 +21,6 @@ Internal low-level constructor that creates new objects with the correct
 structure.
 }
 \details{
-Dimension types:
-http://dwhlaureate.blogspot.com/2013/08/types-of-dimensions.html
-
 Types considered: (general), (role, role_playing), (conformed).
 }
 \keyword{internal}

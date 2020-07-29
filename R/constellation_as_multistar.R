@@ -1,4 +1,4 @@
-#' Export a constellation as a multistar
+#' Export a constellation as a `multistar`
 #'
 #' Once we have refined the format or content of facts and dimensions, we can
 #' obtain a `multistar`. A `multistar` only distinguishes between general and

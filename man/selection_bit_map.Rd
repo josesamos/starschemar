@@ -17,7 +17,7 @@ selection_bit_map(table, values, names)
 A vector of boolean.
 }
 \description{
-Obtain a vector of booleans to select the records in the table that have the
+Obtain a vector of boolean to select the records in the table that have the
 combination of values.
 }
 \keyword{internal}

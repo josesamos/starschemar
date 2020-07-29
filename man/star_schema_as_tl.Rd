@@ -3,7 +3,7 @@
 \name{star_schema_as_tl}
 \alias{star_schema_as_tl}
 \alias{star_schema_as_tl.star_schema}
-\title{Export a star schema as a tibble list (common)}
+\title{Export a star schema as a \code{tibble} list (common)}
 \usage{
 star_schema_as_tl(st, tl_prev = NULL, commondim = NULL, include_role_playing)
 
@@ -22,6 +22,6 @@ star_schema_as_tl(st, tl_prev = NULL, commondim = NULL, include_role_playing)
 A \code{tibble} list.
 }
 \description{
-Export a star schema as a tibble list (common)
+Export a star schema as a \code{tibble} list (common)
 }
 \keyword{internal}

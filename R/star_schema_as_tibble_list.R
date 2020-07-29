@@ -1,5 +1,5 @@
 
-#' Export a star schema as a tibble list
+#' Export a star schema as a `tibble` list
 #'
 #' Once we have refined the format or content of facts and dimensions, we can
 #' obtain a `tibble` list with them. Role playing dimensions can be optionally
@@ -41,7 +41,7 @@ star_schema_as_tibble_list.star_schema <-
 
 # Star schema as a tibble list (common) -----------------------------------
 
-#' Export a star schema as a tibble list (common)
+#' Export a star schema as a `tibble` list (common)
 #'
 #' @param st A `star_schema` object.
 #' @param tl_prev A list of `tibble` objects.

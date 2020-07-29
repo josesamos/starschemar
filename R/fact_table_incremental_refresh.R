@@ -54,7 +54,7 @@ incremental_refresh_fact.fact_table <-
 
 #' Generate a record selection bitmap
 #'
-#' Obtain a vector of booleans to select the records in the table that have the
+#' Obtain a vector of boolean to select the records in the table that have the
 #' combination of values.
 #'
 #' @param table A `tibble`, table to select.

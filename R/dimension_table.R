@@ -3,9 +3,6 @@
 #' Internal low-level constructor that creates new objects with the correct
 #' structure.
 #'
-#' Dimension types:
-#' http://dwhlaureate.blogspot.com/2013/08/types-of-dimensions.html
-#'
 #' Types considered: (general), (role, role_playing), (conformed).
 #'
 #' @param ft A `tibble`, contains a dimension.
