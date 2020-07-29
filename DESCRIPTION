@@ -1,5 +1,5 @@
 Package: starschemar
-Title: Obtaining Star Schemas from Flat Tables in R
+Title: Obtaining Star Schemes from Flat Tables in R
 Version: 1.0.0
 Authors@R: 
     person(given = "Jose",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jsamos@ugr.es",
            comment = c(ORCID = "0000-0002-4457-3439"))
-Description: Transformations that allow obtaining star schemas from 
+Description: Transformations that allow obtaining star schemes from 
     flat tables.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,7 +25,8 @@ Imports:
     purrr,
     rlang,
     stats,
-    pander
+    pander,
+    utf8
 Suggests: 
     testthat,
     knitr,
