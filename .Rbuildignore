@@ -5,5 +5,4 @@
 ^README\.html$
 ^cran-comments\.md$
 ^\.travis\.yml$
-^NEWS\.md$
 ^CRAN-RELEASE$
