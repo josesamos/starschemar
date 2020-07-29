@@ -21,7 +21,7 @@ new_star_schema <-
       dplyr::summarise_all(ft[, sd$fact$measures], class)
     for (n in seq_along(measures_type)) {
       type <- measures_type[[n]][1]
-      stopifnot(type %in% c("integer", "double", "logical", "integer64", "numeric"))
+      stopifnot(type %in% c("integer", "double", "integer64", "numeric"))
     }
 
     star <-
