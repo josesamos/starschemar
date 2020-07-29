@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/josesamos/starschemar.svg?branch=master)](https://travis-ci.com/josesamos/starschemar)
 <!-- badges: end -->
 
 The *multidimensional data model* was defined in the 1990s with the aim

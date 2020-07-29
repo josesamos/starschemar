@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # starschemar
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/josesamos/starschemar.svg?branch=master)](https://travis-ci.com/josesamos/starschemar)
 <!-- badges: end -->
 
 The *multidimensional data model* was defined in the 1990s with the aim of supporting data analysis. Data in multidimensional systems is obtained from operational systems and is transformed to adapt it to the new structure.
