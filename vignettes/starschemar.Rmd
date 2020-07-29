@@ -411,8 +411,6 @@ A constellation is defined from a list of star schemas, as shown below.
 
 ```{r}
 ct_mrs <- constellation(list(st_mrs_age, st_mrs_cause), name = "mrs")
-
-ct_mrs %>% get_conformed_dimension_names()
 ```
 
 All dimensions of the same name in star schemas must be compatible in structure and type of columns, and are defined as conformed dimensions. The conformed dimensions share all the instances of the original dimensions, this implies possible modifications in the surrogate keys that are transmitted to foreign keys of the component fact tables.
@@ -437,8 +435,8 @@ We can perform data cleaning on star schema dimensions.
 Using the following code, first of all, we get the names of the dimensions of a star schema, then, we get them by their name (using `utils::View` function we can see the rows). If there are several role dimensions, it is enough to consult one of them, updates defined on it will be propagated to the rest.
 
 ```{r}
-(dim_names <- st_mrs_age %>%
-    get_dimension_names())
+dim_names <- st_mrs_age %>%
+    get_dimension_names()
 
 where <- st_mrs_age %>%
   get_dimension("where")
@@ -459,7 +457,7 @@ who <- st_mrs_age %>%
 Updates are defined on dimensions. Various update definition functions are available, as shown below.
 
 ```{r}
-when[when$when_key %in% c(36, 37, 73), ]
+# when[when$when_key %in% c(36, 37, 73), ]
 
 updates_st_mrs_age <- record_update_set() %>%
   update_selection_general(
