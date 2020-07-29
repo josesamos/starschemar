@@ -25,12 +25,12 @@ Imports:
     purrr,
     rlang,
     stats,
-    pander,
-    utf8
+    pander
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    utf8
+VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
-VignetteBuilder: knitr
