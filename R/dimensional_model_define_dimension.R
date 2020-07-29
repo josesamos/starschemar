@@ -1,20 +1,20 @@
 
-#' Define dimensions in a `star_definition` object
+#' Define dimensions in a `dimensional_model` object
 #'
-#' To define a dimension in a `star_definition` object, we have to define its
+#' To define a dimension in a `dimensional_model` object, we have to define its
 #' name and the set of attributes that make it up.
 #'
-#' To get a star schema (a `star_schema` object) we need a flat table (implemented
-#' through a `tibble`) and a `star_definition` object. The definition of dimensions in
-#' the `star_definition` object is made from the flat table column names. Using
-#' the `dput` function we can list the column names of the flat table so that we
-#' do not have to type their names.
+#' To get a star schema (a `star_schema` object) we need a flat table
+#' (implemented through a `tibble`) and a `dimensional_model` object. The
+#' definition of dimensions in the `dimensional_model` object is made from the
+#' flat table column names. Using the `dput` function we can list the column
+#' names of the flat table so that we do not have to type their names.
 #'
-#' @param st A `star_definition` object.
+#' @param st A `dimensional_model` object.
 #' @param name A string, name of the dimension.
 #' @param attributes A vector of attribute names.
 #'
-#' @return A `star_definition` object.
+#' @return A `dimensional_model` object.
 #'
 #' @family star definition functions
 #' @seealso
@@ -41,7 +41,7 @@
 #' #   "Deaths"
 #' # )
 #'
-#' sd <- star_definition() %>%
+#' dm <- dimensional_model() %>%
 #'   define_dimension(name = "When",
 #'                    attributes = c("Week Ending Date",
 #'                                   "WEEK",
@@ -68,12 +68,17 @@ define_dimension <- function(st,
 
 #' @rdname define_dimension
 #' @export
-define_dimension.star_definition <- function(st,
+define_dimension.dimensional_model <- function(st,
                              name = NULL,
                              attributes = NULL) {
   stopifnot(!is.null(name))
-  stopifnot(length(attributes) > 0)
   stopifnot(!(name %in% names(st$dimension)))
+  stopifnot(length(attributes) > 0)
+  stopifnot(length(attributes) == length(unique(attributes)))
+  attributes_defined <- get_attribute_names(st)
+  for (attribute in attributes) {
+    stopifnot(!(attribute %in% attributes_defined))
+  }
 
   if (is.null(st$dimension)) {
     st$dimension <- list(name = attributes)

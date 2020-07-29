@@ -12,19 +12,19 @@
 #' functions*).
 #'
 #' @section Star schema and constellation definition: Starting from a flat
-#'   table, a star is defined specifying the attributes that make up each of the
-#'   dimensions and the measurements in the facts. The result is a
-#'   `star_definition` object. It is carried out through the following *star
-#'   definition functions*:
-#' - [star_definition()]
+#'   table, a dimensional model is defined specifying the attributes that make
+#'   up each of the dimensions and the measurements in the facts. The result is
+#'   a `dimensional_model` object. It is carried out through the following
+#'   *dimensional model definition functions*:
+#' - [dimensional_model()]
 #' - [define_dimension()]
 #' - [define_fact()]
 #'
-#' A star schema is defined from a flat table and a star definition. Once
-#' defined, a star schema can be transformed by defining role playing
-#' dimensions, changing the writing style of element names or the type of
-#' dimension attributes. These operations are carried out through the following
-#' *star schema definition and transformation functions*:
+#' A star schema is defined from a flat table and a dimensional model
+#' definition. Once defined, a star schema can be transformed by defining role
+#' playing dimensions, changing the writing style of element names or the type
+#' of dimension attributes. These operations are carried out through the
+#' following *star schema definition and transformation functions*:
 #' - [star_schema()]
 #' - [role_playing_dimension()]
 #' - [snake_case()]
@@ -47,7 +47,7 @@
 #' - [get_conformed_dimension_names()]
 #' - [get_conformed_dimension()]
 #'
-#' *Operations definition functions*:
+#' *Update definition functions*:
 #' - [record_update_set()]
 #' - [match_records()]
 #' - [update_record()]

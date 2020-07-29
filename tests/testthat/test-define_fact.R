@@ -1,9 +1,9 @@
 context("test define_fact")
 
 test_that("define_fact works", {
-  sd <- star_definition()
+  sd <- dimensional_model()
   sd <- define_fact(sd,
                     name = "mrs_age",
                     measures = c("Deaths"))
-  expect_equal(sd$fact, sd_mrs_age$fact)
+  expect_equal(sd$fact, dm_mrs_age$fact)
 })

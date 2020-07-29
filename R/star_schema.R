@@ -4,7 +4,7 @@
 #' structure.
 #'
 #' @param ft A `tibble`, implements a flat table.
-#' @param sd A `star_definition` object.
+#' @param sd A `dimensional_model` object.
 #'
 #' @return A `star_schema` object.
 #'
@@ -13,7 +13,7 @@
 #' @keywords internal
 new_star_schema <-
   function(ft = tibble::tibble(),
-           sd = star_definition()) {
+           sd = dimensional_model()) {
     # Check the type of the base object
     stopifnot(tibble::is_tibble(ft))
 
@@ -64,10 +64,10 @@ new_star_schema <-
 #' `star_schema` S3 class
 #'
 #' Creates a `star_schema` object from a flat table (implemented by a `tibble`)
-#' and a `star_definition` object.
+#' and a `dimensional_model` object.
 #'
 #' Transforms the flat table data according to the facts and dimension
-#' definitions of the `star_definition` object. Each dimension is generated with
+#' definitions of the `dimensional_model` object. Each dimension is generated with
 #' a surrogate key which is a foreign key in facts.
 #'
 #' Facts only contain measurements and foreign keys.
@@ -77,11 +77,11 @@ new_star_schema <-
 #' @return A `star_schema` object.
 #'
 #' @family star schema and constellation definition functions
-#' @seealso \code{\link{star_definition}}
+#' @seealso \code{\link{dimensional_model}}
 #'
 #' @examples
 #'
-#' st <- star_schema(mrs_age, sd_mrs_age)
+#' st <- star_schema(mrs_age, dm_mrs_age)
 #'
 #' @export
 star_schema <- function(ft, sd) {

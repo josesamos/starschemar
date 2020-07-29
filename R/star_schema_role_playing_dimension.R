@@ -23,14 +23,14 @@
 #' @examples
 #' library(tidyr)
 #'
-#' st <- star_schema(mrs_age, sd_mrs_age) %>%
+#' st <- star_schema(mrs_age, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
 #'     attributes = c("Date", "Week", "Year")
 #'   )
 #'
-#' st <- star_schema(mrs_cause, sd_mrs_cause) %>%
+#' st <- star_schema(mrs_cause, dm_mrs_cause) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_received", "when_available"),
 #'     name = "when_common",

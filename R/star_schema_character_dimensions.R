@@ -30,7 +30,7 @@
 #' @examples
 #' library(tidyr)
 #'
-#' st <- star_schema(mrs_age_test, sd_mrs_age) %>%
+#' st <- star_schema(mrs_age_test, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",

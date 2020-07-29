@@ -1,7 +1,7 @@
 context("test define_dimension")
 
 test_that("define_dimension works", {
-  sd <- star_definition()
+  sd <- dimensional_model()
   sd <- define_dimension(sd,
                          name = "when",
                          attributes = c("Week Ending Date",
@@ -23,5 +23,5 @@ test_that("define_dimension works", {
                                         "City"))
   sd <- define_dimension(sd, name = "who",
                          attributes = c("Age Range"))
-  expect_equal(sd$dimension, sd_mrs_age$dimension)
+  expect_equal(sd$dimension, dm_mrs_age$dimension)
 })

@@ -1,3 +1,17 @@
+#' Mortality Reporting System
+#'
+#' Selection of data from the 122 Cities Mortality Reporting System, for the
+#' first 11 weeks of 1962.
+#'
+#' The original dataset begins in 1962. For each week, in 122 US cities,
+#' mortality figures by age group and cause, considered separately, are included
+#' (i.e., the combination of age group and cause is not included). In the cause,
+#' only a distinction is made between pneumonia or influenza and others.
+#'
+#' @format A `tibble`.
+#' @source \url{https://catalog.data.gov/dataset/deaths-in-122-u-s-cities-1962-2016-122-cities-mortality-reporting-system}
+"mrs"
+
 #' Mortality Reporting System by Age
 #'
 #' Selection of data from the 122 Cities Mortality Reporting System by age
@@ -185,7 +199,7 @@
 #'
 #' library(tidyr)
 #'
-#' sd_mrs_age <- star_definition() %>%
+#' dm_mrs_age <- dimensional_model() %>%
 #'   define_fact(
 #'     name = "mrs_age",
 #'     measures = c(
@@ -227,8 +241,8 @@
 #'     )
 #'   )
 #'
-#' @format A `star_definition` object.
-"sd_mrs_age"
+#' @format A `dimensional_model` object.
+"dm_mrs_age"
 
 #' Star Definition for Mortality Reporting System by Cause
 #'
@@ -240,7 +254,7 @@
 #'
 #' library(tidyr)
 #'
-#' sd_mrs_cause <- star_definition() %>%
+#' dm_mrs_cause <- dimensional_model() %>%
 #'   define_fact(
 #'     name = "mrs_cause",
 #'     measures = c(
@@ -281,8 +295,8 @@
 #'     )
 #'   )
 #'
-#' @format A `star_definition` object.
-"sd_mrs_cause"
+#' @format A `dimensional_model` object.
+"dm_mrs_cause"
 
 #' Star Schema for Mortality Reporting System by Age
 #'
@@ -294,7 +308,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_age <- star_schema(mrs_age, sd_mrs_age) %>%
+#' st_mrs_age <- star_schema(mrs_age, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
@@ -317,7 +331,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_age_test <- star_schema(mrs_age_test, sd_mrs_age) %>%
+#' st_mrs_age_test <- star_schema(mrs_age_test, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
@@ -341,7 +355,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_age_w_test <- star_schema(mrs_age_w_test, sd_mrs_age) %>%
+#' st_mrs_age_w_test <- star_schema(mrs_age_w_test, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
@@ -365,7 +379,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_age_w10 <- star_schema(mrs_age_w10, sd_mrs_age) %>%
+#' st_mrs_age_w10 <- star_schema(mrs_age_w10, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
@@ -389,7 +403,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_age_w11 <- star_schema(mrs_age_w11, sd_mrs_age) %>%
+#' st_mrs_age_w11 <- star_schema(mrs_age_w11, dm_mrs_age) %>%
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
@@ -412,7 +426,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_cause <- star_schema(mrs_cause, sd_mrs_cause) %>%
+#' st_mrs_cause <- star_schema(mrs_cause, dm_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
 #'     NA_replacement_value = "Unknown",
@@ -441,7 +455,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_cause_test <- star_schema(mrs_cause_test, sd_mrs_cause) %>%
+#' st_mrs_cause_test <- star_schema(mrs_cause_test, dm_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
 #'     NA_replacement_value = "Unknown",
@@ -472,7 +486,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, sd_mrs_cause) %>%
+#' st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, dm_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
 #'     NA_replacement_value = "Unknown",
@@ -503,7 +517,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_cause_w10 <- star_schema(mrs_cause_w10, sd_mrs_cause) %>%
+#' st_mrs_cause_w10 <- star_schema(mrs_cause_w10, dm_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
 #'     NA_replacement_value = "Unknown",
@@ -534,7 +548,7 @@
 #'
 #' library(tidyr)
 #'
-#' st_mrs_cause_w11 <- star_schema(mrs_cause_w11, sd_mrs_cause) %>%
+#' st_mrs_cause_w11 <- star_schema(mrs_cause_w11, dm_mrs_cause) %>%
 #'   snake_case() %>%
 #'   character_dimensions(
 #'     NA_replacement_value = "Unknown",

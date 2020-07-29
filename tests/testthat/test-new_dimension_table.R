@@ -2,7 +2,7 @@ context("test new_dimension_table")
 
 test_that("new_dimension_table works", {
   dim <-
-    new_dimension_table(mrs_age_test[, sd_mrs_age$dimension[[3]]], names(sd_mrs_age$dimension)[3])
+    new_dimension_table(mrs_age_test[, dm_mrs_age$dimension[[3]]], names(dm_mrs_age$dimension)[3])
 
   res <-
     structure(

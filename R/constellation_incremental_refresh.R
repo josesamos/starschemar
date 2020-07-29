@@ -1,7 +1,14 @@
 
 #' Incrementally refresh a constellation with a star schema
 #'
-#' existing = "ignore"/"replace"/"group"
+#' Incrementally refresh a star schema in a constellation with the content of a
+#' new star schema that is integrated into the first.
+#'
+#' Once the dimensions are integrated, if there are records in the fact table
+#' whose keys match the new ones, new ones can be ignored, they can be replaced
+#' by new ones, all of them can be grouped using the aggregation functions, or
+#' they can be deleted. Therefore, the possible values of the `existing`
+#' parameter are: "ignore", "replace", "group" or "delete".
 #'
 #' @param ct A `constellation` object.
 #' @param st A `star_schema` object.

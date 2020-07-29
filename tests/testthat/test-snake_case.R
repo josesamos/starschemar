@@ -1,7 +1,7 @@
 context("test snake_case")
 
 test_that("snake_case works", {
-  st <- star_schema(mrs_age_test, sd_mrs_age)
+  st <- star_schema(mrs_age_test, dm_mrs_age)
   st <- snake_case(st)
 
   expect_equal(

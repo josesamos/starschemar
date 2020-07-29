@@ -24,7 +24,8 @@ Imports:
     snakecase,
     purrr,
     rlang,
-    stats
+    stats,
+    pander
 Suggests: 
     testthat,
     knitr,

@@ -1,16 +1,16 @@
 
-#' Define facts in a `star_definition` object
+#' Define facts in a `dimensional_model` object
 #'
-#' To define facts in a `star_definition` object, the essential data is a name
+#' To define facts in a `dimensional_model` object, the essential data is a name
 #' and a set of measurements that can be empty (factless fact does not have
 #' explicit measurements). Associated with each measurement, an aggregation
 #' function is required, which by default is SUM.
 #'
-#' To get a star schema (a `star_schema` object) we need a flat table (implemented
-#' through a `tibble`) and a `star_definition` object. The definition of facts in
-#' the `star_definition` object is made from the flat table column names. Using
-#' the `dput` function we can list the column names of the flat table so that we
-#' do not have to type their names.
+#' To get a star schema (a `star_schema` object) we need a flat table
+#' (implemented through a `tibble`) and a `dimensional_model` object. The
+#' definition of facts in the `dimensional_model` object is made from the flat
+#' table column names. Using the `dput` function we can list the column names of
+#' the flat table so that we do not have to type their names.
 #'
 #' Associated with each measurement there is an aggregation function that can be
 #' SUM, MAX or MIN. AVG (mean) is not considered among the possible aggregation
@@ -21,14 +21,14 @@
 #' always added which, together with SUM, allows us to obtain the mean if
 #' needed.
 #'
-#' @param st A `star_definition` object.
+#' @param st A `dimensional_model` object.
 #' @param name A string, name of the fact.
 #' @param measures A vector of measurement names.
 #' @param agg_functions A vector of aggregation function names. If none is
 #'   indicated, the default is SUM. Additionally they can be MAX or MIN.
 #' @param nrow_agg A string, measurement name for the number of rows aggregated.
 #'
-#' @return A `star_definition` object.
+#' @return A `dimensional_model` object.
 #'
 #' @family star definition functions
 #' @seealso
@@ -55,7 +55,7 @@
 #' #   "Deaths"
 #' # )
 #'
-#' sd <- star_definition() %>%
+#' dm <- dimensional_model() %>%
 #'   define_fact(
 #'     name = "mrs_age",
 #'     measures = c("Deaths"),
@@ -63,13 +63,13 @@
 #'     nrow_agg = "nrow_agg"
 #'   )
 #'
-#' sd <- star_definition() %>%
+#' dm <- dimensional_model() %>%
 #'   define_fact(
 #'     name = "mrs_age",
 #'     measures = c("Deaths")
 #'   )
 #'
-#' sd <- star_definition() %>%
+#' dm <- dimensional_model() %>%
 #'   define_fact(name = "Factless fact")
 #'
 #' @export
@@ -84,7 +84,7 @@ define_fact <- function(st,
 
 #' @rdname define_fact
 #' @export
-define_fact.star_definition <- function(st,
+define_fact.dimensional_model <- function(st,
                                         name = NULL,
                                         measures = NULL,
                                         agg_functions = NULL,
@@ -96,6 +96,11 @@ define_fact.star_definition <- function(st,
   stopifnot(length(measures) == length(agg_functions))
   for (af in agg_functions) {
     stopifnot(af %in% c("SUM", "MAX", "MIN"))
+  }
+  stopifnot(length(c(measures, nrow_agg)) == length(unique(c(measures, nrow_agg))))
+  attributes_defined <- get_attribute_names(st)
+  for (measure in c(measures, nrow_agg)) {
+    stopifnot(!(measure %in% attributes_defined))
   }
   st$fact <-
     list(

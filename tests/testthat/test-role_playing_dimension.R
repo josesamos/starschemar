@@ -1,7 +1,7 @@
 context("test role_playing_dimension")
 
 test_that("role_playing_dimension works", {
-  st <- star_schema(mrs_age_test, sd_mrs_age)
+  st <- star_schema(mrs_age_test, dm_mrs_age)
   st <- role_playing_dimension(
     st,
     dim_names = c("when", "when_available"),

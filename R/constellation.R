@@ -39,7 +39,8 @@ new_constellation <-
 
 #' `constellation` S3 class
 #'
-#' Creates a `constellation` object from a list of `star_schema` objects.
+#' Creates a `constellation` object from a list of `star_schema` objects. All
+#' dimensions with the same name in the star schemas have to be conformable.
 #'
 #' @inheritParams new_constellation
 #'

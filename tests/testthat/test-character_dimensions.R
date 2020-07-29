@@ -1,7 +1,7 @@
 context("test character_dimensions")
 
 test_that("character_dimensions works", {
-  st <- star_schema(mrs_age_test, sd_mrs_age)
+  st <- star_schema(mrs_age_test, dm_mrs_age)
   st <- character_dimensions(
     st,
     length_integers = list(WEEK = 2, `Data Availability Week` = 2),
