@@ -45,7 +45,7 @@ dim_names <- st_mrs_age \%>\%
 where <- st_mrs_age \%>\%
   get_dimension("where")
 
-head(where, 2)
+# head(where, 2)
 
 updates <- record_update_set() \%>\%
   match_records(dimension = where,
