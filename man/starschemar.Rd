@@ -3,9 +3,9 @@
 \docType{package}
 \name{starschemar}
 \alias{starschemar}
-\title{Obtaining Star Schemas from Flat Tables}
+\title{Obtaining Star Schemes from Flat Tables}
 \description{
-Transformations that allow obtaining star schemas from flat tables.
+Transformations that allow obtaining star schemes from flat tables.
 }
 \details{
 From flat tables star schemas can be defined that can form constellations
