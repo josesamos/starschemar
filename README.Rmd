@@ -99,7 +99,7 @@ st <- star_schema(ft, dm) %>%
   )
 ```
 
-The tables of dimensions and facts of the obtained star scheme are shown below.
+The tables of dimensions and facts of the obtained star schema are shown below.
 
 ```{r, results = "asis", echo = FALSE}
 pander::pandoc.table(head(st$dimension$when), split.table = Inf)

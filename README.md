@@ -115,7 +115,7 @@ st <- star_schema(ft, dm) %>%
   )
 ```
 
-The tables of dimensions and facts of the obtained star scheme are shown
+The tables of dimensions and facts of the obtained star schema are shown
 below.
 
 | when\_key | week\_ending\_date |  week   |  year   |

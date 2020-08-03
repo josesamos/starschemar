@@ -1,6 +1,6 @@
-#' Obtaining Star Schemes from Flat Tables
+#' Obtaining Star Schemas from Flat Tables
 #'
-#' Transformations that allow obtaining star schemes from flat tables.
+#' Transformations that allow obtaining star schemas from flat tables.
 #'
 #' From flat tables star schemas can be defined that can form constellations
 #' (*star schema and constellation definition functions*). Dimensions contain

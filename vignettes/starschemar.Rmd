@@ -1,11 +1,11 @@
 ---
-title: "starschemar: Obtaining Star Schemes from Flat Tables in R"
+title: "starschemar: Obtaining Star Schemas from Flat Tables"
 author: "Jose Samos (jsamos@ugr.es)"
 date: "2020-07-24"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{starschemar: Obtaining Star Schemes from Flat Tables in R}
+  %\VignetteIndexEntry{starschemar: Obtaining Star Schemas from Flat Tables}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,7 +29,7 @@ Transformations can be carried out using professional ETL (extract, transform an
 
 Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process. 
 
-This is the main objective of `starschemar` package: Define **transformations that allow obtaining star schemes from flat tables** easily. In addition, it includes basic data cleaning operations and incremental data refresh operations, adapted to this context.
+This is the main objective of `starschemar` package: Define **transformations that allow obtaining star schemas from flat tables** easily. In addition, it includes basic data cleaning operations and incremental data refresh operations, adapted to this context.
 
 The rest of this document is structured as follows: First, basic concepts of dimensional modelling and star schemas are summarized. The following is an illustrative example of how the package works. Then, the operations available in the package are briefly presented. Finally, the document ends with conclusions and bibliography.
 
@@ -447,6 +447,7 @@ when <- st_mrs_age %>%
   get_dimension("when")
 
 # View(when)
+# when[when$when_key %in% c(36, 37, 73), ]
 
 who <- st_mrs_age %>%
   get_dimension("who")
@@ -454,11 +455,15 @@ who <- st_mrs_age %>%
 # View(who)
 ```
 
+Below is a selection of rows involved in update operations that are referred by their surrogate key.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(when[when$when_key %in% c(36, 37, 73), ], split.table = Inf)
+```
+
 Updates are defined on dimensions. Various update definition functions are available, as shown below.
 
 ```{r}
-# when[when$when_key %in% c(36, 37, 73), ]
-
 updates_st_mrs_age <- record_update_set() %>%
   update_selection_general(
     dimension = where,
