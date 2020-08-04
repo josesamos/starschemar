@@ -26,7 +26,7 @@ define_fact(
 
 \item{name}{A string, name of the fact.}
 
-\item{measures}{A vector of measurement names.}
+\item{measures}{A vector of measure names.}
 
 \item{agg_functions}{A vector of aggregation function names. If none is
 indicated, the default is SUM. Additionally they can be MAX or MIN.}

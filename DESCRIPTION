@@ -35,7 +35,8 @@ Imports:
     purrr,
     rlang,
     stats,
-    pander
+    pander,
+    generics
 Suggests: 
     testthat,
     knitr,

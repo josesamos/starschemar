@@ -22,8 +22,6 @@ new_multistar <-
     names(star$dimension) <- names(dl)
     for (f in seq_along(fl)) {
       star$fact[[f]] <- fl[[f]]
-      cl <- class(star$fact[[f]])
-      class(star$fact[[f]]) <- cl[cl != "fact_table"]
       attr(star$fact[[f]], "spec") <- NULL
     }
 
@@ -36,8 +34,6 @@ new_multistar <-
       } else {
         attr(star$dimension[[d]], "type") <- "general"
       }
-      cl <- class(star$dimension[[d]])
-      class(star$dimension[[d]]) <- cl[cl != "dimension_table"]
     }
 
     structure(star,

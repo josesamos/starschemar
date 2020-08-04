@@ -23,7 +23,7 @@
 #'
 #' @param st A `dimensional_model` object.
 #' @param name A string, name of the fact.
-#' @param measures A vector of measurement names.
+#' @param measures A vector of measure names.
 #' @param agg_functions A vector of aggregation function names. If none is
 #'   indicated, the default is SUM. Additionally they can be MAX or MIN.
 #' @param nrow_agg A string, measurement name for the number of rows aggregated.

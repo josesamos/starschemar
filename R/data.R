@@ -739,3 +739,35 @@
 #' @format A `record_update_set` object.
 "updates_st_mrs_age_test"
 
+#' Multistar for Mortality Reporting System
+#'
+#' Multistar for the Mortality Reporting System considering age and cause
+#' classification.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' ms_mrs <- ct_mrs %>%
+#'   constellation_as_multistar()
+#'
+#' @format A `constellation` object.
+"ms_mrs"
+
+#' Multistar for Mortality Reporting System Test
+#'
+#' Multistar for the Mortality Reporting System considering age and cause
+#' classification data test.
+#'
+#' @examples
+#' # Defined by:
+#'
+#' library(tidyr)
+#'
+#' ms_mrs_test <- ct_mrs_test %>%
+#'   constellation_as_multistar()
+#'
+#' @format A `constellation` object.
+"ms_mrs_test"
+
