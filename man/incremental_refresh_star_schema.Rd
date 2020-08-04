@@ -45,6 +45,7 @@ st <- st_mrs_cause \%>\%
 
 
 Other incremental refresh functions: 
+\code{\link{filter_fact_rows}()},
 \code{\link{incremental_refresh_constellation}()}
 }
 \concept{incremental refresh functions}
