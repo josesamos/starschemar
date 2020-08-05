@@ -226,12 +226,13 @@ unify_facts_by_grain <- function(dq) {
         fk_j <- attr(dq$output$fact[[names_fact[j]]], "foreign_keys")
         if (generics::setequal(fk_i, fk_j)) {
           unified_fact <- c(unified_fact, names_fact[j])
-          attribute_names <- attr(dq$output$fact[[names_fact[j]]], "measures")
-          fact2 <- dq$output$fact[[names_fact[j]]][, c(fk_i, attribute_names)]
-          names(fact2)[which(names(fact2) %in% attribute_names)] <-
-            sprintf("%s_%s", names_fact[j], attribute_names)
-          attr(fact2, "measures") <- sprintf("%s_%s", names_fact[j], attr(fact2, "measures"))
-          names(attr(fact2, "agg_functions")) <- sprintf("%s_%s", names_fact[j], names(attr(fact2, "agg_functions")))
+          fact2 <- dq$output$fact[[names_fact[j]]][, c(fk_i, attr(dq$output$fact[[names_fact[j]]], "measures"))]
+
+          nrow_agg <-  attr(fact2, "nrow_agg")
+          nrow_agg_new <- sprintf("%s_%s", names_fact[j], nrow_agg)
+          names(fact2)[which(names(fact2) == nrow_agg)] <- nrow_agg_new
+          attr(fact2, "measures")[which(attr(fact2, "measures") == nrow_agg)] <- nrow_agg_new
+          names(attr(fact2, "agg_functions"))[which(names(attr(fact2, "agg_functions")) == nrow_agg)] <- nrow_agg_new
 
           attr(fact[[names_fact[i]]], "measures") <-
             c(attr(fact[[names_fact[i]]], "measures"), attr(fact2, "measures"))

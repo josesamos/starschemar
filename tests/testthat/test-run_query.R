@@ -52,8 +52,8 @@ test_that("run_query works", {
                       2L),
         deaths = c(46L, 43L),
         nrow_agg = 3:4,
-        mrs_cause_pneumonia_and_influenza_deaths = 3:2,
-        mrs_cause_other_deaths = c(43L, 41L),
+        pneumonia_and_influenza_deaths = 3:2,
+        other_deaths = c(43L, 41L),
         mrs_cause_nrow_agg = c(1L,
                                1L)
       ),
@@ -66,15 +66,15 @@ test_that("run_query works", {
       measures = c(
         "deaths",
         "nrow_agg",
-        "mrs_cause_pneumonia_and_influenza_deaths",
-        "mrs_cause_other_deaths",
+        "pneumonia_and_influenza_deaths",
+        "other_deaths",
         "mrs_cause_nrow_agg"
       ),
       agg_functions = c(
         deaths = "SUM",
         nrow_agg = "SUM",
-        mrs_cause_pneumonia_and_influenza_deaths = "SUM",
-        mrs_cause_other_deaths = "SUM",
+        pneumonia_and_influenza_deaths = "SUM",
+        other_deaths = "SUM",
         mrs_cause_nrow_agg = "SUM"
       ),
       nrow_agg = "nrow_agg"
