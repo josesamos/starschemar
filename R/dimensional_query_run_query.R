@@ -206,8 +206,6 @@ group_facts <- function(dq) {
 
 #' Unify facts by grain
 #'
-#' For .
-#'
 #' @param dq A `dimensional_query` object.
 #'
 #' @return A `dimensional_query` object.

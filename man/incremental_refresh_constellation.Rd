@@ -46,6 +46,7 @@ ct <- ct_mrs \%>\%
 
 Other incremental refresh functions: 
 \code{\link{filter_fact_rows}()},
-\code{\link{incremental_refresh_star_schema}()}
+\code{\link{incremental_refresh_star_schema}()},
+\code{\link{purge_dimensions}()}
 }
 \concept{incremental refresh functions}

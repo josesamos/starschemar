@@ -13,6 +13,6 @@ unify_facts_by_grain(dq)
 A \code{dimensional_query} object.
 }
 \description{
-For .
+Unify facts by grain
 }
 \keyword{internal}

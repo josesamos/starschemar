@@ -46,7 +46,8 @@ st <- st_mrs_cause \%>\%
 
 Other incremental refresh functions: 
 \code{\link{filter_fact_rows}()},
-\code{\link{incremental_refresh_constellation}()}
+\code{\link{incremental_refresh_constellation}()},
+\code{\link{purge_dimensions}()}
 }
 \concept{incremental refresh functions}
 \keyword{internal}

@@ -106,14 +106,12 @@ enrich_dimension_import.star_schema <-
     names_new <- setdiff(names(enriched_dimension), names_dimension)
     st$dimension[[name]] <- enriched_dimension[, c(names_dimension, names_new)]
     if (is_role_playing_dimension(st$dimension[[name]])) {
-      for (n in names(st$dimension)) {
-        if (get_role_playing_dimension_name(st$dimension[[n]]) == name) {
-          names_role_dimension <- names(st$dimension[[n]])
-          for (new in names_new) {
-            st$dimension[[n]] <- tibble::add_column(st$dimension[[n]],!!new)
-          }
-          names(st$dimension[[n]]) <- c(names_role_dimension, names_new)
+      for (n in get_role_dimension_names(st, name)) {
+        names_role_dimension <- names(st$dimension[[n]])
+        for (new in names_new) {
+          st$dimension[[n]] <- tibble::add_column(st$dimension[[n]], !!new)
         }
+        names(st$dimension[[n]]) <- c(names_role_dimension, names_new)
       }
     }
     st
