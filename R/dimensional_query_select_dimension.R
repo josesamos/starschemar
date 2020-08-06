@@ -1,5 +1,5 @@
 
-#' Query dimension in a `dimensional_query` object
+#' Select dimension
 #'
 #' To add a dimension in a `dimensional_query` object, we have to define its
 #' name and a subset of the dimension attributes. If only the name of the
@@ -19,22 +19,22 @@
 #' library(tidyr)
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   query_dimension(name = "where",
+#'   select_dimension(name = "where",
 #'                   attributes = c("city", "state")) %>%
-#'   query_dimension(name = "when")
+#'   select_dimension(name = "when")
 #'
 #' @export
-query_dimension <- function(dq,
+select_dimension <- function(dq,
                             name = NULL,
                             attributes = NULL) {
-  UseMethod("query_dimension")
+  UseMethod("select_dimension")
 }
 
 
 
-#' @rdname query_dimension
+#' @rdname select_dimension
 #' @export
-query_dimension.dimensional_query <- function(dq,
+select_dimension.dimensional_query <- function(dq,
                                               name = NULL,
                                               attributes = NULL) {
   stopifnot(!is.null(name))

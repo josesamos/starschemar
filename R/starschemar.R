@@ -5,11 +5,14 @@
 #' From flat tables star schemas can be defined that can form constellations
 #' (*star schema and constellation definition functions*). Dimensions contain
 #' data without duplicates, operations to do data cleaning can be applied on
-#' them (*data cleaning functions*). When new data is obtained, it is necessary
-#' to refresh the existing data with them by means of incremental refresh
-#' operations (*incremental refresh functions*). Finally, the results obtained
-#' can be exported to be consulted with other tools (*results export
-#' functions*).
+#' them (*data cleaning functions*). Dimensions can be enriched by adding
+#' additional columns, sometimes using functions, others explicitly defined by
+#' the user (*dimension enrichment functions*). When new data is obtained, it is
+#' necessary to refresh the existing data with them by means of incremental
+#' refresh operations or delete data that is no longer necessary (*incremental
+#' refresh functions*). Finally, the results obtained can be exported to be
+#' consulted with other tools (*results export functions*) or through the
+#' defined query functions (*query functions*).
 #'
 #' @section Star schema and constellation definition: Starting from a flat
 #'   table, a dimensional model is defined specifying the attributes that make
@@ -58,6 +61,10 @@
 #' - [modify_dimension_records()]
 #' - [modify_conformed_dimension_records()]
 #'
+#' @section Dimension enrichment:
+#' - [enrich_dimension_export()]
+#' - [enrich_dimension_import()]
+#'
 #' @section Incremental refresh: When new data is obtained, an incremental
 #'   refresh of the data can be carried out, both of the dimensions and of the
 #'   facts. Incremental refresh can be applied to both star schema and
@@ -65,9 +72,13 @@
 #' - [incremental_refresh_star_schema()]
 #' - [incremental_refresh_constellation()]
 #'
+#' - [purge_dimensions()]
+#'
+#' - [filter_fact_rows()]
+#'
 #' @section Results export: Once the data has been properly structured and
-#'   transformed, it can be exported to be consulted with other tools. Various
-#'   export formats have been defined, both for star schemas and for
+#'   transformed, it can be exported to be consulted with other tools or with R.
+#'   Various export formats have been defined, both for star schemas and for
 #'   constellations, using the following functions:
 #' - [star_schema_as_flat_table()]
 #' - [star_schema_as_multistar()]
@@ -75,7 +86,16 @@
 #' - [constellation_as_multistar()]
 #' - [constellation_as_tibble_list()]
 #'
+#' @section Query functions:
+#' - [dimensional_query()]
+#' - [select_fact()]
+#' - [select_dimension()]
+#' - [filter_dimension()]
+#' - [run_query()]
+#'
+#'
 #' @docType package
 #' @name starschemar
 NULL
+
 

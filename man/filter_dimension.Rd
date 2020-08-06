@@ -3,7 +3,7 @@
 \name{filter_dimension}
 \alias{filter_dimension}
 \alias{filter_dimension.dimensional_query}
-\title{Filter dimension in a \code{dimensional_query} object}
+\title{Filter dimension}
 \usage{
 filter_dimension(dq, name = NULL, ...)
 
@@ -41,8 +41,8 @@ dq <- dimensional_query(ms_mrs) \%>\%
 
 Other query functions: 
 \code{\link{dimensional_query}()},
-\code{\link{query_dimension}()},
-\code{\link{query_fact}()},
-\code{\link{run_query}()}
+\code{\link{run_query}()},
+\code{\link{select_dimension}()},
+\code{\link{select_fact}()}
 }
 \concept{query functions}

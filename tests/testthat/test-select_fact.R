@@ -1,13 +1,13 @@
-context("test query_fact")
+context("test select_fact")
 
-test_that("query_fact works", {
+test_that("select_fact works", {
   dq <- dimensional_query(ms_mrs_test) %>%
-    query_fact(
+    select_fact(
       name = "mrs_age",
       measures = c("deaths"),
       agg_functions = c("MAX")
     ) %>%
-    query_fact(name = "mrs_cause")
+    select_fact(name = "mrs_cause")
 
   expect_equal(dq$fact$mrs_age, c(deaths = "MAX", nrow_agg = "SUM"))
   expect_equal(dq$fact$mrs_cause, c(nrow_agg = "SUM"))

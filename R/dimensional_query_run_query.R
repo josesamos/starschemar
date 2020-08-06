@@ -19,16 +19,16 @@
 #' library(tidyr)
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   query_dimension(name = "where",
+#'   select_dimension(name = "where",
 #'                   attributes = c("city", "state")) %>%
-#'   query_dimension(name = "when",
+#'   select_dimension(name = "when",
 #'                   attributes = c("year")) %>%
-#'   query_fact(
+#'   select_fact(
 #'     name = "mrs_age",
 #'     measures = c("deaths"),
 #'     agg_functions = c("MAX")
 #'   ) %>%
-#'   query_fact(name = "mrs_cause",
+#'   select_fact(name = "mrs_cause",
 #'              measures = c("pneumonia_and_influenza_deaths", "other_deaths")) %>%
 #'   filter_dimension(name = "when", week <= "03") %>%
 #'   filter_dimension(name = "where", city == "Boston") %>%

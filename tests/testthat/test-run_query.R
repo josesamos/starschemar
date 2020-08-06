@@ -2,16 +2,16 @@ context("test run_query")
 
 test_that("run_query works", {
   dq <- dimensional_query(ms_mrs_test) %>%
-    query_dimension(name = "where",
+    select_dimension(name = "where",
                     attributes = c("city", "state")) %>%
-    query_dimension(name = "when",
+    select_dimension(name = "when",
                     attributes = c("year", "week")) %>%
-    query_fact(
+    select_fact(
       name = "mrs_age",
       measures = c("deaths"),
       agg_functions = c("SUM")
     ) %>%
-    query_fact(name = "mrs_cause",
+    select_fact(name = "mrs_cause",
                measures = c("pneumonia_and_influenza_deaths", "other_deaths")) %>%
     filter_dimension(name = "when", week <= "03") %>%
     filter_dimension(name = "where", city == "Bridgeport") %>%
@@ -83,16 +83,16 @@ test_that("run_query works", {
   expect_equal(dq$dimension, dim)
 
   dq <- dimensional_query(ms_mrs_test) %>%
-    query_dimension(name = "where",
+    select_dimension(name = "where",
                     attributes = c("city", "state")) %>%
-    query_dimension(name = "when",
+    select_dimension(name = "when",
                     attributes = c("year", "week")) %>%
-    query_fact(
+    select_fact(
       name = "mrs_age",
       measures = c("deaths"),
       agg_functions = c("SUM")
     ) %>%
-    query_fact(name = "mrs_cause",
+    select_fact(name = "mrs_cause",
                measures = c("pneumonia_and_influenza_deaths", "other_deaths")) %>%
     filter_dimension(name = "when", week <= "03") %>%
     filter_dimension(name = "where", city == "Bridgeport") %>%

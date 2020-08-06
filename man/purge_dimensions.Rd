@@ -3,7 +3,7 @@
 \name{purge_dimensions}
 \alias{purge_dimensions}
 \alias{purge_dimensions.star_schema}
-\title{Purge dimensions in a star schema}
+\title{Purge dimensions}
 \usage{
 purge_dimensions(st)
 
@@ -16,7 +16,7 @@ purge_dimensions(st)
 A \code{star_schema} object.
 }
 \description{
-Delete instances of dimensions not related to facts.
+Delete instances of dimensions not related to facts in a star schema.
 }
 \examples{
 library(tidyr)

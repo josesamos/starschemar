@@ -1,7 +1,7 @@
 
-#' Purge dimensions in a star schema
+#' Purge dimensions
 #'
-#' Delete instances of dimensions not related to facts.
+#' Delete instances of dimensions not related to facts in a star schema.
 #'
 #' @param st A `star_schema` object.
 #'

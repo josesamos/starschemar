@@ -1,7 +1,8 @@
 
-#' Filter fact rows in a star schema
+#' Filter fact rows
 #'
-#' Filter fact rows based on dimension conditions. Dimensions remain unchanged.
+#' Filter fact rows based on dimension conditions in a star schema. Dimensions
+#' remain unchanged.
 #'
 #' Filtered rows can be deleted using the `incremental_refresh_star_schema`
 #' function.

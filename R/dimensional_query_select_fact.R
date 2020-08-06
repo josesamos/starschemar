@@ -1,5 +1,5 @@
 
-#' Query facts in a `dimensional_query` object
+#' Select fact
 #'
 #' To define the fact to be consulted, its name is indicated, optionally, a
 #' vector of names of selected measures and another of aggregation functions are
@@ -26,31 +26,31 @@
 #' library(tidyr)
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   query_fact(
+#'   select_fact(
 #'     name = "mrs_age",
 #'     measures = c("deaths"),
 #'     agg_functions = c("MAX")
 #'   )
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   query_fact(name = "mrs_age",
+#'   select_fact(name = "mrs_age",
 #'              measures = c("deaths"))
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   query_fact(name = "mrs_age")
+#'   select_fact(name = "mrs_age")
 #'
 #' @export
-query_fact <- function(dq,
+select_fact <- function(dq,
                        name = NULL,
                        measures = NULL,
                        agg_functions = NULL) {
-  UseMethod("query_fact")
+  UseMethod("select_fact")
 }
 
 
-#' @rdname query_fact
+#' @rdname select_fact
 #' @export
-query_fact.dimensional_query <- function(dq,
+select_fact.dimensional_query <- function(dq,
                                          name = NULL,
                                          measures = NULL,
                                          agg_functions = NULL) {

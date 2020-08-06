@@ -30,8 +30,8 @@ dq <- dimensional_query(ms_mrs)
 
 Other query functions: 
 \code{\link{filter_dimension}()},
-\code{\link{query_dimension}()},
-\code{\link{query_fact}()},
-\code{\link{run_query}()}
+\code{\link{run_query}()},
+\code{\link{select_dimension}()},
+\code{\link{select_fact}()}
 }
 \concept{query functions}

@@ -3,7 +3,7 @@
 \name{filter_fact_rows}
 \alias{filter_fact_rows}
 \alias{filter_fact_rows.star_schema}
-\title{Filter fact rows in a star schema}
+\title{Filter fact rows}
 \usage{
 filter_fact_rows(st, name = NULL, ...)
 
@@ -20,7 +20,8 @@ filter_fact_rows(st, name = NULL, ...)
 A \code{star_schema} object.
 }
 \description{
-Filter fact rows based on dimension conditions. Dimensions remain unchanged.
+Filter fact rows based on dimension conditions in a star schema. Dimensions
+remain unchanged.
 }
 \details{
 Filtered rows can be deleted using the \code{incremental_refresh_star_schema}

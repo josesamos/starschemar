@@ -1,5 +1,5 @@
 
-#' Filter dimension in a `dimensional_query` object
+#' Filter dimension
 #'
 #' Allows you to define selection conditions for dimension rows.
 #'
