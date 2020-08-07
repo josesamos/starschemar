@@ -137,6 +137,14 @@ When data is loaded into a star schema, errors or inconsistencies can be discove
 
 Inconsistencies are often found in dimensions, when dimensions are integrated into one, for example to generate a role-playing dimension or conformed dimensions. Support for modifying dimension data is provided in the package.
 
+### Dimension enrichment
+
+The more attributes the dimensions have, the more possibilities they offer to filter or aggregate data. For this reason, it is convenient to enrich the dimensions with new attributes, whenever possible. New attributes are often defined based on existing ones. There must be a way to associate the new attributes with the dimensions.
+
+The more attributes the dimensions have, the more possibilities they offer to filter or aggregate data. For this reason, it is convenient to enrich the dimensions with new attributes, whenever possible. New attributes are often defined based on existing ones. There must be a way to associate the new attributes with the dimensions.
+
+Operations have been defined in the package to export dimension attributes so that their values are not repeated, and also to import them, once the new attributes have been added.
+
 ### Incremental refresh
 
 When a star schema is built, an initial load is performed with all available data from a moment in time onwards.
@@ -149,7 +157,9 @@ Operational systems continue to operate and produce data. If we want to incorpor
 
 In order to carry out this second option, the CDC (change data capture) system allows to exclusively obtain the new data produced.
 
-In this package, it has been considered that we can obtain the new data, possibly mixed with updates to data already incorporated into the star schema, in order to carry out an incremental refresh of star schemas with them.
+Sometimes it is also convenient to delete data that is considered to be no longer necessary, generally data from the more distant past.
+
+In this package, it has been considered that we can obtain the new data, possibly mixed with updates to data already incorporated into the star schema, in order to carry out an incremental refresh of star schemas with them. Operations are also offered to select data and delete it if it is not considered necessary.
 
 # An illustrative example
 

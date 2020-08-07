@@ -18,7 +18,7 @@
 #' @examples
 #' library(tidyr)
 #'
-#' dq <- dimensional_query(ms_mrs) %>%
+#' ms <- dimensional_query(ms_mrs) %>%
 #'   select_dimension(name = "where",
 #'                   attributes = c("city", "state")) %>%
 #'   select_dimension(name = "when",

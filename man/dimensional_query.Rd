@@ -4,10 +4,10 @@
 \alias{dimensional_query}
 \title{\code{dimensional_query} S3 class}
 \usage{
-dimensional_query(multistar = NULL)
+dimensional_query(ms = NULL)
 }
 \arguments{
-\item{multistar}{A \code{multistar} object.}
+\item{ms}{A \code{multistar} object.}
 }
 \value{
 A \code{dimensional_query} object.

@@ -4,7 +4,7 @@
 \alias{new_dimensional_query}
 \title{dimensional_query S3 class}
 \usage{
-new_dimensional_query(multistar = NULL)
+new_dimensional_query(ms = NULL)
 }
 \value{
 A \code{dimensional_query} object.

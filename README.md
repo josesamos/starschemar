@@ -30,8 +30,8 @@ specifically support this transformation process.
 
 The goal of `starschemar` is to define transformations that allow you to
 easily obtain star schemas from flat tables. In addition, it includes
-basic data cleaning operations and incremental data refresh operations,
-adapted to this context.
+basic data cleaning, dimension enrichment, incremental data refresh and
+query operations, adapted to this context.
 
 ## Installation
 
@@ -189,6 +189,7 @@ The new dimension and fact tables are shown below.
 
 In addition to the operations in the examples shown, `starschemar`
 offers support for defining role playing and role dimensions in a star
-schema, fact constellations with conformed dimensions, incremental data
-refresh operations, and the ability to export results in various
-`tibble`-based formats.
+schema, fact constellations with conformed dimensions, dimension
+enrichment, incremental data refresh operations, the ability to export
+results in various `tibble`-based formats, and query operations, adapted
+to this context.

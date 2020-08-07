@@ -84,7 +84,10 @@ and one more to apply operations to star schemas or constellations.
 }
 
 \section{Dimension enrichment}{
-
+ To enrich a dimension with new attributes
+related to others already included in it, first, we export the attributes
+on which the new ones depend, then we define the new attributes, and import
+the table with all the attributes to be added to the dimension.
 \itemize{
 \item \code{\link[=enrich_dimension_export]{enrich_dimension_export()}}
 \item \code{\link[=enrich_dimension_import]{enrich_dimension_import()}}
@@ -99,8 +102,21 @@ constellation, using the following functions:
 \itemize{
 \item \code{\link[=incremental_refresh_star_schema]{incremental_refresh_star_schema()}}
 \item \code{\link[=incremental_refresh_constellation]{incremental_refresh_constellation()}}
-\item \code{\link[=purge_dimensions]{purge_dimensions()}}
+}
+
+Sometimes the data refresh consists of eliminating data that is no longer
+necessary, generally because it corresponds to a period that has stopped
+being analyzed but it can also be for other reasons. This data can be
+selected using the following function:
+\itemize{
 \item \code{\link[=filter_fact_rows]{filter_fact_rows()}}
+}
+
+Once the fact data is removed (using the other incremental refresh
+functions), we can remove the data for the dimensions that are no longer
+needed using the following function:
+\itemize{
+\item \code{\link[=purge_dimensions]{purge_dimensions()}}
 }
 }
 
@@ -119,7 +135,10 @@ constellations, using the following functions:
 }
 
 \section{Query functions}{
-
+ There are many multidimensional query tools
+available. The exported data, once stored in files, can be used directly
+from them. Using the following functions, you can also perform basic
+queries from R on data in the \code{multistar} format:
 \itemize{
 \item \code{\link[=dimensional_query]{dimensional_query()}}
 \item \code{\link[=select_fact]{select_fact()}}

@@ -61,7 +61,10 @@
 #' - [modify_dimension_records()]
 #' - [modify_conformed_dimension_records()]
 #'
-#' @section Dimension enrichment:
+#' @section Dimension enrichment: To enrich a dimension with new attributes
+#'   related to others already included in it, first, we export the attributes
+#'   on which the new ones depend, then we define the new attributes, and import
+#'   the table with all the attributes to be added to the dimension.
 #' - [enrich_dimension_export()]
 #' - [enrich_dimension_import()]
 #'
@@ -72,9 +75,16 @@
 #' - [incremental_refresh_star_schema()]
 #' - [incremental_refresh_constellation()]
 #'
-#' - [purge_dimensions()]
-#'
+#' Sometimes the data refresh consists of eliminating data that is no longer
+#' necessary, generally because it corresponds to a period that has stopped
+#' being analyzed but it can also be for other reasons. This data can be
+#' selected using the following function:
 #' - [filter_fact_rows()]
+#'
+#' Once the fact data is removed (using the other incremental refresh
+#' functions), we can remove the data for the dimensions that are no longer
+#' needed using the following function:
+#' - [purge_dimensions()]
 #'
 #' @section Results export: Once the data has been properly structured and
 #'   transformed, it can be exported to be consulted with other tools or with R.
@@ -86,13 +96,15 @@
 #' - [constellation_as_multistar()]
 #' - [constellation_as_tibble_list()]
 #'
-#' @section Query functions:
+#' @section Query functions: There are many multidimensional query tools
+#'   available. The exported data, once stored in files, can be used directly
+#'   from them. Using the following functions, you can also perform basic
+#'   queries from R on data in the `multistar` format:
 #' - [dimensional_query()]
 #' - [select_fact()]
 #' - [select_dimension()]
 #' - [filter_dimension()]
 #' - [run_query()]
-#'
 #'
 #' @docType package
 #' @name starschemar

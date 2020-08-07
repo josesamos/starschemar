@@ -25,7 +25,7 @@ Transformations can be carried out using professional ETL (extract, transform an
 
 Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process. 
 
-The goal of `starschemar` is to define transformations that allow you to easily obtain star schemas from flat tables. In addition, it includes basic data cleaning operations and incremental data refresh operations, adapted to this context.
+The goal of `starschemar` is to define transformations that allow you to easily obtain star schemas from flat tables. In addition, it includes basic data cleaning, dimension enrichment, incremental data refresh and query operations, adapted to this context.
 
 
 ## Installation
@@ -139,4 +139,4 @@ pander::pandoc.table(head(st$dimension$where), split.table = Inf)
 pander::pandoc.table(head(st$fact$mrs_cause), split.table = Inf)
 ```
 
-In addition to the operations in the examples shown, `starschemar` offers support for defining role playing and role dimensions in a star schema, fact constellations with conformed dimensions, incremental data refresh operations, and the ability to export results in various `tibble`-based formats.
+In addition to the operations in the examples shown, `starschemar` offers support for defining role playing and role dimensions in a star schema, fact constellations with conformed dimensions, dimension enrichment, incremental data refresh operations, the ability to export results in various `tibble`-based formats, and query operations, adapted to this context.

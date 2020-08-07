@@ -6,13 +6,13 @@
 #' @return A `dimensional_query` object.
 #'
 #' @keywords internal
-new_dimensional_query <- function(multistar = NULL) {
+new_dimensional_query <- function(ms = NULL) {
   schema <-
     list(
       fact = NULL,
       dimension = NULL,
       key = NULL,
-      input = multistar,
+      input = ms,
       output = NULL
     )
 
@@ -26,7 +26,7 @@ new_dimensional_query <- function(multistar = NULL) {
 #' An empty `dimensional_query` object is created where you can select fact
 #' measures, dimension attributes and filter dimension rows.
 #'
-#' @param multistar A `multistar` object.
+#' @param ms A `multistar` object.
 #'
 #' @return A `dimensional_query` object.
 #'
@@ -42,7 +42,7 @@ new_dimensional_query <- function(multistar = NULL) {
 #' dq <- dimensional_query(ms_mrs)
 #'
 #' @export
-dimensional_query <- function(multistar = NULL) {
-  new_dimensional_query(multistar)
+dimensional_query <- function(ms = NULL) {
+  new_dimensional_query(ms)
 }
 
