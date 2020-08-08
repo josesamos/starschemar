@@ -33,6 +33,18 @@
 #' - [snake_case()]
 #' - [character_dimensions()]
 #'
+#' Once a star schema is defined, we can rename its elements. It is necessary to
+#' be able to rename attributes of dimensions and measures of facts because the
+#' definition operations only allowed us to select columns of a flat table. For
+#' completeness also dimensions and facts can be renamed. To carry out these
+#' operations, the following *star schema rename functions* are available:
+#' - [rename_dimension()]
+#' - [get_dimension_attribute_names()]
+#' - [rename_dimension_attributes()]
+#' - [rename_fact()]
+#' - [get_measure_names()]
+#' - [rename_measures()]
+#'
 #' Based on various star schemas, a constellation can be defined in which star
 #' schemas share common dimensions. Dimensions with the same name must be
 #' shared. It is defined by the following *constellation definition function*:
@@ -95,6 +107,7 @@
 #' - [star_schema_as_tibble_list()]
 #' - [constellation_as_multistar()]
 #' - [constellation_as_tibble_list()]
+#' - [multistar_as_flat_table()]
 #'
 #' @section Query functions: There are many multidimensional query tools
 #'   available. The exported data, once stored in files, can be used directly
