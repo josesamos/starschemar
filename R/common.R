@@ -11,14 +11,20 @@
 #' @return A `tibble`.
 #' @keywords internal
 prepare_join <- function(tb) {
+  n_row <- nrow(tb)
   # all attributes of type character
   col <- colnames(tb)
   tb <- data.frame(lapply(tb, as.character), stringsAsFactors = FALSE)
   colnames(tb) <- col
 
   # replace NA with unknown (for join)
-  tibble::as_tibble(apply(tb[, , drop = FALSE], 2, function(x)
-    tidyr::replace_na(x, "___UNKNOWN___")))
+  tb <- apply(tb[, , drop = FALSE], 2, function(x)
+    tidyr::replace_na(x, "___UNKNOWN___"))
+  if (n_row == 1) {
+    tibble::as_tibble_row(tb)
+  } else {
+    tibble::as_tibble(tb)
+  }
 }
 
 
