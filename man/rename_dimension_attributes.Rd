@@ -22,7 +22,7 @@ rename_dimension_attributes(st, name, names, new_names)
 A \code{star_schema} object.
 }
 \description{
-Set new names of attributes in a dimension.
+Set new names of some attributes in a dimension.
 }
 \examples{
 library(tidyr)

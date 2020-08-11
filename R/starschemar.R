@@ -89,14 +89,15 @@
 #'
 #' Sometimes the data refresh consists of eliminating data that is no longer
 #' necessary, generally because it corresponds to a period that has stopped
-#' being analyzed but it can also be for other reasons. This data can be
+#' being analysed but it can also be for other reasons. This data can be
 #' selected using the following function:
 #' - [filter_fact_rows()]
 #'
 #' Once the fact data is removed (using the other incremental refresh
 #' functions), we can remove the data for the dimensions that are no longer
-#' needed using the following function:
-#' - [purge_dimensions()]
+#' needed using the following functions:
+#' - [purge_dimensions_star_schema()]
+#' - [purge_dimensions_constellation()]
 #'
 #' @section Results export: Once the data has been properly structured and
 #'   transformed, it can be exported to be consulted with other tools or with R.

@@ -14,7 +14,8 @@
 #' @examples
 #' library(tidyr)
 #'
-#' st_mrs_age %>% get_measure_names()
+#' measure_names <-
+#'   st_mrs_age %>% get_measure_names()
 #'
 #' @export
 get_measure_names <- function(st) {
@@ -32,7 +33,7 @@ get_measure_names.star_schema <- function(st) {
 
 #' Rename measures
 #'
-#' Set new names of measures in facts.
+#' Set new names of some measures in facts.
 #'
 #' @param st A `star_schema` object.
 #' @param names A vector of measure names.
@@ -91,7 +92,8 @@ rename_measures.star_schema <- function(st, names, new_names) {
 #' @examples
 #' library(tidyr)
 #'
-#' st_mrs_age %>% get_dimension_attribute_names("when")
+#' attribute_names <-
+#'   st_mrs_age %>% get_dimension_attribute_names("when")
 #'
 #' @export
 get_dimension_attribute_names <- function(st, name) {
@@ -110,7 +112,7 @@ get_dimension_attribute_names.star_schema <- function(st, name) {
 
 #' Rename dimension attributes
 #'
-#' Set new names of attributes in a dimension.
+#' Set new names of some attributes in a dimension.
 #'
 #' @param st A `star_schema` object.
 #' @param name A string, name of the dimension.

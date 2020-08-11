@@ -29,7 +29,7 @@ Transformations can be carried out using professional ETL (extract, transform an
 
 Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process. 
 
-This is the main objective of `starschemar` package: Define **transformations that allow obtaining star schemas from flat tables** easily. In addition, it includes basic data cleaning operations and incremental data refresh operations, adapted to this context.
+This is the main objective of `starschemar` package: Define **transformations that allow obtaining star schemas from flat tables** easily. In addition, it includes basic data cleaning operations, incremental data refresh operations and query operations, adapted to this context.
 
 The rest of this document is structured as follows: First, basic concepts of dimensional modelling and star schemas are summarized. The following is an illustrative example of how the package works. Then, the operations available in the package are briefly presented. Finally, the document ends with conclusions and bibliography.
 
@@ -770,6 +770,51 @@ st <- star_schema(mrs_age, dm_mrs_age) %>%
   character_dimensions()
 ```
 
+### Star schema rename
+
+Once a star schema is defined, we can rename its elements. It is necessary to be able to rename attributes of dimensions and measures of facts because the definition operations only allowed us to select columns of a flat table. For completeness also dimensions and facts can be renamed. To carry out these operations, the following functions are available:
+
+- `rename_dimension()`: Set new name for a dimension. Example:
+```{r}
+st <- st_mrs_age %>%
+  rename_dimension(name = "when", new_name = "when_happened")
+```
+
+- `get_dimension_attribute_names()`: Get the name of attributes in a dimension, so that it is easier to modify them if necessary. Example:
+```{r}
+attribute_names <- 
+  st_mrs_age %>% get_dimension_attribute_names("when")
+```
+
+- `rename_dimension_attributes()`: Set new names of some attributes in a dimension. Example:
+```{r}
+st <-
+  st_mrs_age %>% rename_dimension_attributes(
+    name = "when",
+    names = c("week", "year"),
+    new_names = c("w", "y")
+  )
+```
+
+- `rename_fact()`: Set new name for facts. Example:
+```{r}
+st <- st_mrs_age %>% rename_fact("age") 
+```
+
+
+- `get_measure_names()`: Get the name of the measures in fact, so that it is easier to modify them if necessary. Example:
+```{r}
+measure_names <- 
+  st_mrs_age %>% get_measure_names()
+```
+
+- `rename_measures()`: Set new names of some measures in facts. Example:
+```{r}
+st <-
+  st_mrs_age %>% rename_measures(names = c("deaths"),
+                                 new_names = c("n_deaths"))
+```
+
 
 ### Constellation definition
 
@@ -898,6 +943,32 @@ ct <- ct_mrs %>%
   modify_conformed_dimension_records(updates_st_mrs_age)
 ```
 
+## Dimension enrichment
+
+To enrich a dimension with new attributes related to others already included in it, first, we export the attributes on which the new ones depend, then we define the new attributes, and import the table with all the attributes to be added to the dimension.
+
+- `enrich_dimension_export()`: Export the selected attributes of a dimension, without repeated combinations, to enrich the dimension. If it is a role dimension they cannot be exported, you have to work with the associated role playing dimension. Example:
+```{r}
+tb <-
+  enrich_dimension_export(st_mrs_age,
+                          name = "when_common",
+                          attributes = c("week", "year"))
+```
+
+- `enrich_dimension_import()`: For a dimension of a star schema a `tibble` is attached. This contains dimension attributes and new attributes. If values associated with all rows in the dimension are included in the `tibble`, the dimension is enriched with the new attributes. Role dimensions cannot be directly enriched. If a role playing dimension is enriched, the new attributes are also added to the associated role dimensions. Example:
+```{r}
+tb <-
+  enrich_dimension_export(st_mrs_age,
+                          name = "when_common",
+                          attributes = c("week", "year"))
+
+# Add new columns with meaningful data (these are not), possibly exporting
+# data to a file, populating it and importing it.
+tb <- tibble::add_column(tb, x = "x", y = "y", z = "z")
+
+st <- enrich_dimension_import(st_mrs_age, name = "when_common", tb)
+```
+
 
 ## Incremental refresh
 
@@ -911,6 +982,27 @@ st <- st_mrs_age %>%
   incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace")
 ```
 
+Sometimes the data refresh consists of eliminating data that is no longer necessary, generally because it corresponds to a period that has stopped being analysed but it can also be for other reasons. This data can be selected using the following function:
+
+- `filter_fact_rows()`: Filter fact rows based on dimension conditions in a star schema. Dimensions remain unchanged. Filtered rows can be deleted using the `incremental_refresh_star_schema` function. Example:
+```{r}
+st <- st_mrs_age %>%
+  filter_fact_rows(name = "when", week <= "03") %>%
+  filter_fact_rows(name = "where", city == "Bridgeport")
+
+st2 <- st_mrs_age %>%
+  incremental_refresh_star_schema(st, existing = "delete")
+```
+
+
+Once the fact data is removed (using the other incremental refresh functions), we can remove the data for the dimensions that are no longer needed using the following function:
+
+- `purge_dimensions_star_schema()`: Delete instances of dimensions not related to facts in a star schema. Example:
+```{r}
+st3 <- st2 %>%
+  purge_dimensions_star_schema()
+```
+
 
 #### Constellation
 
@@ -920,10 +1012,16 @@ ct <- ct_mrs %>%
   incremental_refresh_constellation(st_mrs_age_w10, existing = "replace")
 ```
 
+- `purge_dimensions_constellation()`: Delete instances of dimensions not related to facts in a star schema. It performs the operation for each of the component `star_schemas` and also for the conformed dimensions. Example:
+```{r}
+ct <- ct_mrs %>%
+  purge_dimensions_constellation()
+```
+
 
 ## Exporting results
 
-Once the data has been properly structured and transformed, it can be exported to be consulted with other tools. Various export formats have been defined, both for star schemas and for constellations, using the following functions.
+Once the data has been properly structured and transformed, it can be exported to be consulted with other tools or with R. Various export formats have been defined, both for star schemas and for constellations, using the following functions.
 
 ### Star schema
 
@@ -964,11 +1062,86 @@ tl <- ct_mrs %>%
 ```
 
 
+### `multistar`
+
+- `multistar_as_flat_table()`: We can obtain a flat table, implemented using a `tibble`, from a `multistar` (which can be the result of a query). If it only has one fact table, it is not necessary to provide its name. Example:
+```{r}
+ft <- ms_mrs %>%
+  multistar_as_flat_table(name = "mrs_age")
+```
+
+
+## Query functions
+
+There are many multidimensional query tools available. The exported data, once stored in files, can be used directly from them. Using the following functions, you can also perform basic queries from R on data in the `multistar` format, using the following functions:
+
+- `dimensional_query()`: An empty `dimensional_query` object is created where you can select fact measures, dimension attributes and filter dimension rows. Example:
+```{r}
+ms_mrs <- ct_mrs %>%
+  constellation_as_multistar()
+
+dq <- dimensional_query(ms_mrs)
+```
+
+- `select_fact()`: To define the fact to be consulted, its name is indicated, optionally, a vector of names of selected measures and another of aggregation functions are also indicated. If the name of any measure is not indicated, only the one corresponding to the number of aggregated rows is included, which is always included. If no aggregation function is included, those defined for the measures are considered. Examples:
+```{r}
+dq <- dimensional_query(ms_mrs) %>%
+  select_fact(
+    name = "mrs_age",
+    measures = c("deaths"),
+    agg_functions = c("MAX")
+  )
+
+dq <- dimensional_query(ms_mrs) %>%
+  select_fact(name = "mrs_age",
+              measures = c("deaths"))
+
+dq <- dimensional_query(ms_mrs) %>%
+  select_fact(name = "mrs_age")
+```
+
+- `select_dimension()`: To add a dimension in a `dimensional_query` object, we have to define its name and a subset of the dimension attributes. If only the name of the dimension is indicated, it is considered that all its attributes should be added. Example:
+```{r}
+dq <- dimensional_query(ms_mrs) %>%
+  select_dimension(name = "where",
+                   attributes = c("city", "state")) %>%
+  select_dimension(name = "when")
+```
+
+- `filter_dimension()`: Allows you to define selection conditions for dimension rows. Conditions can be defined on any attribute of the dimension (not only on attributes selected in the query for the dimension). The selection is made based on the function `dplyr::filter`. Conditions are defined in exactly the same way as in that function. Example:
+```{r}
+dq <- dimensional_query(ms_mrs) %>%
+  filter_dimension(name = "when", week <= "03") %>%
+  filter_dimension(name = "where", city == "Boston")
+```
+
+- `run_query()`: Once we have selected the facts, dimensions and defined the conditions on the instances, we can execute the query to obtain the result. As an option, we can indicate if we do not want to unify the facts in the case of having the same grain. Example:
+```{r}
+ms <- dimensional_query(ms_mrs) %>%
+  select_dimension(name = "where",
+                   attributes = c("city", "state")) %>%
+  select_dimension(name = "when",
+                   attributes = c("year")) %>%
+  select_fact(
+    name = "mrs_age",
+    measures = c("deaths"),
+    agg_functions = c("MAX")
+  ) %>%
+  select_fact(
+    name = "mrs_cause",
+    measures = c("pneumonia_and_influenza_deaths", "other_deaths")
+  ) %>%
+  filter_dimension(name = "when", week <= "03") %>%
+  filter_dimension(name = "where", city == "Boston") %>%
+  run_query()
+```
+
+
 # Conclusions
 
 `starschemar` package offers a set of operations that allow us to transform flat tables into star schemas. Star schemas support the definition of role playing and role dimensions. Additional transformation operations can be applied to each star schema to adapt the format of the data. From several star schemas you can define fact constellation with conformed dimensions.
 
-Cleaning and conforming data operations can be defined on the star schemas and fact constellation. To update the data, incremental refresh operations are offered, also applicable on said structures. In addition, there are several possibilities to export the results obtained in the form of easily treatable `tibble`-based structures.
+Cleaning and conforming data operations can be defined on the star schemas and fact constellation. To update the data, incremental refresh operations are offered, also applicable on said structures. In addition, there are several possibilities to export the results obtained in the form of easily treatable `tibble`-based structures. Operations are also provided for querying the multidimensional structure.
 
 Operations have been designed to be intuitive and easy to use. The result greatly facilitates the data transformation process for the exposed situation.
 

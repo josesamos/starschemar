@@ -14,17 +14,17 @@
 #' library(tidyr)
 #'
 #' st <- st_mrs_age %>%
-#'   purge_dimensions()
+#'   purge_dimensions_star_schema()
 #'
 #' @export
-purge_dimensions <- function(st) {
-  UseMethod("purge_dimensions")
+purge_dimensions_star_schema <- function(st) {
+  UseMethod("purge_dimensions_star_schema")
 }
 
 
-#' @rdname purge_dimensions
+#' @rdname purge_dimensions_star_schema
 #' @export
-purge_dimensions.star_schema <- function(st) {
+purge_dimensions_star_schema.star_schema <- function(st) {
   key <- NULL
   dimension_names <- get_dimension_names(st)
   for (name in dimension_names) {

@@ -44,6 +44,20 @@ following \emph{star schema definition and transformation functions}:
 \item \code{\link[=character_dimensions]{character_dimensions()}}
 }
 
+Once a star schema is defined, we can rename its elements. It is necessary to
+be able to rename attributes of dimensions and measures of facts because the
+definition operations only allowed us to select columns of a flat table. For
+completeness also dimensions and facts can be renamed. To carry out these
+operations, the following \emph{star schema rename functions} are available:
+\itemize{
+\item \code{\link[=rename_dimension]{rename_dimension()}}
+\item \code{\link[=get_dimension_attribute_names]{get_dimension_attribute_names()}}
+\item \code{\link[=rename_dimension_attributes]{rename_dimension_attributes()}}
+\item \code{\link[=rename_fact]{rename_fact()}}
+\item \code{\link[=get_measure_names]{get_measure_names()}}
+\item \code{\link[=rename_measures]{rename_measures()}}
+}
+
 Based on various star schemas, a constellation can be defined in which star
 schemas share common dimensions. Dimensions with the same name must be
 shared. It is defined by the following \emph{constellation definition function}:
@@ -106,7 +120,7 @@ constellation, using the following functions:
 
 Sometimes the data refresh consists of eliminating data that is no longer
 necessary, generally because it corresponds to a period that has stopped
-being analyzed but it can also be for other reasons. This data can be
+being analysed but it can also be for other reasons. This data can be
 selected using the following function:
 \itemize{
 \item \code{\link[=filter_fact_rows]{filter_fact_rows()}}
@@ -114,9 +128,10 @@ selected using the following function:
 
 Once the fact data is removed (using the other incremental refresh
 functions), we can remove the data for the dimensions that are no longer
-needed using the following function:
+needed using the following functions:
 \itemize{
-\item \code{\link[=purge_dimensions]{purge_dimensions()}}
+\item \code{\link[=purge_dimensions_star_schema]{purge_dimensions_star_schema()}}
+\item \code{\link[=purge_dimensions_constellation]{purge_dimensions_constellation()}}
 }
 }
 
@@ -131,6 +146,7 @@ constellations, using the following functions:
 \item \code{\link[=star_schema_as_tibble_list]{star_schema_as_tibble_list()}}
 \item \code{\link[=constellation_as_multistar]{constellation_as_multistar()}}
 \item \code{\link[=constellation_as_tibble_list]{constellation_as_tibble_list()}}
+\item \code{\link[=multistar_as_flat_table]{multistar_as_flat_table()}}
 }
 }
 

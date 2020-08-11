@@ -23,7 +23,8 @@ Get the name of attributes in a dimension.
 \examples{
 library(tidyr)
 
-st_mrs_age \%>\% get_dimension_attribute_names("when")
+attribute_names <-
+  st_mrs_age \%>\% get_dimension_attribute_names("when")
 
 }
 \seealso{

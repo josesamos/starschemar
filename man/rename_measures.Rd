@@ -20,7 +20,7 @@ rename_measures(st, names, new_names)
 A \code{star_schema} object.
 }
 \description{
-Set new names of measures in facts.
+Set new names of some measures in facts.
 }
 \examples{
 library(tidyr)

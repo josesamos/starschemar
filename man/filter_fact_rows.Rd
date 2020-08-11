@@ -44,6 +44,7 @@ st2 <- st_mrs_age \%>\%
 Other incremental refresh functions: 
 \code{\link{incremental_refresh_constellation}()},
 \code{\link{incremental_refresh_star_schema}()},
-\code{\link{purge_dimensions}()}
+\code{\link{purge_dimensions_constellation}()},
+\code{\link{purge_dimensions_star_schema}()}
 }
 \concept{incremental refresh functions}

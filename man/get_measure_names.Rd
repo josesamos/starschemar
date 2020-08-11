@@ -21,7 +21,8 @@ Get the name of measures in facts.
 \examples{
 library(tidyr)
 
-st_mrs_age \%>\% get_measure_names()
+measure_names <-
+  st_mrs_age \%>\% get_measure_names()
 
 }
 \seealso{
