@@ -326,7 +326,7 @@ If no aggregation function is indicated, by default, SUM is considered. Although
 
 ### Star schema definition
 
-To define a star schema, we need a flat table and a dimensional model defined from it. To define a star schema, we need a flat table and a dimensional model defined from it. Once defined, we can apply format modification operations to it.
+To define a star schema, we need a flat table and a dimensional model defined from it. Once defined, we can apply format modification operations to it.
 
 #### Data according to age range
 
@@ -377,7 +377,7 @@ pander::pandoc.table(head(st_mrs_age$dimension$when_common), split.table = Inf)
 pander::pandoc.table(head(st_mrs_age$fact$mrs_age), split.table = Inf)
 ```
 
-In the result, it can be seen that the dimensions related to date are now role dimensions and do not have their own data, a role playing dimension has been generated with the integrated data. The fact table continues to refer to role dimensions, the value of foreign keys has been adapted to the possible new values of the surrogate keys. Additionally it can be seen that the *week* field now has length 2 and has 0 on the left (this is useful to order numbers in text format).
+In the result, it can be seen that the dimensions related to date are now role dimensions and do not have their own data, a role playing dimension has been generated with the integrated data. The fact table continues to refer to role dimensions, the value of foreign keys has been adapted to the possible new values of the surrogate keys. Additionally it can be seen that the *week* field now has length 2 and has 0 on the left (this is useful to sort numbers in text format).
 
 
 #### Data according to cause
@@ -414,6 +414,28 @@ pander::pandoc.table(head(st_mrs_cause$fact$mrs_cause), split.table = Inf)
 ```
 
 In this case we have three role dimensions defined on a role playing dimension.
+
+
+### Star schema rename
+
+If necessary, the elements of a star schema can be renamed. These functions are especially useful for renaming attributes of dimensions and measures of facts because the definition operations only allowed us to select columns of a flat table, not modifying their names.
+
+```{r}
+st <-
+  st_mrs_age %>% rename_dimension_attributes(
+    name = "when",
+    names = c("week", "year"),
+    new_names = c("w", "y")
+  )
+```
+
+
+```{r}
+st <-
+  st_mrs_age %>% rename_measures(names = c("deaths"),
+                                 new_names = c("n_deaths"))
+```
+
 
 ### Constellation definition
 
