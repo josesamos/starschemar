@@ -420,22 +420,45 @@ In this case we have three role dimensions defined on a role playing dimension.
 
 If necessary, the elements of a star schema can be renamed. These functions are especially useful for renaming attributes of dimensions and measures of facts because the definition operations only allowed us to select columns of a flat table, not modifying their names.
 
+We are going to modify the attribute names of the *when* dimension for the two design cases. Data according to age:
+
 ```{r}
-st <-
+st_mrs_age <-
   st_mrs_age %>% rename_dimension_attributes(
     name = "when",
-    names = c("week", "year"),
-    new_names = c("w", "y")
+    names = c("week_ending_date", "week", "year"),
+    new_names = c(
+      "when_happened_date",
+      "when_happened_week",
+      "when_happened_year"
+    )
   )
 ```
 
+And data according to cause:
 
 ```{r}
-st <-
+st_mrs_cause <-
+  st_mrs_cause %>% rename_dimension_attributes(
+    name = "when",
+    names = c("week_ending_date", "week", "year"),
+    new_names = c(
+      "when_happened_date",
+      "when_happened_week",
+      "when_happened_year"
+    )
+  )
+```
+
+We are also going to modify the name of the measure for data according to age:
+
+```{r}
+st_mrs_age <-
   st_mrs_age %>% rename_measures(names = c("deaths"),
                                  new_names = c("n_deaths"))
 ```
 
+Additionally, functions are available to modify the names of dimensions and facts. In this case it is not necessary to modify them because they do not depend on the names of the starting base data and we have defined them as we wanted.
 
 ### Constellation definition
 
@@ -603,6 +626,16 @@ mrs_age_definition <- function(ft, dm, updates) {
     snake_case() %>%
     character_dimensions(NA_replacement_value = "Unknown",
                          length_integers = list(week = 2)) %>%
+    rename_dimension_attributes(
+      name = "when",
+      names = c("week_ending_date", "week", "year"),
+      new_names = c(
+        "when_happened_date",
+        "when_happened_week",
+        "when_happened_year"
+      )
+    ) %>% rename_measures(names = c("deaths"),
+                          new_names = c("n_deaths")) %>%
     modify_dimension_records(updates)
 }
 ```
@@ -657,6 +690,15 @@ mrs_cause_definition <- function(ft, dm, updates) {
       dim_names = c("when", "when_received", "when_available"),
       name = "when_common",
       attributes = c("date", "week", "year")
+    ) %>%
+    rename_dimension_attributes(
+      name = "when",
+      names = c("week_ending_date", "week", "year"),
+      new_names = c(
+        "when_happened_date",
+        "when_happened_week",
+        "when_happened_year"
+      )
     ) %>%
     modify_dimension_records(updates)
 }
@@ -813,8 +855,8 @@ attribute_names <-
 st <-
   st_mrs_age %>% rename_dimension_attributes(
     name = "when",
-    names = c("week", "year"),
-    new_names = c("w", "y")
+    names = c("when_happened_week", "when_happened_year"),
+    new_names = c("week", "year")
   )
 ```
 
@@ -833,8 +875,8 @@ measure_names <-
 - `rename_measures()`: Set new names of some measures in facts. Example:
 ```{r}
 st <-
-  st_mrs_age %>% rename_measures(names = c("deaths"),
-                                 new_names = c("n_deaths"))
+  st_mrs_age %>% rename_measures(names = c("n_deaths"),
+                                 new_names = c("num_deaths"))
 ```
 
 
@@ -1009,7 +1051,7 @@ Sometimes the data refresh consists of eliminating data that is no longer necess
 - `filter_fact_rows()`: Filter fact rows based on dimension conditions in a star schema. Dimensions remain unchanged. Filtered rows can be deleted using the `incremental_refresh_star_schema` function. Example:
 ```{r}
 st <- st_mrs_age %>%
-  filter_fact_rows(name = "when", week <= "03") %>%
+  filter_fact_rows(name = "when", when_happened_week <= "03") %>%
   filter_fact_rows(name = "where", city == "Bridgeport")
 
 st2 <- st_mrs_age %>%
@@ -1110,13 +1152,13 @@ dq <- dimensional_query(ms_mrs)
 dq <- dimensional_query(ms_mrs) %>%
   select_fact(
     name = "mrs_age",
-    measures = c("deaths"),
+    measures = c("n_deaths"),
     agg_functions = c("MAX")
   )
 
 dq <- dimensional_query(ms_mrs) %>%
   select_fact(name = "mrs_age",
-              measures = c("deaths"))
+              measures = c("n_deaths"))
 
 dq <- dimensional_query(ms_mrs) %>%
   select_fact(name = "mrs_age")
@@ -1133,7 +1175,7 @@ dq <- dimensional_query(ms_mrs) %>%
 - `filter_dimension()`: Allows you to define selection conditions for dimension rows. Conditions can be defined on any attribute of the dimension (not only on attributes selected in the query for the dimension). The selection is made based on the function `dplyr::filter`. Conditions are defined in exactly the same way as in that function. Example:
 ```{r}
 dq <- dimensional_query(ms_mrs) %>%
-  filter_dimension(name = "when", week <= "03") %>%
+  filter_dimension(name = "when", when_happened_week <= "03") %>%
   filter_dimension(name = "where", city == "Boston")
 ```
 
@@ -1143,17 +1185,17 @@ ms <- dimensional_query(ms_mrs) %>%
   select_dimension(name = "where",
                    attributes = c("city", "state")) %>%
   select_dimension(name = "when",
-                   attributes = c("year")) %>%
+                   attributes = c("when_happened_year")) %>%
   select_fact(
     name = "mrs_age",
-    measures = c("deaths"),
+    measures = c("n_deaths"),
     agg_functions = c("MAX")
   ) %>%
   select_fact(
     name = "mrs_cause",
     measures = c("pneumonia_and_influenza_deaths", "other_deaths")
   ) %>%
-  filter_dimension(name = "when", week <= "03") %>%
+  filter_dimension(name = "when", when_happened_week <= "03") %>%
   filter_dimension(name = "where", city == "Boston") %>%
   run_query()
 ```
