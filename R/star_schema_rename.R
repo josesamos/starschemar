@@ -36,7 +36,7 @@ get_measure_names.star_schema <- function(st) {
 #' Set new names of some measures in facts.
 #'
 #' @param st A `star_schema` object.
-#' @param names A vector of measure names.
+#' @param measures A vector of measure names.
 #' @param new_names A vector of new measure names.
 #'
 #' @return A `star_schema` object.
@@ -48,28 +48,28 @@ get_measure_names.star_schema <- function(st) {
 #' library(tidyr)
 #'
 #' st <-
-#'   st_mrs_age %>% rename_measures(names = c("deaths"),
+#'   st_mrs_age %>% rename_measures(measures = c("deaths"),
 #'                                  new_names = c("n_deaths"))
 #'
 #' @export
-rename_measures <- function(st, names, new_names) {
+rename_measures <- function(st, measures, new_names) {
   UseMethod("rename_measures")
 }
 
 
 #' @rdname rename_measures
 #' @export
-rename_measures.star_schema <- function(st, names, new_names) {
-  stopifnot(length(names) == length(unique(new_names)))
-  if (attr(st$fact[[1]], "nrow_agg") %in% names) {
+rename_measures.star_schema <- function(st, measures, new_names) {
+  stopifnot(length(measures) == length(unique(new_names)))
+  if (attr(st$fact[[1]], "nrow_agg") %in% measures) {
     attr(st$fact[[1]], "nrow_agg") <-
-      new_names[which(names == attr(st$fact[[1]], "nrow_agg"))]
+      new_names[which(measures == attr(st$fact[[1]], "nrow_agg"))]
   }
-  for (i in seq_along(names)) {
-    stopifnot(names[i] %in% attr(st$fact[[1]], "measures"))
-    attr(st$fact[[1]], "measures")[which(attr(st$fact[[1]], "measures") == names[i])] <-
+  for (i in seq_along(measures)) {
+    stopifnot(measures[i] %in% attr(st$fact[[1]], "measures"))
+    attr(st$fact[[1]], "measures")[which(attr(st$fact[[1]], "measures") == measures[i])] <-
       new_names[i]
-    names(st$fact[[1]])[which(names(st$fact[[1]]) == names[i])] <-
+    names(st$fact[[1]])[which(names(st$fact[[1]]) == measures[i])] <-
       new_names[i]
   }
   st
@@ -116,7 +116,7 @@ get_dimension_attribute_names.star_schema <- function(st, name) {
 #'
 #' @param st A `star_schema` object.
 #' @param name A string, name of the dimension.
-#' @param names A vector of attribute names.
+#' @param attributes A vector of attribute names.
 #' @param new_names A vector of new attribute names.
 #'
 #' @return A `star_schema` object.
@@ -130,12 +130,12 @@ get_dimension_attribute_names.star_schema <- function(st, name) {
 #' st <-
 #'   st_mrs_age %>% rename_dimension_attributes(
 #'     name = "when",
-#'     names = c("week", "year"),
+#'     attributes = c("week", "year"),
 #'     new_names = c("w", "y")
 #'   )
 #'
 #' @export
-rename_dimension_attributes <- function(st, name, names, new_names) {
+rename_dimension_attributes <- function(st, name, attributes, new_names) {
   UseMethod("rename_dimension_attributes")
 }
 
@@ -143,12 +143,12 @@ rename_dimension_attributes <- function(st, name, names, new_names) {
 #' @rdname rename_dimension_attributes
 #' @export
 rename_dimension_attributes.star_schema <-
-  function(st, name, names, new_names) {
+  function(st, name, attributes, new_names) {
     stopifnot(name %in% names(st$dimension))
-    stopifnot(length(names) == length(unique(new_names)))
-    for (i in seq_along(names)) {
-      stopifnot(names[i] %in% names(st$dimension[[name]])[-1])
-      names(st$dimension[[name]])[which(names(st$dimension[[name]]) == names[i])] <-
+    stopifnot(length(attributes) == length(unique(new_names)))
+    for (i in seq_along(attributes)) {
+      stopifnot(attributes[i] %in% names(st$dimension[[name]])[-1])
+      names(st$dimension[[name]])[which(names(st$dimension[[name]]) == attributes[i])] <-
         new_names[i]
     }
     st

@@ -5,16 +5,16 @@
 \alias{rename_dimension_attributes.star_schema}
 \title{Rename dimension attributes}
 \usage{
-rename_dimension_attributes(st, name, names, new_names)
+rename_dimension_attributes(st, name, attributes, new_names)
 
-\method{rename_dimension_attributes}{star_schema}(st, name, names, new_names)
+\method{rename_dimension_attributes}{star_schema}(st, name, attributes, new_names)
 }
 \arguments{
 \item{st}{A \code{star_schema} object.}
 
 \item{name}{A string, name of the dimension.}
 
-\item{names}{A vector of attribute names.}
+\item{attributes}{A vector of attribute names.}
 
 \item{new_names}{A vector of new attribute names.}
 }
@@ -30,7 +30,7 @@ library(tidyr)
 st <-
   st_mrs_age \%>\% rename_dimension_attributes(
     name = "when",
-    names = c("week", "year"),
+    attributes = c("week", "year"),
     new_names = c("w", "y")
   )
 

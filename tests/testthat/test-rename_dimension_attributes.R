@@ -4,7 +4,7 @@ test_that("rename_dimension_attributes works", {
   st <-
     st_mrs_age_test %>% rename_dimension_attributes(
       name = "when",
-      names = c("week", "year"),
+      attributes = c("week", "year"),
       new_names = c("w", "y")
     )
 

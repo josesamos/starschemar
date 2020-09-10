@@ -5,14 +5,14 @@
 \alias{rename_measures.star_schema}
 \title{Rename measures}
 \usage{
-rename_measures(st, names, new_names)
+rename_measures(st, measures, new_names)
 
-\method{rename_measures}{star_schema}(st, names, new_names)
+\method{rename_measures}{star_schema}(st, measures, new_names)
 }
 \arguments{
 \item{st}{A \code{star_schema} object.}
 
-\item{names}{A vector of measure names.}
+\item{measures}{A vector of measure names.}
 
 \item{new_names}{A vector of new measure names.}
 }
@@ -26,7 +26,7 @@ Set new names of some measures in facts.
 library(tidyr)
 
 st <-
-  st_mrs_age \%>\% rename_measures(names = c("deaths"),
+  st_mrs_age \%>\% rename_measures(measures = c("deaths"),
                                  new_names = c("n_deaths"))
 
 }

@@ -3,7 +3,7 @@ context("test rename_measures")
 test_that("rename_measures works", {
   st <-
     st_mrs_age_test %>%
-    rename_measures(names = c("deaths", "nrow_agg"),
+    rename_measures(measures = c("deaths", "nrow_agg"),
                     new_names = c("n_deaths", "n_agg"))
 
   expect_equal(
