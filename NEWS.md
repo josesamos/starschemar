@@ -8,7 +8,7 @@
 * New data available to develop additional examples: [ft_datagov_uk].
 
 # starschemar 1.0.0
-* Initial functionality for defining star schemas and constallations.
+* Initial functionality for defining star schemas and constellations.
 * Data cleaning.
 * Incremental refresh.
 * Results export.
