@@ -6,4 +6,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+> checking for future file timestamps ... NOTE
+  unable to verify current time
+
+0 errors √ | 0 warnings √ | 1 note x
+
+## Answer
+https://stackoverflow.com/questions/63613301/r-cmd-check-note-unable-to-verify-current-time
