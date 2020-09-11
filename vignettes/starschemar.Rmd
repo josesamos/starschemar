@@ -1,7 +1,7 @@
 ---
 title: "starschemar: Obtaining Star Schemas from Flat Tables"
 author: "Jose Samos (jsamos@ugr.es)"
-date: "2020-07-24"
+date: "2020-09-04"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
@@ -415,8 +415,11 @@ pander::pandoc.table(head(st_mrs_cause$fact$mrs_cause), split.table = Inf)
 
 In this case we have three role dimensions defined on a role playing dimension.
 
+### Star schema transformation
 
-### Star schema rename
+Star schemas are defined from flat table fields. In some cases it may be interesting to rename elements of the schema, especially attributes of dimensions and measures. On the other hand, dimensions can be enriched by adding additional attributes, generally derived from the rest of the attributes. These are the transformations considered in this section.
+
+#### Star schema rename
 
 If necessary, the elements of a star schema can be renamed. These functions are especially useful for renaming attributes of dimensions and measures of facts because the definition operations only allowed us to select columns of a flat table, not modifying their names.
 
@@ -426,7 +429,7 @@ We are going to modify the attribute names of the *when* dimension for the two d
 st_mrs_age <-
   st_mrs_age %>% rename_dimension_attributes(
     name = "when",
-    names = c("week_ending_date", "week", "year"),
+    attributes = c("week_ending_date", "week", "year"),
     new_names = c(
       "when_happened_date",
       "when_happened_week",
@@ -441,7 +444,7 @@ And data according to cause:
 st_mrs_cause <-
   st_mrs_cause %>% rename_dimension_attributes(
     name = "when",
-    names = c("week_ending_date", "week", "year"),
+    attributes = c("week_ending_date", "week", "year"),
     new_names = c(
       "when_happened_date",
       "when_happened_week",
@@ -454,11 +457,61 @@ We are also going to modify the name of the measure for data according to age:
 
 ```{r}
 st_mrs_age <-
-  st_mrs_age %>% rename_measures(names = c("deaths"),
+  st_mrs_age %>% rename_measures(measures = c("deaths"),
                                  new_names = c("n_deaths"))
 ```
 
 Additionally, functions are available to modify the names of dimensions and facts. In this case it is not necessary to modify them because they do not depend on the names of the starting base data and we have defined them as we wanted.
+
+#### Dimension enrichment
+
+Suppose that we are interested in defining some broader age ranges than the existing ones. This operation can be done by enriching the corresponding dimension.
+
+First, we export the attributes to consider in table form, in this case only the age range.
+
+```{r}
+tb <-
+  enrich_dimension_export(st_mrs_age,
+                          name = "who",
+                          attributes = c("age_range"))
+```
+
+Next, we can see the result of the export operation. It is a table with the selected attributes where duplicate values have been eliminated if there are any (in this case there are no repeated values).
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(tb, split.table = Inf)
+```
+
+In the table we add the columns that we want. In this case a new column to define the new broader age range.
+
+```{r}
+v <-
+  c("0-24 years", "0-24 years", "25+ years", "25+ years", "25+ years")
+tb <-
+  tibble::add_column(tb,
+                     wide_age_range = v)
+```
+
+The new table can be seen below.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(tb, split.table = Inf)
+```
+
+We enrich the dimension considering the new data in the table.
+
+```{r}
+st_mrs_age <-
+  st_mrs_age %>%
+  enrich_dimension_import(name = "who", tb)
+```
+
+We can see the result below, where the dimension has the new defined attribute.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(st_mrs_age$dimension$who, split.table = Inf)
+```
+
 
 ### Constellation definition
 
@@ -612,7 +665,9 @@ Under these conditions, suppose we get the data sets `mrs_age_w10`, `mrs_age_w11
 
 To perform an incremental refresh of a star schema, we must have the new data in the same star schema format. Additionally, if we have done data cleaning, it is likely that we will have to correct part of the corrected errors again over the new data. For this reason, it is best to package all the transformations carried out on the original data in function form so that they can be easily applied to new data.
 
-### Data according to age range
+### Refresh operations
+
+#### Data according to age range
 
 Below you can see the function that groups the transformations defined for the data according to the age range.
 ```{r}
@@ -628,14 +683,16 @@ mrs_age_definition <- function(ft, dm, updates) {
                          length_integers = list(week = 2)) %>%
     rename_dimension_attributes(
       name = "when",
-      names = c("week_ending_date", "week", "year"),
+      attributes = c("week_ending_date", "week", "year"),
       new_names = c(
         "when_happened_date",
         "when_happened_week",
         "when_happened_year"
       )
-    ) %>% rename_measures(names = c("deaths"),
-                          new_names = c("n_deaths")) %>%
+    ) %>%
+    rename_measures(measures = c("deaths"),
+                    new_names = c("n_deaths")) %>%
+    enrich_dimension_import(name = "who", tb) %>%
     modify_dimension_records(updates)
 }
 ```
@@ -670,7 +727,7 @@ ct_mrs <- ct_mrs %>%
 
 In this case, the corresponding star schema, the conformed dimensions and all the star schemas that share them are updated.
 
-### Data according to cause
+#### Data according to cause
 
 Similar to how it has been done for age data, it can be done for cause data, as shown below.
 
@@ -693,7 +750,7 @@ mrs_cause_definition <- function(ft, dm, updates) {
     ) %>%
     rename_dimension_attributes(
       name = "when",
-      names = c("week_ending_date", "week", "year"),
+      attributes = c("week_ending_date", "week", "year"),
       new_names = c(
         "when_happened_date",
         "when_happened_week",
@@ -720,6 +777,48 @@ ct_mrs <- ct_mrs %>%
 
 In this case, the previously existing data is treated differently than it was in the previous case, now what is done is grouping it using the aggregation functions, assuming it is additional data that has not been entered before (value "group" in `existing` parameter).
 
+### Filter and purge operations
+
+Sometimes the data refresh consists of eliminating data that is no longer necessary, generally because it corresponds to a period that has stopped being analysed but it can also be for other reasons. In general, they can be selected considering any combination of dimensions, not just the time dimension.
+
+Suppose we want to delete the *Boston* data working at the constellation level. First, we select them considering the stars that make up the constellation.
+
+```{r}
+st1 <- ct_mrs$star$mrs_age %>%
+  filter_fact_rows(name = "where", city == "Boston")
+
+st2 <- ct_mrs$star$mrs_cause %>%
+  filter_fact_rows(name = "where", city == "Boston")
+```
+
+We can work both at the star or constellation level. In this example, we are going to do it at the constellation level, as we have been doing. 
+
+```{r}
+ct_mrs <- ct_mrs %>%
+  incremental_refresh_constellation(st1, existing = "delete") %>%
+  incremental_refresh_constellation(st2, existing = "delete")
+```
+
+These operations have only removed the fact data. The first records of the `where` dimension are shown below.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(head(ct_mrs$dimension$where), split.table = Inf)
+```
+
+Once the fact data is removed, we can remove the data for the dimensions that are no longer needed using the following function.
+
+```{r}
+ct_mrs <- ct_mrs %>%
+  purge_dimensions_constellation()
+```
+
+The result in the `where` dimension is shown below.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(head(ct_mrs$dimension$where), split.table = Inf)
+```
+
+The *Boston* data has disappeared and the surrogate keys have been reassigned.
 
 ## Exporting results
 
@@ -749,6 +848,66 @@ ms <- ct_mrs %>%
   constellation_as_multistar()
 ```
 
+### `multistar`
+
+We can obtain a flat table, implemented using a `tibble`, from a `multistar` (which can be the result of a query). If it only has one fact table, it is not necessary to provide its name.
+
+```{r}
+ft <- ms %>%
+  multistar_as_flat_table(name = "mrs_age")
+```
+
+The first rows of the flat table obtained as a result are shown below.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(head(ft), split.table = Inf)
+```
+
+
+## Query functions
+
+We can define queries on data in `multistar` format. Data in this format can be obtained from a star or a constellation.
+
+```{r}
+ms_mrs <- ct_mrs %>%
+  constellation_as_multistar()
+```
+
+The query is created using `dimensional_query` and executed using `run_query.` We can refine it using `select_dimension`, `select_fact` and `filter_dimension` as much as we deem appropriate.
+
+```{r}
+ms <- dimensional_query(ms_mrs) %>%
+  select_dimension(name = "where",
+                   attributes = c("city", "state")) %>%
+  select_dimension(name = "when",
+                   attributes = c("when_happened_year")) %>%
+  select_fact(name = "mrs_age",
+              measures = c("n_deaths")) %>%
+  select_fact(
+    name = "mrs_cause",
+    measures = c("pneumonia_and_influenza_deaths", "other_deaths")
+  ) %>%
+  filter_dimension(name = "when", when_happened_week <= "03") %>%
+  filter_dimension(name = "where", city == "Bridgeport") %>%
+  run_query()
+```
+
+The result of a query is an `multistar` structure. In this way, we can define queries on the result of others. The result can also be transformed into a flat table.
+
+```{r}
+ft <- ms %>%
+  multistar_as_flat_table()
+```
+
+The content of the flat table is shown below.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(head(ft), split.table = Inf)
+```
+
+In the result it can be seen that, as the query has been defined at the year and city level, for a single city, with data available for a single year, there is only one row. Columns `nrow_agg` and `mrs_cause_nrow_agg` show the number of original rows that make up the result row.
+
+From the result in the form of a flat table, [`pivottabler`](https://cran.r-project.org/web/packages/pivottabler) package can be used to present it in the form of a pivot table.
 
 # Transformation operations
 
@@ -762,7 +921,9 @@ Package `starschemar` offers operations to transform flat tables into star schem
 
 1. When new data is obtained, it is necessary to refresh the existing data with them by means of incremental refresh operations (*incremental refresh*).
 
-1. Finally, the results obtained can be exported to be consulted with other tools (*exporting results*).
+1. The results obtained can be exported to be consulted with other tools (*exporting results*).
+
+1. Finally, basic queries can be performed from R  (*query functions*).
 
 
 ## Dimensional modelling
@@ -855,7 +1016,7 @@ attribute_names <-
 st <-
   st_mrs_age %>% rename_dimension_attributes(
     name = "when",
-    names = c("when_happened_week", "when_happened_year"),
+    attributes = c("when_happened_week", "when_happened_year"),
     new_names = c("week", "year")
   )
 ```
@@ -875,7 +1036,7 @@ measure_names <-
 - `rename_measures()`: Set new names of some measures in facts. Example:
 ```{r}
 st <-
-  st_mrs_age %>% rename_measures(names = c("n_deaths"),
+  st_mrs_age %>% rename_measures(measures = c("n_deaths"),
                                  new_names = c("num_deaths"))
 ```
 
@@ -1137,7 +1298,7 @@ ft <- ms_mrs %>%
 
 ## Query functions
 
-There are many multidimensional query tools available. The exported data, once stored in files, can be used directly from them. Using the following functions, you can also perform basic queries from R on data in the `multistar` format, using the following functions:
+There are many multidimensional query tools available. The exported data, once stored in files, can be used directly from them. You can also perform basic queries from R on data in the `multistar` format, using the following functions:
 
 - `dimensional_query()`: An empty `dimensional_query` object is created where you can select fact measures, dimension attributes and filter dimension rows. Example:
 ```{r}
@@ -1188,8 +1349,7 @@ ms <- dimensional_query(ms_mrs) %>%
                    attributes = c("when_happened_year")) %>%
   select_fact(
     name = "mrs_age",
-    measures = c("n_deaths"),
-    agg_functions = c("MAX")
+    measures = c("n_deaths")
   ) %>%
   select_fact(
     name = "mrs_cause",
@@ -1199,7 +1359,6 @@ ms <- dimensional_query(ms_mrs) %>%
   filter_dimension(name = "where", city == "Boston") %>%
   run_query()
 ```
-
 
 # Conclusions
 
