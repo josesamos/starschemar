@@ -907,7 +907,7 @@ pander::pandoc.table(head(ft), split.table = Inf)
 
 In the result it can be seen that, as the query has been defined at the year and city level, for a single city, with data available for a single year, there is only one row. Columns `nrow_agg` and `mrs_cause_nrow_agg` show the number of original rows that make up the result row.
 
-From the result in the form of a flat table, [`pivottabler`](https://cran.r-project.org/web/packages/pivottabler) package can be used to present it in the form of a pivot table.
+From the result in the form of a flat table, [`pivottabler`](https://CRAN.R-project.org/package=pivottabler) package can be used to present it in the form of a pivot table.
 
 # Transformation operations
 

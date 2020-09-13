@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* put the URL of the CRAN packages in canonical form.
+
 ## Test environments
 
 * local Ubuntu 20.04 LTS: R 3.6.3
