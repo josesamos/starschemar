@@ -752,7 +752,7 @@
 #' ms_mrs <- ct_mrs %>%
 #'   constellation_as_multistar()
 #'
-#' @format A `constellation` object.
+#' @format A `multistar` object.
 "ms_mrs"
 
 #' Multistar for Mortality Reporting System Test
@@ -768,7 +768,7 @@
 #' ms_mrs_test <- ct_mrs_test %>%
 #'   constellation_as_multistar()
 #'
-#' @format A `constellation` object.
+#' @format A `multistar` object.
 "ms_mrs_test"
 
 

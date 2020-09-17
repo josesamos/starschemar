@@ -5,7 +5,7 @@
 \alias{ms_mrs_test}
 \title{Multistar for Mortality Reporting System Test}
 \format{
-A \code{constellation} object.
+A \code{multistar} object.
 }
 \usage{
 ms_mrs_test
