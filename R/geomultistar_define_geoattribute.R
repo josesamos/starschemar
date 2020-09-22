@@ -18,6 +18,29 @@
 #' @examples
 #' library(tidyr)
 #'
+#' \dontrun{
+#' gms <- geomultistar(ms = ms_mrs, geodimension = "where") %>%
+#'   define_geoattribute(
+#'     attribute = "city",
+#'     from_layer = usa_cities,
+#'     by = c("city" = "city", "state" = "state")
+#'   ) %>%
+#'   define_geoattribute(attribute = "region",
+#'                       from_attribute = "city",)
+#'
+#' # 1
+#' gms <- gms %>%
+#'   define_geoattribute(attribute = "all_where",
+#'                       from_attribute = "region")
+#' # 2
+#' gms <- gms %>%
+#'   define_geoattribute(attribute = "all_where",
+#'                       from_attribute = "city")
+#' # 3
+#' gms <- gms %>%
+#'   define_geoattribute(attribute = "all_where",
+#'                       from_layer = usa_nation)
+#' }
 #'
 #' @export
 define_geoattribute <- function(gms,
