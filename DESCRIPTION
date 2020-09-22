@@ -38,8 +38,7 @@ Imports:
     pander,
     generics,
     sf,
-    magrittr,
-    units
+    magrittr
 Suggests: 
     testthat,
     knitr,

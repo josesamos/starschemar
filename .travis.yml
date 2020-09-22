@@ -2,3 +2,9 @@
 
 language: R
 cache: packages
+
+# https://stackoverflow.com/questions/54678006/rstudio-and-travis-ci-build-check-do-not-match-libudunits2-so
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
