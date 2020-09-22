@@ -1,5 +1,7 @@
 context("test define_geoattribute")
 
+skip("geometry in tibble")
+
 test_that("define_geoattribute works", {
   gms <- geomultistar(ms = ms_mrs_test, geodimension = "where")
   gms <-
