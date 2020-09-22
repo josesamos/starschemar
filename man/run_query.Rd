@@ -49,6 +49,7 @@ ms <- dimensional_query(ms_mrs) \%>\%
 
 
 Other query functions: 
+\code{\link{define_geoattribute}()},
 \code{\link{dimensional_query}()},
 \code{\link{filter_dimension}()},
 \code{\link{select_dimension}()},

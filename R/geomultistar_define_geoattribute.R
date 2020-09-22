@@ -18,7 +18,6 @@
 #' @examples
 #' library(tidyr)
 #'
-#'
 #' @export
 define_geoattribute <- function(gms,
                                 dimension = NULL,
@@ -59,6 +58,8 @@ define_geoattribute.geomultistar <-
 #'
 #' Define a geoattribute from another.
 #'
+#' @importFrom magrittr %>%
+#' @name %>%
 #' @param gms A `geomultistar` object.
 #' @param dimension A string, dimension name.
 #' @param attribute A string, attribute name.
@@ -77,6 +78,7 @@ define_geoattribute_from_attribute <- function(gms,
   stopifnot(from_attribute_geom_is_defined)
 
   if (attribute == sprintf("all_%s", dimension)) {
+    geom_key <- 0
     gms$geodimension[[dimension]][[attribute]] <-
       as.data.frame(geom) %>%
       dplyr::mutate(geom_key = 0, .before = from_attribute) %>%
@@ -111,6 +113,8 @@ define_geoattribute_from_attribute <- function(gms,
 #'
 #' Define an attribute from a layer.
 #'
+#' @importFrom magrittr %>%
+#' @name %>%
 #' @param gms A `geomultistar` object.
 #' @param dimension A string, dimension name.
 #' @param attribute A string, attribute name.
@@ -129,6 +133,7 @@ define_geoattribute_from_layer <- function(gms,
   if (attribute == sprintf("all_%s", dimension)) {
     geometry_level_all_length_is_1 <- (length(from_layer[[1]]) == 1)
     stopifnot(geometry_level_all_length_is_1)
+    geom_key <- 0
     gms$geodimension[[dimension]][[attribute]] <-
       tibble::tibble(geom_key = 0,
                      geometry = sf::st_geometry(from_layer)) %>%

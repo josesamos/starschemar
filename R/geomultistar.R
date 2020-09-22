@@ -3,6 +3,9 @@
 #' Internal low-level constructor that creates new objects with the correct
 #' structure.
 #'
+#' @param ms A `multistar` structure.
+#' @param geodimension A vector of dimension names.
+#'
 #' @return A `geomultistar` object.
 #'
 #' @keywords internal
@@ -45,6 +48,8 @@ new_geomultistar <-
 #'
 #' An `geomultistar` object is created. Dimensions that contain geographic
 #' information are indicated.
+#'
+#' @inheritParams new_geomultistar
 #'
 #' @return A `geomultistar` object.
 #'

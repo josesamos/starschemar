@@ -37,7 +37,8 @@ Imports:
     stats,
     pander,
     generics,
-    sf
+    sf,
+    magrittr
 Suggests: 
     testthat,
     knitr,
