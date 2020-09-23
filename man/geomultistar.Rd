@@ -28,3 +28,11 @@ ms_mrs <- ct_mrs \%>\%
 gms <- geomultistar(ms = ms_mrs, geodimension = "where")
 
 }
+\seealso{
+
+
+Other geo functions: 
+\code{\link{define_geoattribute}()},
+\code{\link{get_empty_geoinstances}()}
+}
+\concept{geo functions}

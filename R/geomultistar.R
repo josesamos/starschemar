@@ -53,6 +53,9 @@ new_geomultistar <-
 #'
 #' @return A `geomultistar` object.
 #'
+#' @family geo functions
+#' @seealso
+#'
 #' @examples
 #' library(tidyr)
 #' library(starschemar)

@@ -3,7 +3,7 @@
 \name{define_geoattribute}
 \alias{define_geoattribute}
 \alias{define_geoattribute.geomultistar}
-\title{Define geometric attribute}
+\title{Define geographic attribute}
 \usage{
 define_geoattribute(
   gms,
@@ -41,12 +41,21 @@ define_geoattribute(
 A \code{geomultistar} object.
 }
 \description{
-Define geometric attribute
+Associates the instances of an attribute of the geographic dimension with the
+instances of a geographic layer or defines it from the geometry of another
+previously defined geographic attribute.
+}
+\details{
+If defined from a layer, additionally the attributes used for the join
+between the tables must be indicated.
+
+If defined from another attribute, it should have a finer granularity, to
+obtain the result by grouping its instances.
 }
 \examples{
 library(tidyr)
+library(sf) # It has to be included even if it is not used directly.
 
-\dontrun{
 gms <- geomultistar(ms = ms_mrs, geodimension = "where") \%>\%
   define_geoattribute(
     attribute = "city",
@@ -54,7 +63,7 @@ gms <- geomultistar(ms = ms_mrs, geodimension = "where") \%>\%
     by = c("city" = "city", "state" = "state")
   ) \%>\%
   define_geoattribute(attribute = "region",
-                      from_attribute = "city",)
+                      from_attribute = "city")
 
 # 1
 gms <- gms \%>\%
@@ -68,17 +77,14 @@ gms <- gms \%>\%
 gms <- gms \%>\%
   define_geoattribute(attribute = "all_where",
                       from_layer = usa_nation)
-}
+
 
 }
 \seealso{
 
 
-Other query functions: 
-\code{\link{dimensional_query}()},
-\code{\link{filter_dimension}()},
-\code{\link{run_query}()},
-\code{\link{select_dimension}()},
-\code{\link{select_fact}()}
+Other geo functions: 
+\code{\link{geomultistar}()},
+\code{\link{get_empty_geoinstances}()}
 }
-\concept{query functions}
+\concept{geo functions}

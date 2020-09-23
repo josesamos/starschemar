@@ -29,7 +29,6 @@ dq <- dimensional_query(ms_mrs)
 
 
 Other query functions: 
-\code{\link{define_geoattribute}()},
 \code{\link{filter_dimension}()},
 \code{\link{run_query}()},
 \code{\link{select_dimension}()},

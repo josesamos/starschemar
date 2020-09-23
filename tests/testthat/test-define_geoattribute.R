@@ -1,6 +1,7 @@
 context("test define_geoattribute")
 
-skip("geometry in tibble")
+#skip("geometry in tibble error")
+library(sf) # It has to be included even if it is not used directly.
 
 test_that("define_geoattribute works", {
   gms <- geomultistar(ms = ms_mrs_test, geodimension = "where")

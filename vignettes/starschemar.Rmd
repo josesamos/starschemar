@@ -1368,18 +1368,21 @@ Cleaning and conforming data operations can be defined on the star schemas and f
 
 Operations have been designed to be intuitive and easy to use. The result greatly facilitates the data transformation process for the exposed situation.
 
-```{r}
-gms <- geomultistar(ms = ms_mrs, geodimension = "where") 
-# %>%
-#   define_geoattribute(
-#     attribute = "city",
-#     from_layer = usa_cities,
-#     by = c("city" = "city", "state" = "state")
-#   ) %>%
-#   define_geoattribute(attribute = "region",
-#                       from_attribute = "city",)
-```
 
+
+```{r }
+library(sf) # It has to be included even if it is not used directly.
+
+gms <- geomultistar(ms = ms_mrs, geodimension = "where") %>%
+  define_geoattribute(
+    attribute = "city",
+    from_layer = usa_cities,
+    by = c("city" = "city", "state" = "state")
+  ) %>%
+  define_geoattribute(attribute = "region",
+                      from_attribute = "city")
+
+```
 
 
 # References
