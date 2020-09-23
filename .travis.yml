@@ -3,6 +3,7 @@
 language: R
 cache: packages
 
+# http://r-sig-geo.2731867.n2.nabble.com/rgdal-travis-error-configure-error-gdal-config-not-found-or-not-executable-td7593439.html
 # https://github.com/edzer/sf_dep/blob/master/.travis.yml
 sudo: required
 # dist: trusty
