@@ -5,7 +5,7 @@ cache: packages
 
 # https://github.com/edzer/sf_dep/blob/master/.travis.yml
 sudo: required
-dist: trusty
+# dist: trusty
 
 before_install:
   - sudo add-apt-repository ppa:ubuntugis/ppa --yes
