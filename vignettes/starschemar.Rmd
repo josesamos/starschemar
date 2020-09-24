@@ -854,7 +854,7 @@ We can obtain a flat table, implemented using a `tibble`, from a `multistar` (wh
 
 ```{r}
 ft <- ms %>%
-  multistar_as_flat_table(name = "mrs_age")
+  multistar_as_flat_table(fact = "mrs_age")
 ```
 
 The first rows of the flat table obtained as a result are shown below.
@@ -1292,7 +1292,7 @@ tl <- ct_mrs %>%
 - `multistar_as_flat_table()`: We can obtain a flat table, implemented using a `tibble`, from a `multistar` (which can be the result of a query). If it only has one fact table, it is not necessary to provide its name. Example:
 ```{r}
 ft <- ms_mrs %>%
-  multistar_as_flat_table(name = "mrs_age")
+  multistar_as_flat_table(fact = "mrs_age")
 ```
 
 

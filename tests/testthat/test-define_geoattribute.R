@@ -1,6 +1,6 @@
 context("test define_geoattribute")
 
-#skip("geometry in tibble error")
+# skip("geometry in tibble error")
 library(sf) # It has to be included even if it is not used directly.
 
 test_that("define_geoattribute works", {
@@ -137,7 +137,7 @@ test_that("define_geoattribute works", {
     gms$geodimension$where$all_where,
     structure(
       list(
-        geom_key = 0,
+        all_where = 0,
         geometry = structure(
           list(structure(
             c(-73.2048348,
@@ -166,7 +166,7 @@ test_that("define_geoattribute works", {
       class = c("sf", "tbl_df", "tbl", "data.frame"),
       sf_column = "geometry",
       agr = structure(
-        c(geom_key = NA_integer_),
+        c(all_where = NA_integer_),
         class = "factor",
         .Label = c("constant",
                    "aggregate", "identity")

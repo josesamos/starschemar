@@ -53,7 +53,7 @@ run_query.dimensional_query <- function(dq, unify_by_grain = TRUE) {
   if (unify_by_grain) {
     dq <- unify_facts_by_grain (dq)
   }
-  class(dq$output) <- class(dq$input)
+  class(dq$output) <- class(dq$input)[1]
   dq$output
 }
 
@@ -259,4 +259,3 @@ unify_facts_by_grain <- function(dq) {
   dq$output$fact <- fact
   dq
 }
-

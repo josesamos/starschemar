@@ -41,9 +41,10 @@ define_geoattribute(
 A \code{geomultistar} object.
 }
 \description{
-Associates the instances of an attribute of the geographic dimension with the
-instances of a geographic layer or defines it from the geometry of another
-previously defined geographic attribute.
+Defines a geographic attribute in two possible ways: Associates the instances
+of an attribute of the geographic dimension with the instances of a
+geographic layer or defines it from the geometry of another previously
+defined geographic attribute.
 }
 \details{
 If defined from a layer, additionally the attributes used for the join
@@ -85,6 +86,7 @@ gms <- gms \%>\%
 
 Other geo functions: 
 \code{\link{geomultistar}()},
-\code{\link{get_empty_geoinstances}()}
+\code{\link{get_empty_geoinstances}()},
+\code{\link{run_geoquery}()}
 }
 \concept{geo functions}

@@ -1,23 +1,10 @@
 # starschemar 1.1.0.9000
-* Errata in data type in help.
-ft_london_boroughs
-ft_usa_states
-ft_usa_city_county_mrs
-ms_where
-usa_cities
-usa_counties
-usa_states
-usa_divisions
-usa_regions
-usa_nation
-uk_london_boroughs
-
-new_geomultistar
-geomultistar
-define_geoattribute
-define_geoattribute_from_attribute
-define_geoattribute_from_layer
-
+* New functions to define geographic dimensions: [geomultistar()], [define_geoattribute()] and [get_empty_geoinstances()].
+* New function to run a query based on geographic data: [run_geoquery()].
+* Data sets to enrich dimensions: [ft_london_boroughs], [ft_usa_states] and [ft_usa_city_county_mrs].
+* `multistar` data set with enriched *where* dimension: [ms_where].
+* Geographical data. USA vector layers: [usa_cities], [usa_counties], [usa_states], [usa_divisions], [usa_regions] adn [usa_nation].
+* Geographical data. London boroughs vector layer: [uk_london_boroughs].
 
 # starschemar 1.1.0
 * New dimension enrichment features: [enrich_dimension_export()] and [enrich_dimension_import()].

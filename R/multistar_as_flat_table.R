@@ -1,12 +1,12 @@
 
-#' Export a multistar as a flat table
+#' Export a `multistar` as a flat table
 #'
 #' We can obtain a flat table, implemented using a `tibble`, from a `multistar`
 #' (which can be the result of a query). If it only has one fact table, it is
 #' not necessary to provide its name.
 #'
 #' @param ms A `multistar` object.
-#' @param name A string, name of the fact.
+#' @param fact A string, name of the fact.
 #'
 #' @return A `tibble`.
 #'
@@ -17,7 +17,7 @@
 #' library(tidyr)
 #'
 #' ft <- ms_mrs %>%
-#'   multistar_as_flat_table(name = "mrs_age")
+#'   multistar_as_flat_table(fact = "mrs_age")
 #'
 #' ms <- dimensional_query(ms_mrs) %>%
 #'   select_dimension(name = "where",
@@ -38,20 +38,20 @@
 #'   multistar_as_flat_table()
 #'
 #' @export
-multistar_as_flat_table <- function(ms, name = NULL) {
+multistar_as_flat_table <- function(ms, fact = NULL) {
   UseMethod("multistar_as_flat_table")
 }
 
 
 #' @rdname multistar_as_flat_table
 #' @export
-multistar_as_flat_table.multistar <- function(ms, name = NULL) {
+multistar_as_flat_table.multistar <- function(ms, fact = NULL) {
   if (length(ms$fact) == 1) {
     ft <- ms$fact[[1]]
   } else {
-    stopifnot(!is.null(name))
-    stopifnot(name %in% names(ms$fact))
-    ft <- ms$fact[[name]]
+    stopifnot(!is.null(fact))
+    stopifnot(fact %in% names(ms$fact))
+    ft <- ms$fact[[fact]]
   }
   ft_fk <- attr(ft, "foreign_keys")
   for (d in names(ms$dimension)) {

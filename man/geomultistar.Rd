@@ -33,6 +33,7 @@ gms <- geomultistar(ms = ms_mrs, geodimension = "where")
 
 Other geo functions: 
 \code{\link{define_geoattribute}()},
-\code{\link{get_empty_geoinstances}()}
+\code{\link{get_empty_geoinstances}()},
+\code{\link{run_geoquery}()}
 }
 \concept{geo functions}

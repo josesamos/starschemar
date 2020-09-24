@@ -2,7 +2,7 @@ context("test multistar_as_flat_table")
 
 test_that("multistar_as_flat_table works", {
   ft <- ms_mrs_test %>%
-    multistar_as_flat_table(name = "mrs_age")
+    multistar_as_flat_table(fact = "mrs_age")
 
   expect_equal(
     names(ft),
