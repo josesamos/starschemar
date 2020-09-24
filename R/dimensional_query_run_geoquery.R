@@ -172,9 +172,14 @@ filter_geodimension <- function(dq) {
   for (dimension in sel_geodimensions) {
     for (attribute in dq$dimension[[dimension]][-1]) {
       if (!is.null(dq$input$geodimension[[dimension]][[attribute]])) {
-        sel <- dq$input$geodimension[[dimension]][[attribute]][[1]] %in% dq$key[[dimension]]
-        dq$output$geodimension[[dimension]][[attribute]] <-
-          dq$input$geodimension[[dimension]][[attribute]][sel, ]
+        if (!is.null(dq$key[[dimension]])) {
+          sel <- dq$input$geodimension[[dimension]][[attribute]][[1]] %in% dq$key[[dimension]]
+          dq$output$geodimension[[dimension]][[attribute]] <-
+            dq$input$geodimension[[dimension]][[attribute]][sel, ]
+        } else {
+          dq$output$geodimension[[dimension]][[attribute]] <-
+            dq$input$geodimension[[dimension]][[attribute]]
+        }
       }
     }
   }
