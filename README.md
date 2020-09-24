@@ -25,8 +25,7 @@ Frequently, the operations to be performed aim to transform a flat table
 (with data that comes from operational systems) into a star schema
 (which implements a multidimensional system). With the tools mentioned
 above, this transformation can be carried out, but it requires a lot of
-work. I am not aware of any tools with operations designed to
-specifically support this transformation process.
+work. 
 
 The goal of `starschemar` is to define transformations that allow you to
 easily obtain star schemas from flat tables. In addition, it includes

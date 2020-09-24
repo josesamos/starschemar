@@ -27,7 +27,7 @@ The *multidimensional data model* was defined in the 1990s with the aim of suppo
 
 Transformations can be carried out using professional ETL (extract, transform and load) tools. Recently, tools aimed at end users have emerged, which are also aimed at performing transformation operations. All these tools are very useful to carry out the transformation process, they provide a development environment to define the transformation operations in a general way.
 
-Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process. 
+Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. 
 
 This is the main objective of `starschemar` package: Define **transformations that allow obtaining star schemas from flat tables** easily. In addition, it includes basic data cleaning operations, incremental data refresh operations and query operations, adapted to this context.
 
