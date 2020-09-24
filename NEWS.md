@@ -1,6 +1,6 @@
 # starschemar 1.1.0.9000
 * New functions to define geographic dimensions: [geomultistar()], [define_geoattribute()] and [get_empty_geoinstances()].
-* New function to run a query based on geographic data: [run_geoquery()].
+* New function to run a query that includes geographic data: [run_geoquery()].
 * Data sets to enrich dimensions: [ft_london_boroughs], [ft_usa_states] and [ft_usa_city_county_mrs].
 * `multistar` data set with enriched *where* dimension: [ms_where].
 * Geographical data. USA vector layers: [usa_cities], [usa_counties], [usa_states], [usa_divisions], [usa_regions] adn [usa_nation].
