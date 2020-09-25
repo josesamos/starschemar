@@ -3,20 +3,3 @@
 language: R
 cache: packages
 
-# http://r-sig-geo.2731867.n2.nabble.com/rgdal-travis-error-configure-error-gdal-config-not-found-or-not-executable-td7593439.html
-# https://github.com/edzer/sf_dep/blob/master/.travis.yml
-sudo: required
-# dist: trusty
-
-before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ppa --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-
-warnings_are_errors: true
-
-# https://stackoverflow.com/questions/54678006/rstudio-and-travis-ci-build-check-do-not-match-libudunits2-so
-addons:
-  apt:
-    packages:
-      - libudunits2-dev

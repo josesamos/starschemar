@@ -36,9 +36,7 @@ Imports:
     rlang,
     stats,
     pander,
-    generics,
-    sf,
-    magrittr
+    generics
 Suggests: 
     testthat,
     knitr,
