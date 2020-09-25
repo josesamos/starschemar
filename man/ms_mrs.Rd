@@ -12,7 +12,7 @@ ms_mrs
 }
 \description{
 Multistar for the Mortality Reporting System considering age and cause
-classification.
+classification. It is the result obtained in the vignette.
 }
 \examples{
 # Defined by:

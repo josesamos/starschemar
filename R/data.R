@@ -742,7 +742,7 @@
 #' Multistar for Mortality Reporting System
 #'
 #' Multistar for the Mortality Reporting System considering age and cause
-#' classification.
+#' classification. It is the result obtained in the vignette.
 #'
 #' @examples
 #' # Defined by:
@@ -810,7 +810,8 @@
 
 #' USA City and County
 #'
-#' City, state and county for US cities.
+#' City, state and county for US cities. It only includes those that appear in
+#' the Mortality Reporting System.
 #'
 #' @format A `tibble`.
 #' @source \url{https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html}

@@ -14,6 +14,7 @@ A \code{tibble}.
 ft_usa_city_county
 }
 \description{
-City, state and county for US cities.
+City, state and county for US cities. It only includes those that appear in
+the Mortality Reporting System.
 }
 \keyword{datasets}

@@ -4,7 +4,7 @@ citEntry(entry = "Manual",
   title        = "{starschemar}: Obtaining Star Schemas from Flat Tables",
   author       = personList(as.person("Jose Samos")),
   year         = "2020",
-  note         = "R package version 1.0.0",
+  note         = "R package version 1.2.0",
   url          = "https://CRAN.R-project.org/package=starschemar",
 
   textVersion  =
