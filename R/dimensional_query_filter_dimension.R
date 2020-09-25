@@ -21,7 +21,7 @@
 #' library(tidyr)
 #'
 #' dq <- dimensional_query(ms_mrs) %>%
-#'   filter_dimension(name = "when", week <= "03") %>%
+#'   filter_dimension(name = "when", when_happened_week <= "03") %>%
 #'   filter_dimension(name = "where", city == "Boston")
 #'
 #' @export

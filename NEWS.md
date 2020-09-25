@@ -1,5 +1,8 @@
 # starschemar 1.1.0.9000
-* Data sets to enrich dimensions: [ft_london_boroughs], [ft_usa_states] and [ft_usa_city_county_mrs].
+* New data sets to enrich dimensions: [ft_london_boroughs], [ft_usa_states] and [ft_usa_city_county].
+* The data set [ms_mrs] has been defined according to the result obtained in the vignette.
+* New function to get missing instances to enrich a dimension: [enrich_dimension_import_test()].
+* New functions to get star schema names and a star schema in a constellation: [get_star_schema_names] and [get_star_schema].
 * Improve the structure and content of the vignette.
 
 # starschemar 1.1.0

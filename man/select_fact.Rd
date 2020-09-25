@@ -40,13 +40,13 @@ library(tidyr)
 dq <- dimensional_query(ms_mrs) \%>\%
   select_fact(
     name = "mrs_age",
-    measures = c("deaths"),
+    measures = c("n_deaths"),
     agg_functions = c("MAX")
   )
 
 dq <- dimensional_query(ms_mrs) \%>\%
   select_fact(name = "mrs_age",
-             measures = c("deaths"))
+             measures = c("n_deaths"))
 
 dq <- dimensional_query(ms_mrs) \%>\%
   select_fact(name = "mrs_age")

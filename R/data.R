@@ -808,13 +808,13 @@
 "ft_usa_states"
 
 
-#' USA City and County MRS
+#' USA City and County
 #'
-#' City and county for cities considered in the Mortality Reporting System.
+#' City, state and county for US cities.
 #'
 #' @format A `tibble`.
 #' @source \url{https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html}
-"ft_usa_city_county_mrs"
+"ft_usa_city_county"
 
 
 

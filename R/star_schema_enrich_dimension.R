@@ -101,7 +101,7 @@ enrich_dimension_import.star_schema <-
                                             tb,
                                             by = intersect(names(st$dimension[[name]]),
                                                            names(tb)))
-    stopifnot(length_dimension == length(enriched_dimension[[1]]))
+    stopifnot(length_dimension == length(unique(enriched_dimension[[1]])))
     names_dimension <- names(st$dimension[[name]])
     names_new <- setdiff(names(enriched_dimension), names_dimension)
     st$dimension[[name]] <- enriched_dimension[, c(names_dimension, names_new)]
@@ -115,4 +115,58 @@ enrich_dimension_import.star_schema <-
       }
     }
     st
+  }
+
+
+#' Import `tibble` to test to enrich a dimension
+#'
+#' For a dimension of a star schema a `tibble` is attached. This contains
+#' dimension attributes and new attributes. If values associated with all rows
+#' in the dimension are included in the `tibble`, the dimension is enriched with
+#' the new attributes. This function checks that there are values for all
+#' instances. Returns the dimension instances that do not match the imported
+#' data.
+#'
+#' @param st A `star_schema` object.
+#' @param name A string, name of the dimension.
+#' @param tb A `tibble` object.
+#'
+#' @return A `dimension` object.
+#'
+#' @family dimension enrichment functions
+#' @seealso
+#'
+#' @examples
+#' library(tidyr)
+#'
+#' tb <-
+#'   enrich_dimension_export(st_mrs_age,
+#'                           name = "when_common",
+#'                           attributes = c("week", "year"))
+#'
+#' # Add new columns with meaningful data (these are not), possibly exporting
+#' # data to a file, populating it and importing it.
+#' tb <- tibble::add_column(tb, x = "x", y = "y", z = "z")[-1, ]
+#'
+#' tb2 <- enrich_dimension_import_test(st_mrs_age, name = "when_common", tb)
+#'
+#' @export
+enrich_dimension_import_test <- function(st, name = NULL, tb) {
+  UseMethod("enrich_dimension_import_test")
+}
+
+
+#' @rdname enrich_dimension_import_test
+#' @export
+enrich_dimension_import_test.star_schema <-
+  function(st, name = NULL, tb) {
+    stopifnot(!is.null(name))
+    stopifnot(name %in% names(st$dimension))
+    length_dimension <- length(st$dimension[[name]][[1]])
+    stopifnot(length_dimension > 0)
+    enriched_dimension <- dplyr::inner_join(st$dimension[[name]],
+                                            tb,
+                                            by = intersect(names(st$dimension[[name]]),
+                                                           names(tb)))
+    st$dimension[[name]][!(st$dimension[[name]][[1]] %in% enriched_dimension[[1]]), ]
   }

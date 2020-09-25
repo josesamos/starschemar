@@ -40,6 +40,7 @@ tb <-
 
 
 Other dimension enrichment functions: 
+\code{\link{enrich_dimension_import_test}()},
 \code{\link{enrich_dimension_import}()}
 }
 \concept{dimension enrichment functions}
