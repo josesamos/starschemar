@@ -1,3 +1,6 @@
+# starschemar 1.2.0.9000
+
+
 # starschemar 1.2.0
 * New data sets to enrich dimensions: [ft_london_boroughs], [ft_usa_states] and [ft_usa_city_county].
 * The data set [ms_mrs] has been defined according to the result obtained in the vignette, so it can be used by other packages.
