@@ -49,8 +49,8 @@ test_that("multistar_as_flat_table works", {
       "state",
       "deaths",
       "nrow_agg",
-      "pneumonia_and_influenza_deaths",
-      "other_deaths",
+      "mrs_cause_pneumonia_and_influenza_deaths",
+      "mrs_cause_other_deaths",
       "mrs_cause_nrow_agg"
     )
   )

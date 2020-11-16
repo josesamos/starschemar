@@ -4,7 +4,7 @@
 \alias{new_multistar}
 \title{\code{multistar} S3 class}
 \usage{
-new_multistar(fl = list(), dl = list)
+new_multistar(fl = list(), dl = list())
 }
 \arguments{
 \item{fl}{A \code{fact_table} list.}

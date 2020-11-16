@@ -2,7 +2,7 @@
 % Please edit documentation in R/dimensional_query.R
 \name{new_dimensional_query}
 \alias{new_dimensional_query}
-\title{dimensional_query S3 class}
+\title{\code{dimensional_query} S3 class}
 \usage{
 new_dimensional_query(ms = NULL)
 }
