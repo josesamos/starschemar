@@ -1,4 +1,4 @@
-#' dimensional_query S3 class
+#' `dimensional_query` S3 class
 #'
 #' Internal low-level constructor that creates new objects with the correct
 #' structure.

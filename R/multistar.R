@@ -12,7 +12,7 @@
 #' @return A `multistar` object.
 #' @keywords internal
 new_multistar <-
-  function(fl = list(), dl = list) {
+  function(fl = list(), dl = list()) {
     star <-
       list(
         fact = vector("list", length = length(fl)),
