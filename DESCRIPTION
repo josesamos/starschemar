@@ -2,45 +2,43 @@ Package: starschemar
 Title: Obtaining Star Schemas from Flat Tables
 Version: 1.2.0.9000
 Authors@R: 
-    person(given = "Jose",
-           family = "Samos",
-           role = c("aut", "cre", "cph"),
-           email = "jsamos@ugr.es",
+    person("Jose", "Samos", , "jsamos@ugr.es", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-4457-3439"))
-Description: Data in multidimensional systems is obtained from 
-    operational systems and is transformed to adapt it to the new 
-    structure. Frequently, the operations to be performed aim to 
-    transform a flat table into a star schema. Transformations can 
-    be carried out using professional ETL (extract, transform and 
-    load) tools or tools intended for data transformation for end 
-    users. With the tools mentioned, this transformation can be 
-    carried out, but it requires a lot of work. The main objective 
-    this package is to define transformations that allow obtaining 
-    star schemas from flat tables easily. In addition, it includes 
-    basic data cleaning, dimension enrichment, incremental data 
+Description: Data in multidimensional systems is obtained from operational
+    systems and is transformed to adapt it to the new structure.
+    Frequently, the operations to be performed aim to transform a flat
+    table into a star schema. Transformations can be carried out using
+    professional ETL (extract, transform and load) tools or tools intended
+    for data transformation for end users. With the tools mentioned, this
+    transformation can be carried out, but it requires a lot of work. The
+    main objective this package is to define transformations that allow
+    obtaining star schemas from flat tables easily. In addition, it
+    includes basic data cleaning, dimension enrichment, incremental data
     refresh and query operations, adapted to this context.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    generics,
+    methods,
+    purrr,
+    rlang,
+    snakecase,
+    stats,
+    tibble,
+    tidyr
+Suggests: 
+    knitr,
+    pander,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-Imports: 
-    dplyr,
-    readr,
-    tibble,
-    tidyr,
-    tidyselect,
-    snakecase,
-    purrr,
-    rlang,
-    stats,
-    pander,
-    generics
-Suggests: 
-    testthat,
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
-Depends: 
-    R (>= 2.10)
+RoxygenNote: 7.2.3
+URL: https://github.com/josesamos/starschemar
+BugReports: https://github.com/josesamos/starschemar/issues
