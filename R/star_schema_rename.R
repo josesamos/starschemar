@@ -9,7 +9,6 @@
 #' @return A vector of measure names.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -42,7 +41,6 @@ get_measure_names.star_schema <- function(st) {
 #' @return A `star_schema` object.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -87,7 +85,6 @@ rename_measures.star_schema <- function(st, measures, new_names) {
 #' @return A vector of attribute names.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -122,7 +119,6 @@ get_dimension_attribute_names.star_schema <- function(st, name) {
 #' @return A `star_schema` object.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -166,7 +162,6 @@ rename_dimension_attributes.star_schema <-
 #' @return A `star_schema` object.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -201,7 +196,6 @@ rename_fact.star_schema <- function(st, name) {
 #' @return A `star_schema` object.
 #'
 #' @family rename functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

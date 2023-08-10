@@ -8,7 +8,6 @@
 A \code{tibble}.
 }
 \source{
-\url{https://data.london.gov.uk/dataset/london-borough-profiles} and
 \url{https://en.wikipedia.org/wiki/List_of_sub-regions_used_in_the_London_Plan}
 }
 \usage{

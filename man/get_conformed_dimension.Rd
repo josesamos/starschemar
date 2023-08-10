@@ -28,8 +28,6 @@ d <- ct_mrs \%>\%
 
 }
 \seealso{
-
-
 Other data cleaning functions: 
 \code{\link{get_conformed_dimension_names}()},
 \code{\link{get_dimension_names}()},

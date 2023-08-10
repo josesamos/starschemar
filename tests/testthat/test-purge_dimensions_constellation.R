@@ -23,8 +23,8 @@ test_that("purge_dimensions_constellation works", {
         city = c("Bridgeport", "Tacoma")
       ),
       row.names = 1:2,
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "where",
       type = "conformed"
     )

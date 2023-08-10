@@ -167,8 +167,8 @@ test_that("update_facts_with_dimensions works", {
         )
       ),
       row.names = c(NA, 24L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "mrs_age",
       foreign_keys = c("who_key",
                        "where_key", "when_available_key", "when_key"),
@@ -201,8 +201,8 @@ test_that("update_facts_with_dimensions works", {
                      1L, 2L, 2L, 2L, 3L, 3L, 3L, 3L)
       ),
       row.names = c(NA, 10L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "mrs_age",
       foreign_keys = c("who_key",
                        "where_key"),

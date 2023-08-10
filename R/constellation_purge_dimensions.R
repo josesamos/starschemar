@@ -8,7 +8,6 @@
 #' @return A `constellation` object.
 #'
 #' @family incremental refresh functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

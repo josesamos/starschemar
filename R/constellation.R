@@ -12,7 +12,7 @@
 new_constellation <-
   function(lst = list(), name = NULL) {
 
-    if (class(lst) == "star_schema") {
+    if (methods::is(lst, "star_schema")) {
       lst <- list(lst)
       names(lst[[1]]) <- names(lst[[1]]$fact)
     } else {
@@ -47,7 +47,6 @@ new_constellation <-
 #' @return A `constellation` object.
 #'
 #' @family star schema and constellation definition functions
-#' @seealso
 #'
 #' @examples
 #'

@@ -31,7 +31,6 @@
 #' @return A `dimensional_model` object.
 #'
 #' @family star definition functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

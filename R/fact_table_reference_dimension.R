@@ -43,6 +43,6 @@ reference_dimension.fact_table <-
       ft <- dplyr::relocate(tibble::as_tibble(ft), tidyr::last_col())
     }
     # restore the object class
-    class(ft) <-  unique(append(class(ft), "fact_table"))
+    class(ft) <-  unique(c("fact_table", class(ft)))
     ft
   }

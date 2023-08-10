@@ -11,7 +11,6 @@
 #' @return A list of `tibble` objects.
 #'
 #' @family results export functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

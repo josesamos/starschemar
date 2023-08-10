@@ -46,8 +46,6 @@ st <- enrich_dimension_import(st_mrs_age, name = "when_common", tb)
 
 }
 \seealso{
-
-
 Other dimension enrichment functions: 
 \code{\link{enrich_dimension_export}()},
 \code{\link{enrich_dimension_import_test}()}

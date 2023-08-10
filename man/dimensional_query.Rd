@@ -26,8 +26,6 @@ dq <- dimensional_query(ms_mrs)
 
 }
 \seealso{
-
-
 Other query functions: 
 \code{\link{filter_dimension}()},
 \code{\link{run_query}()},

@@ -39,8 +39,6 @@ st2 <- st_mrs_age \%>\%
 
 }
 \seealso{
-
-
 Other incremental refresh functions: 
 \code{\link{get_star_schema_names}()},
 \code{\link{get_star_schema}()},

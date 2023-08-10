@@ -31,7 +31,6 @@ new_dimensional_query <- function(ms = NULL) {
 #' @return A `dimensional_query` object.
 #'
 #' @family query functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

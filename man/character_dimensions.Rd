@@ -52,8 +52,6 @@ st <- star_schema(mrs_age_test, dm_mrs_age) \%>\%
 
 }
 \seealso{
-
-
 Other star schema and constellation definition functions: 
 \code{\link{constellation}()},
 \code{\link{role_playing_dimension}()},

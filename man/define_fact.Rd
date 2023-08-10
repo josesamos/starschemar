@@ -99,8 +99,6 @@ dm <- dimensional_model() \%>\%
 
 }
 \seealso{
-
-
 Other star definition functions: 
 \code{\link{define_dimension}()},
 \code{\link{dimensional_model}()}

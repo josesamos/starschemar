@@ -9,7 +9,6 @@
 #' @return A `tibble`.
 #'
 #' @family results export functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

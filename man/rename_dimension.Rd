@@ -30,8 +30,6 @@ st <- st_mrs_age \%>\%
 
 }
 \seealso{
-
-
 Other rename functions: 
 \code{\link{get_dimension_attribute_names}()},
 \code{\link{get_measure_names}()},

@@ -27,7 +27,6 @@ new_record_update_set <- function() {
 #' @return A `record_update_set` object.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #'

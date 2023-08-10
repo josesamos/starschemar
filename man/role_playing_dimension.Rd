@@ -51,8 +51,6 @@ st <- star_schema(mrs_cause, dm_mrs_cause) \%>\%
 
 }
 \seealso{
-
-
 Other star schema and constellation definition functions: 
 \code{\link{character_dimensions}()},
 \code{\link{constellation}()},

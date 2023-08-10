@@ -18,7 +18,7 @@ test_that("union_of_dimensions works", {
                  ),
                  row.names = c(NA,
                                5L),
-                 class = c("tbl_df", "tbl", "data.frame", "dimension_table"),
+                 class = c("dimension_table", "tbl_df", "tbl", "data.frame"),
                  name = "test",
                  type = "role_playing"
                ))

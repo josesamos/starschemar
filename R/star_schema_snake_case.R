@@ -11,7 +11,6 @@
 #' @return A `star_schema` object.
 #'
 #' @family star schema and constellation definition functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

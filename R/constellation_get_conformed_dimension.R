@@ -12,7 +12,6 @@
 #' @return A `dimension_table` object.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -49,7 +48,6 @@ get_conformed_dimension.constellation <- function(ct, name) {
 #' @return A vector of dimension names.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

@@ -38,7 +38,8 @@ test_that("run_query works", {
         week = c("01", "02", "03")
       ),
       row.names = c(NA,-3L),
-      class = c("tbl_df", "tbl", "data.frame", "dimension_table"),
+      class = c("tbl_df",
+                "tbl", "data.frame", "dimension_table"),
       name = "when",
       type = "conformed"
     )
@@ -58,8 +59,8 @@ test_that("run_query works", {
                                1L)
       ),
       row.names = c(NA,-2L),
-      class = c("tbl_df", "tbl",
-                "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df", "tbl", "data.frame"
+      ),
       name = "mrs_age",
       foreign_keys = c("when_key",
                        "where_key"),
@@ -109,8 +110,8 @@ test_that("run_query works", {
         nrow_agg = 3:4
       ),
       row.names = 1:2,
-      class = c("tbl_df",
-                "tbl", "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df", "tbl", "data.frame"
+      ),
       name = "mrs_age",
       foreign_keys = c("when_key",
                        "where_key"),
@@ -128,8 +129,8 @@ test_that("run_query works", {
         nrow_agg = c(1L, 1L)
       ),
       row.names = 1:2,
-      class = c("tbl_df",
-                "tbl", "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df", "tbl", "data.frame"
+      ),
       name = "mrs_cause",
       foreign_keys = c("when_key",
                        "where_key"),

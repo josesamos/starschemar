@@ -28,8 +28,6 @@ attribute_names <-
 
 }
 \seealso{
-
-
 Other rename functions: 
 \code{\link{get_measure_names}()},
 \code{\link{rename_dimension_attributes}()},

@@ -31,7 +31,7 @@ new_fact_table <-
 
     structure(
       ft,
-      class = unique(append(class(ft), "fact_table")),
+      class = unique(c("fact_table", class(ft))),
       name = name,
       foreign_keys = fk,
       measures = measures,

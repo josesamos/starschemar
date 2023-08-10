@@ -5,8 +5,9 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/josesamos/starschemar.svg?branch=master)](https://travis-ci.com/josesamos/starschemar)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/starschemar)](https://CRAN.R-project.org/package=starschemar)
+[![R-CMD-check](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The *multidimensional data model* was defined in the 1990s with the aim
@@ -25,7 +26,8 @@ Frequently, the operations to be performed aim to transform a flat table
 (with data that comes from operational systems) into a star schema
 (which implements a multidimensional system). With the tools mentioned
 above, this transformation can be carried out, but it requires a lot of
-work. 
+work. I am not aware of any tools with operations designed to
+specifically support this transformation process.
 
 The goal of `starschemar` is to define transformations that allow you to
 easily obtain star schemas from flat tables. In addition, it includes
@@ -57,7 +59,7 @@ data set in the form of a flat table, the first rows of which are shown
 below.
 
 | Year | WEEK | Week Ending Date | REGION | State |    City    | Pneumonia and Influenza Deaths | All Deaths | Other Deaths |
-| :--: | :--: | :--------------: | :----: | :---: | :--------: | :----------------------------: | :--------: | :----------: |
+|:----:|:----:|:----------------:|:------:|:-----:|:----------:|:------------------------------:|:----------:|:------------:|
 | 1962 |  1   |    1962-01-06    |   1    |  CT   | Bridgeport |               3                |     46     |      43      |
 | 1962 |  2   |    1962-01-13    |   1    |  CT   | Bridgeport |               2                |     43     |      41      |
 | 1962 |  3   |    1962-01-20    |   1    |  CT   | Bridgepor  |               2                |     40     |      38      |
@@ -117,27 +119,27 @@ st <- star_schema(ft, dm) %>%
 The tables of dimensions and facts of the obtained star schema are shown
 below.
 
-| when\_key | week\_ending\_date |  week   |  year   |
-| :-------: | :----------------: | :-----: | :-----: |
-|     1     |     1962-01-06     |   01    |  1962   |
-|     2     |     1962-01-13     |   02    |  1962   |
-|     3     |     1962-01-13     | Unknown | Unknown |
-|     4     |     1962-01-20     |   03    |  1962   |
+| when_key | week_ending_date |  week   |  year   |
+|:--------:|:----------------:|:-------:|:-------:|
+|    1     |    1962-01-06    |   01    |  1962   |
+|    2     |    1962-01-13    |   02    |  1962   |
+|    3     |    1962-01-13    | Unknown | Unknown |
+|    4     |    1962-01-20    |   03    |  1962   |
 
-| where\_key | region | state |    city    |
-| :--------: | :----: | :---: | :--------: |
-|     1      |   1    |  CT   | Bridgepor  |
-|     2      |   1    |  CT   | Bridgeport |
-|     3      |   9    |  WA   |   Tacoma   |
+| where_key | region | state |    city    |
+|:---------:|:------:|:-----:|:----------:|
+|     1     |   1    |  CT   | Bridgepor  |
+|     2     |   1    |  CT   | Bridgeport |
+|     3     |   9    |  WA   |   Tacoma   |
 
-| when\_key | where\_key | pneumonia\_and\_influenza\_deaths | other\_deaths | nrow\_agg |
-| :-------: | :--------: | :-------------------------------: | :-----------: | :-------: |
-|     1     |     2      |                 3                 |      43       |     1     |
-|     1     |     3      |                 4                 |      46       |     1     |
-|     2     |     2      |                 2                 |      41       |     1     |
-|     3     |     3      |                 2                 |      43       |     1     |
-|     4     |     1      |                 2                 |      38       |     1     |
-|     4     |     3      |                 0                 |      39       |     1     |
+| when_key | where_key | pneumonia_and_influenza_deaths | other_deaths | nrow_agg |
+|:--------:|:---------:|:------------------------------:|:------------:|:--------:|
+|    1     |     2     |               3                |      43      |    1     |
+|    1     |     3     |               4                |      46      |    1     |
+|    2     |     2     |               2                |      41      |    1     |
+|    3     |     3     |               2                |      43      |    1     |
+|    4     |     1     |               2                |      38      |    1     |
+|    4     |     3     |               0                |      39      |    1     |
 
 The tables show the erroneous and missing data. We are going to perform
 some data cleaning operations to correct them.
@@ -166,25 +168,25 @@ st <- st %>%
 
 The new dimension and fact tables are shown below.
 
-| when\_key | week\_ending\_date | week | year |
-| :-------: | :----------------: | :--: | :--: |
-|     1     |     1962-01-06     |  01  | 1962 |
-|     2     |     1962-01-13     |  02  | 1962 |
-|     3     |     1962-01-20     |  03  | 1962 |
+| when_key | week_ending_date | week | year |
+|:--------:|:----------------:|:----:|:----:|
+|    1     |    1962-01-06    |  01  | 1962 |
+|    2     |    1962-01-13    |  02  | 1962 |
+|    3     |    1962-01-20    |  03  | 1962 |
 
-| where\_key | region | state |    city    |
-| :--------: | :----: | :---: | :--------: |
-|     1      |   1    |  CT   | Bridgeport |
-|     2      |   9    |  WA   |   Tacoma   |
+| where_key | region | state |    city    |
+|:---------:|:------:|:-----:|:----------:|
+|     1     |   1    |  CT   | Bridgeport |
+|     2     |   9    |  WA   |   Tacoma   |
 
-| where\_key | when\_key | pneumonia\_and\_influenza\_deaths | other\_deaths | nrow\_agg |
-| :--------: | :-------: | :-------------------------------: | :-----------: | :-------: |
-|     1      |     1     |                 3                 |      43       |     1     |
-|     1      |     2     |                 2                 |      41       |     1     |
-|     1      |     3     |                 2                 |      38       |     1     |
-|     2      |     1     |                 4                 |      46       |     1     |
-|     2      |     2     |                 2                 |      43       |     1     |
-|     2      |     3     |                 0                 |      39       |     1     |
+| where_key | when_key | pneumonia_and_influenza_deaths | other_deaths | nrow_agg |
+|:---------:|:--------:|:------------------------------:|:------------:|:--------:|
+|     1     |    1     |               3                |      43      |    1     |
+|     1     |    2     |               2                |      41      |    1     |
+|     1     |    3     |               2                |      38      |    1     |
+|     2     |    1     |               4                |      46      |    1     |
+|     2     |    2     |               2                |      43      |    1     |
+|     2     |    3     |               0                |      39      |    1     |
 
 In addition to the operations in the examples shown, `starschemar`
 offers support for defining role playing and role dimensions in a star

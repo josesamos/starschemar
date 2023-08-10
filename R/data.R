@@ -794,8 +794,7 @@
 #' Classification of London's boroughs into zones and sub-regions.
 #'
 #' @format A `tibble`.
-#' @source \url{https://data.london.gov.uk/dataset/london-borough-profiles} and
-#' \url{https://en.wikipedia.org/wiki/List_of_sub-regions_used_in_the_London_Plan}
+#' @source \url{https://en.wikipedia.org/wiki/List_of_sub-regions_used_in_the_London_Plan}
 "ft_london_boroughs"
 
 

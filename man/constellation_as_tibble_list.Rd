@@ -33,8 +33,6 @@ tl <- ct_mrs \%>\%
 
 }
 \seealso{
-
-
 Other results export functions: 
 \code{\link{constellation_as_multistar}()},
 \code{\link{multistar_as_flat_table}()},

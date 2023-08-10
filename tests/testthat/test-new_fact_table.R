@@ -20,8 +20,8 @@ test_that("new_fact_table works", {
       "nrow_agg"
     ),
     row.names = 1:24,
-    class = c("tbl_df",
-              "tbl", "data.frame", "fact_table"),
+    class = c("fact_table", "tbl_df",
+              "tbl", "data.frame"),
     name = "test",
     foreign_keys = c("when_available_key",
                      "when_key", "where_key", "who_key"),

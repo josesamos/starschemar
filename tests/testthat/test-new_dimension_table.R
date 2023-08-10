@@ -15,7 +15,7 @@ test_that("new_dimension_table works", {
       ),
       row.names = c(NA,
                     3L),
-      class = c("tbl_df", "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df", "tbl", "data.frame"),
       name = "where",
       type = "general"
     )

@@ -29,7 +29,7 @@ new_dimension_table <-
 
     structure(
       ft,
-      class = unique(append(class(ft), "dimension_table")),
+      class = unique(c("dimension_table", class(ft))),
       name = name,
       type = type,
       role_playing = NULL

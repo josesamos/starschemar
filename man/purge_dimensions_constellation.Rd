@@ -26,8 +26,6 @@ ct <- ct_mrs \%>\%
 
 }
 \seealso{
-
-
 Other incremental refresh functions: 
 \code{\link{filter_fact_rows}()},
 \code{\link{get_star_schema_names}()},

@@ -21,7 +21,7 @@ group_table.fact_table <- function(ft) {
   at <- attributes(ft)
   measures <- attr(ft, "measures")
   dim_keys <- setdiff(names(ft), measures)
-  ft_group <- dplyr::group_by(as.data.frame(ft), .dots = dim_keys)
+  ft_group <- dplyr::group_by(as.data.frame(ft), dplyr::across(dplyr::all_of(dim_keys)))
   agg <- list()
   for (i in seq_along(measures)) {
     if (at$agg_functions[i] == "MAX") {

@@ -20,7 +20,6 @@
 #' @return A `constellation` object.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

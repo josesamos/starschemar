@@ -21,7 +21,6 @@
 #' @return A `star_schema` object.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

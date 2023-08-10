@@ -10,7 +10,6 @@
 #' @return A `multistar` object.
 #'
 #' @family results export functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

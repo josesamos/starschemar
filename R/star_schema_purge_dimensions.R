@@ -8,7 +8,6 @@
 #' @return A `star_schema` object.
 #'
 #' @family incremental refresh functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

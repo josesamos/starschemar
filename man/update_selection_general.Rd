@@ -69,8 +69,6 @@ updates <- record_update_set() \%>\%
 
 }
 \seealso{
-
-
 Other data cleaning functions: 
 \code{\link{get_conformed_dimension_names}()},
 \code{\link{get_conformed_dimension}()},

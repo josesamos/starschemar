@@ -37,8 +37,6 @@ dq <- dimensional_query(ms_mrs) \%>\%
 
 }
 \seealso{
-
-
 Other query functions: 
 \code{\link{dimensional_query}()},
 \code{\link{run_query}()},

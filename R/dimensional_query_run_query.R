@@ -13,7 +13,6 @@
 #' @return A `dimensional_query` object.
 #'
 #' @family query functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

@@ -14,7 +14,6 @@
 #' @return A `dimension_table` object.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -64,7 +63,6 @@ get_dimension.star_schema <- function(st, name) {
 #' @return A vector of dimension names.
 #'
 #' @family data cleaning functions
-#' @seealso
 #'
 #' @examples
 #' library(tidyr)

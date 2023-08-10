@@ -29,8 +29,6 @@ ms <- st_mrs_age \%>\%
 
 }
 \seealso{
-
-
 Other results export functions: 
 \code{\link{constellation_as_multistar}()},
 \code{\link{constellation_as_tibble_list}()},

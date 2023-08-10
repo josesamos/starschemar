@@ -24,8 +24,6 @@ ct <- constellation(list(st_mrs_age, st_mrs_cause), name = "mrs")
 
 }
 \seealso{
-
-
 Other star schema and constellation definition functions: 
 \code{\link{character_dimensions}()},
 \code{\link{role_playing_dimension}()},
