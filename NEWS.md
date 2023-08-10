@@ -1,4 +1,4 @@
-# starschemar 1.2.0.9000
+# starschemar 1.2.1
 * As a result of queries, when facts with the same granularity are unified, prefix the name of the facts to the name of all the measurements of the facts to unify from the second table (in the previous version, only this prefix was put to the measurement corresponding to the number of records added).
 * Fix problems to make it compatible with dplyr 1.1.0.
 
