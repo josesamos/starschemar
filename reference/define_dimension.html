@@ -12,7 +12,7 @@ name and the set of attributes that make it up."><!-- mathjax --><script src="ht
     
     <a class="navbar-brand me-2" href="../index.html">starschemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,8 +100,7 @@ names of the flat table so that we do not have to type their names.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># dput(colnames(mrs_age))</span></span></span>
 <span class="r-in"><span><span class="co">#</span></span></span>
 <span class="r-in"><span><span class="co"># c(</span></span></span>
@@ -121,19 +120,19 @@ names of the flat table so that we do not have to type their names.</p>
 <span class="r-in"><span><span class="co">#   "Deaths"</span></span></span>
 <span class="r-in"><span><span class="co"># )</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">define_dimension</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"When"</span>,</span></span>
 <span class="r-in"><span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Week Ending Date"</span>,</span></span>
 <span class="r-in"><span>                                  <span class="st">"WEEK"</span>,</span></span>
-<span class="r-in"><span>                                  <span class="st">"Year"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                                  <span class="st">"Year"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">define_dimension</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"When Available"</span>,</span></span>
 <span class="r-in"><span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Data Availability Date"</span>,</span></span>
 <span class="r-in"><span>                                  <span class="st">"Data Availability Week"</span>,</span></span>
-<span class="r-in"><span>                                  <span class="st">"Data Availability Year"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                                  <span class="st">"Data Availability Year"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">define_dimension</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Where"</span>,</span></span>
 <span class="r-in"><span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"REGION"</span>,</span></span>
 <span class="r-in"><span>                                  <span class="st">"State"</span>,</span></span>
-<span class="r-in"><span>                                  <span class="st">"City"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                                  <span class="st">"City"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">define_dimension</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Who"</span>,</span></span>
 <span class="r-in"><span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Age Range"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

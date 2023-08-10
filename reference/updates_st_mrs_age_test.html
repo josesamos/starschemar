@@ -12,7 +12,7 @@ System by age test."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
     
     <a class="navbar-brand me-2" href="../index.html">starschemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,61 +69,59 @@ System by age test.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Defined by:</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="get_dimension_names.html">get_dimension_names</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "when"           "when_available" "where"          "who"           </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"where"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"when"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">who</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">who</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age_test</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"who"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">updates_st_mrs_age_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">updates_st_mrs_age_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection_general.html">update_selection_general</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">where</span>,</span></span>
 <span class="r-in"><span>    columns_old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"state"</span>, <span class="st">"city"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CT"</span>, <span class="st">"Bridgepor"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    columns_new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Bridgeport"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="match_records.html">match_records</a></span><span class="op">(</span>dimension <span class="op">=</span> <span class="va">when</span>,</span></span>
 <span class="r-in"><span>                old <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>                new <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                new <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_record.html">update_record</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">when</span>,</span></span>
 <span class="r-in"><span>    old <span class="op">=</span> <span class="fl">9</span>,</span></span>
 <span class="r-in"><span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1962-01-20"</span>, <span class="st">"03"</span>, <span class="st">"1962"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection.html">update_selection</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">who</span>,</span></span>
 <span class="r-in"><span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt;1 year"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1: &lt;1 year"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection.html">update_selection</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">who</span>,</span></span>
 <span class="r-in"><span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1-24 years"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2: 1-24 years"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection.html">update_selection</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">who</span>,</span></span>
 <span class="r-in"><span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"25-44 years"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"3: 25-44 years"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection.html">update_selection</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">who</span>,</span></span>
 <span class="r-in"><span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"45-64 years"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"4: 45-64 years"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="update_selection.html">update_selection</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dimension <span class="op">=</span> <span class="va">who</span>,</span></span>
 <span class="r-in"><span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span></span>

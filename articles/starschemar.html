@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">starschemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -1242,10 +1242,9 @@ Thus, we can copy and paste each name as needed.</p>
 <p>The definition of the dimensional model for the data considered is
 shown below.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/josesamos/starschemar" class="external-link">starschemar</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/josesamos/starschemar" class="external-link">starschemar</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dm_mrs_age</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">dm_mrs_age</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_fact.html">define_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1255,7 +1254,7 @@ shown below.</p>
 <span>      <span class="st">"SUM"</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    nrow_agg <span class="op">=</span> <span class="st">"nrow_agg"</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1263,7 +1262,7 @@ shown below.</p>
 <span>      <span class="st">"WEEK"</span>,</span>
 <span>      <span class="st">"Year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when_available"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1271,7 +1270,7 @@ shown below.</p>
 <span>      <span class="st">"Data Availability Week"</span>,</span>
 <span>      <span class="st">"Data Availability Year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1279,7 +1278,7 @@ shown below.</p>
 <span>      <span class="st">"State"</span>,</span>
 <span>      <span class="st">"City"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"who"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1298,14 +1297,14 @@ been considered.</p>
 <p>In the case of data according to cause of death, the definition of
 the model is shown below.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dm_mrs_cause</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dm_mrs_cause</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_fact.html">define_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_cause"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Pneumonia and Influenza Deaths"</span>,</span>
 <span>      <span class="st">"Other Deaths"</span></span>
 <span>    <span class="op">)</span>,</span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1313,7 +1312,7 @@ the model is shown below.</p>
 <span>      <span class="st">"WEEK"</span>,</span>
 <span>      <span class="st">"Year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when_received"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1321,7 +1320,7 @@ the model is shown below.</p>
 <span>      <span class="st">"Reception Week"</span>,</span>
 <span>      <span class="st">"Reception Year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when_available"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1329,7 +1328,7 @@ the model is shown below.</p>
 <span>      <span class="st">"Data Availability Week"</span>,</span>
 <span>      <span class="st">"Data Availability Year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1624,13 +1623,13 @@ fact table.</p>
 <p>Next, we will apply format modification operations to the original
 structure obtained.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span>
 <span>    dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"When Common"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/character_dimensions.html">character_dimensions</a></span><span class="op">(</span>NA_replacement_value <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
 <span>                       length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>week <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>First, a role playing dimension has been defined based on the
@@ -1891,8 +1890,8 @@ format).</p>
 transformations to the other flat table. The transformations can be
 applied in any order.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_cause</span>, <span class="va">dm_mrs_cause</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_cause</span>, <span class="va">dm_mrs_cause</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/character_dimensions.html">character_dimensions</a></span><span class="op">(</span></span>
 <span>    NA_replacement_value <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
 <span>    length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -1900,7 +1899,7 @@ applied in any order.</p>
 <span>      data_availability_week <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>      reception_week <span class="op">=</span> <span class="fl">2</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span>
 <span>    dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_received"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"when_common"</span>,</span>
@@ -2162,7 +2161,7 @@ way for the two design cases.</p>
 <p>Data according to age:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"week_ending_date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span>,</span>
 <span>    new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -2170,7 +2169,7 @@ way for the two design cases.</p>
 <span>      <span class="st">"when_happened_week"</span>,</span>
 <span>      <span class="st">"when_happened_year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"region"</span><span class="op">)</span>,</span>
@@ -2179,7 +2178,7 @@ way for the two design cases.</p>
 <p>And data according to cause:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
+<span>  <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"week_ending_date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span>,</span>
 <span>    new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -2187,7 +2186,7 @@ way for the two design cases.</p>
 <span>      <span class="st">"when_happened_week"</span>,</span>
 <span>      <span class="st">"when_happened_year"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"region"</span><span class="op">)</span>,</span>
@@ -2197,7 +2196,7 @@ way for the two design cases.</p>
 according to age:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_measures.html">rename_measures</a></span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span>,</span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_measures.html">rename_measures</a></span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span>,</span>
 <span>                                 new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Additionally, functions are available to modify the names of
 dimensions and facts. In this case it is not necessary to modify them
@@ -2213,22 +2212,22 @@ the rows using the <code><a href="https://rdrr.io/r/utils/View.html" class="exte
 several role dimensions, it is enough to consult one of them, updates
 defined on it will be propagated to the rest.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/get_dimension_names.html">get_dimension_names</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"where"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View(where)</span></span>
 <span><span class="co"># where[where$where_key %in% c(1, 2, 62), ]</span></span>
 <span></span>
-<span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"when"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View(when)</span></span>
 <span><span class="co"># when[when$when_key %in% c(36, 37, 73), ]</span></span>
 <span></span>
-<span><span class="va">who</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">who</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"who"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View(who)</span></span></code></pre></div>
@@ -2290,7 +2289,7 @@ defined.</p>
 “1” (“Bridgepor”) of the <em>where</em> dimension must match those of
 record “2” (“Bridgeport”).</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/match_records.html">match_records</a></span><span class="op">(</span>dimension <span class="op">=</span> <span class="va">where</span>,</span>
 <span>                old <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>                new <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> </span></code></pre></div>
@@ -2298,7 +2297,7 @@ record “2” (“Bridgeport”).</p>
 value in the indicated fields for the records that meet the defined
 condition, as shown below.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection_general.html">update_selection_general</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">where</span>,</span>
 <span>    columns_old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"state"</span>, <span class="st">"city"</span><span class="op">)</span>,</span>
@@ -2348,10 +2347,10 @@ referred by their surrogate key in the <em>when</em> dimension.</p>
 </table>
 <p>The corresponding updates are shown below.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/match_records.html">match_records</a></span><span class="op">(</span>dimension <span class="op">=</span> <span class="va">when</span>,</span>
 <span>                old <span class="op">=</span> <span class="fl">37</span>,</span>
-<span>                new <span class="op">=</span> <span class="fl">36</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                new <span class="op">=</span> <span class="fl">36</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_record.html">update_record</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">when</span>,</span>
 <span>    old <span class="op">=</span> <span class="fl">73</span>,</span>
@@ -2368,31 +2367,31 @@ by those provided.</p>
 in each value of <code>age_range</code> attribute so that they are
 sorted increasingly based on their value.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates_st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">updates_st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span>
 <span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt;1 year"</span><span class="op">)</span>,</span>
 <span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1: &lt;1 year"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span>
 <span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1-24 years"</span><span class="op">)</span>,</span>
 <span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2: 1-24 years"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span>
 <span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"25-44 years"</span><span class="op">)</span>,</span>
 <span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"3: 25-44 years"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span>
 <span>    old_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"45-64 years"</span><span class="op">)</span>,</span>
 <span>    new_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"4: 45-64 years"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age_range"</span><span class="op">)</span>,</span>
@@ -2409,7 +2408,7 @@ indicated attribute.</p>
 <p>Once updates are defined, they can be applied on the star schema from
 which they have been defined, as shown below.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates_st_mrs_age</span><span class="op">)</span></span></code></pre></div>
 <p>The result obtained for the first star schema is shown below.</p>
 <table class="table">
@@ -2652,7 +2651,7 @@ with the dates that have been unified by the update.</p>
 <p>The same updates can also be applied to other star schemas with
 dimensions in common with the original star schema, as shown below.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates_st_mrs_age</span><span class="op">)</span></span></code></pre></div>
 <p>Updates defined on dimensions not included in the star schema are
 ignored. In this case those referring to the who dimension. Likewise, if
@@ -2748,7 +2747,7 @@ column to define the new broader age range.</p>
 <p>We enrich the dimension considering the new data in the table.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"who"</span>, <span class="va">tb_who</span><span class="op">)</span></span></code></pre></div>
 <p>We can see the result below, where the dimension has the new defined
 attribute.</p>
@@ -2879,11 +2878,11 @@ regions to which they belong.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span></span></code></pre></div>
 <p>To add the name of the states and the county to which each city
 belongs, we could proceed in the same way. However, it is easier if we
@@ -2896,7 +2895,7 @@ matches the data in the imported table. We can determine the missing
 data using the following function.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tb_missing</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import_test.html">enrich_dimension_import_test</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">ft_usa_states</span><span class="op">)</span></span></code></pre></div>
 <p>The result obtained is shown below.</p>
 <table class="table">
@@ -2961,32 +2960,32 @@ data using the following function.</p>
 <em>state</em> attribute. We must add a row to the data before importing
 it.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tb_where_state</span> <span class="op">&lt;-</span> <span class="va">ft_usa_states</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tb_where_state</span> <span class="op">&lt;-</span> <span class="va">ft_usa_states</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html" class="external-link">add_row</a></span><span class="op">(</span>state <span class="op">=</span> <span class="st">"Unknown"</span>, state_name <span class="op">=</span> <span class="st">"Unknown"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span></span></code></pre></div>
 <p>The same problem occurs and we apply the same solution to add the
 county data<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;This is how I have located the problem with the value
 “Wilimington” in the &lt;em&gt;city&lt;/em&gt; attribute, which we have already
 corrected, so it no longer appears.&lt;/p&gt;"><sup>4</sup></a>.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tb_where_county</span> <span class="op">&lt;-</span> <span class="va">ft_usa_city_county</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tb_where_county</span> <span class="op">&lt;-</span> <span class="va">ft_usa_city_county</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html" class="external-link">add_row</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
 <span>                  state <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
 <span>                  county <span class="op">=</span> <span class="st">"Unknown"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_county</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_county</span><span class="op">)</span></span></code></pre></div>
 <p>We can see the first rows of the final result below.</p>
 <table style="width:100%;" class="table">
@@ -3385,15 +3384,15 @@ defined for the data according to the age range.</p>
 <span>           <span class="va">tb_where</span>,</span>
 <span>           <span class="va">tb_where_state</span>,</span>
 <span>           <span class="va">tb_where_county</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">ft</span>, <span class="va">dm</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">ft</span>, <span class="va">dm</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span>
 <span>        dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span>
 <span>        name <span class="op">=</span> <span class="st">"When Common"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/character_dimensions.html">character_dimensions</a></span><span class="op">(</span>NA_replacement_value <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
-<span>                           length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>week <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                           length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>week <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>        name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"week_ending_date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span>,</span>
@@ -3402,18 +3401,18 @@ defined for the data according to the age range.</p>
 <span>          <span class="st">"when_happened_week"</span>,</span>
 <span>          <span class="st">"when_happened_year"</span></span>
 <span>        <span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>        name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"region"</span><span class="op">)</span>,</span>
 <span>        new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"division"</span><span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/rename_measures.html">rename_measures</a></span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span>,</span>
-<span>                      new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"who"</span>, <span class="va">tb_who</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                      new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"who"</span>, <span class="va">tb_who</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_county</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span></code></pre></div>
 <p>We apply this function to new data sets, as shown below.</p>
@@ -3447,8 +3446,8 @@ with <code>enrich_dimension_import_test</code>.</p>
 <p>Once we have the data in the same format, we can apply the
 incremental refresh to the original star schema, as follows.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st_mrs_age</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_age_w11</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, it has been assumed that if data from previous periods
 appears among the new data, the new data has to replace the previous
@@ -3456,8 +3455,8 @@ data (value “replace” in <code>existing</code> parameter).</p>
 <p>If the star schema has been integrated into a constellation, the
 incremental refresh can be performed on it, as follows.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_age_w11</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, the corresponding star schema, the conformed dimensions
 and all the star schemas that share them are updated.</p>
@@ -3475,8 +3474,8 @@ cause data, as shown below.</p>
 <span>           <span class="va">tb_where</span>,</span>
 <span>           <span class="va">tb_where_state</span>,</span>
 <span>           <span class="va">tb_where_county</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">ft</span>, <span class="va">dm</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">ft</span>, <span class="va">dm</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/character_dimensions.html">character_dimensions</a></span><span class="op">(</span></span>
 <span>        NA_replacement_value <span class="op">=</span> <span class="st">"Unknown"</span>,</span>
 <span>        length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -3484,12 +3483,12 @@ cause data, as shown below.</p>
 <span>          data_availability_week <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>          reception_week <span class="op">=</span> <span class="fl">2</span></span>
 <span>        <span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span>
 <span>        dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_received"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span>
 <span>        name <span class="op">=</span> <span class="st">"when_common"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>        name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"week_ending_date"</span>, <span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span>,</span>
@@ -3498,15 +3497,15 @@ cause data, as shown below.</p>
 <span>          <span class="st">"when_happened_week"</span>,</span>
 <span>          <span class="st">"when_happened_year"</span></span>
 <span>        <span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>        name <span class="op">=</span> <span class="st">"where"</span>,</span>
 <span>        attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"region"</span><span class="op">)</span>,</span>
 <span>        new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"division"</span><span class="op">)</span></span>
-<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_state</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/enrich_dimension_import.html">enrich_dimension_import</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">tb_where_county</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
@@ -3530,12 +3529,12 @@ cause data, as shown below.</p>
 <span>    <span class="va">tb_where_county</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="va">st_mrs_cause</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_cause_w10</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">st_mrs_cause</span> <span class="op">&lt;-</span> <span class="va">st_mrs_cause</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_cause_w10</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_cause_w11</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ct_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_cause_w10</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">ct_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_cause_w10</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_cause_w11</span>, existing <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, the previously existing data is treated differently
 than it was in the previous case, now what is done is grouping it using
@@ -3555,19 +3554,19 @@ the time dimension.</p>
 constellation level. First, we select them considering the stars that
 make up the constellation.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st1</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/get_star_schema.html">get_star_schema</a></span><span class="op">(</span><span class="st">"mrs_age"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st1</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/get_star_schema.html">get_star_schema</a></span><span class="op">(</span><span class="st">"mrs_age"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/filter_fact_rows.html">filter_fact_rows</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Boston"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">st2</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/get_star_schema.html">get_star_schema</a></span><span class="op">(</span><span class="st">"mrs_cause"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">st2</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/get_star_schema.html">get_star_schema</a></span><span class="op">(</span><span class="st">"mrs_cause"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/filter_fact_rows.html">filter_fact_rows</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Boston"</span><span class="op">)</span></span></code></pre></div>
 <p>We can work both at the star or constellation level. In this example,
 we are going to do it at the constellation level (working on a temporary
 variable so as not to lose data), as we have been doing.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct_tmp</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st1</span>, existing <span class="op">=</span> <span class="st">"delete"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct_tmp</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st1</span>, existing <span class="op">=</span> <span class="st">"delete"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st2</span>, existing <span class="op">=</span> <span class="st">"delete"</span><span class="op">)</span></span></code></pre></div>
 <p>These operations have only removed the fact data. The first records
 of the <code>where</code> dimension are shown below.</p>
@@ -3666,7 +3665,7 @@ of the <code>where</code> dimension are shown below.</p>
 <p>Once the fact data is removed, we can remove the data for the
 dimensions that are no longer needed using the following function.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct_tmp</span> <span class="op">&lt;-</span> <span class="va">ct_tmp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct_tmp</span> <span class="op">&lt;-</span> <span class="va">ct_tmp</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/purge_dimensions_constellation.html">purge_dimensions_constellation</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The result in the <code>where</code> dimension is shown below.</p>
 <table style="width:100%;" class="table">
@@ -3785,7 +3784,7 @@ tables, this package is not suitable.</p>
 schema as a list of <code>tibble</code> with dimension and fact tables,
 as shown below.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/star_schema_as_tibble_list.html">star_schema_as_tibble_list</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Optionally, the export function allows the role playing dimensions to
 be included.</p>
@@ -3798,7 +3797,7 @@ the <code>multistar</code> format may be interesting, where you have a
 list of <code>tibble</code> for fact tables and another for dimension
 tables.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/constellation_as_multistar.html">constellation_as_multistar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -3809,7 +3808,7 @@ tables.</p>
 from a <code>multistar</code> (which can be the result of a query). If
 it only has one fact table, it is not necessary to provide its name.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/multistar_as_flat_table.html">multistar_as_flat_table</a></span><span class="op">(</span>fact <span class="op">=</span> <span class="st">"mrs_age"</span><span class="op">)</span></span></code></pre></div>
 <p>The first rows of the flat table obtained as a result are shown
 below.</p>
@@ -3988,32 +3987,32 @@ through other packages.</p>
 <p>We can define queries on data in <code>multistar</code> format. Data
 in this format can be obtained from a star or a constellation.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/constellation_as_multistar.html">constellation_as_multistar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The query is created using <code>dimensional_query</code> and
 executed using <code>run_query.</code> We can refine it using
 <code>select_dimension</code>, <code>select_fact</code> and
 <code>filter_dimension</code> as much as we deem appropriate.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>,</span>
-<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>,</span>
-<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when_happened_year"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when_happened_year"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
-<span>              measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>              measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_cause"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pneumonia_and_influenza_deaths"</span>, <span class="st">"other_deaths"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Bridgeport"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Bridgeport"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/run_query.html">run_query</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The result of a query is an <code>multistar</code> structure. In this
 way, we can define queries on the result of others. The result can also
 be transformed into a flat table.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/multistar_as_flat_table.html">multistar_as_flat_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The content of the flat table is shown below.</p>
 <table class="table">
@@ -4104,7 +4103,7 @@ facts and dimensions can be added. Example:</li>
 the set of attributes that make it up. Example:</li>
 </ul>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_dimension.html">define_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"When"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Week Ending Date"</span>,</span>
 <span>                                  <span class="st">"WEEK"</span>,</span>
@@ -4118,7 +4117,7 @@ measurements). Associated with each measurement, an aggregation function
 is required, which by default is SUM. Examples:</li>
 </ul>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_fact.html">define_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Deaths"</span><span class="op">)</span>,</span>
@@ -4126,7 +4125,7 @@ is required, which by default is SUM. Examples:</li>
 <span>    nrow_agg <span class="op">=</span> <span class="st">"nrow_agg"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_model.html">dimensional_model</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/define_fact.html">define_fact</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Factless fact"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -4160,7 +4159,7 @@ generated. The original dimensions become role dimensions defined from
 the new role playing dimension. Example:</li>
 </ul>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span>
 <span>    dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"When Common"</span>,</span>
@@ -4172,7 +4171,7 @@ the new role playing dimension. Example:</li>
 and attribute names according to the snake case style. Example:</li>
 </ul>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4187,7 +4186,7 @@ allows indicating the literal to be used in case the numerical value is
 not defined. Example:</li>
 </ul>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_age</span>, <span class="va">dm_mrs_age</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/character_dimensions.html">character_dimensions</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -4205,7 +4204,7 @@ available:</p>
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/rename_dimension.html">rename_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, new_name <span class="op">=</span> <span class="st">"when_happened"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4215,7 +4214,7 @@ necessary. Example:</li>
 </ul>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">attribute_names</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_dimension_attribute_names.html">get_dimension_attribute_names</a></span><span class="op">(</span><span class="st">"when"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/get_dimension_attribute_names.html">get_dimension_attribute_names</a></span><span class="op">(</span><span class="st">"when"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <code><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes()</a></code>: Set new names of some
@@ -4223,7 +4222,7 @@ attributes in a dimension. Example:</li>
 </ul>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_dimension_attributes.html">rename_dimension_attributes</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"when"</span>,</span>
 <span>    attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when_happened_week"</span>, <span class="st">"when_happened_year"</span><span class="op">)</span>,</span>
 <span>    new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"week"</span>, <span class="st">"year"</span><span class="op">)</span></span>
@@ -4233,7 +4232,7 @@ attributes in a dimension. Example:</li>
 <code><a href="../reference/rename_fact.html">rename_fact()</a></code>: Set new name for facts. Example:</li>
 </ul>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_fact.html">rename_fact</a></span><span class="op">(</span><span class="st">"age"</span><span class="op">)</span> </span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_fact.html">rename_fact</a></span><span class="op">(</span><span class="st">"age"</span><span class="op">)</span> </span></code></pre></div>
 <ul>
 <li>
 <code><a href="../reference/get_measure_names.html">get_measure_names()</a></code>: Get the name of the measures in
@@ -4241,7 +4240,7 @@ fact, so that it is easier to modify them if necessary. Example:</li>
 </ul>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">measure_names</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_measure_names.html">get_measure_names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/get_measure_names.html">get_measure_names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <code><a href="../reference/rename_measures.html">rename_measures()</a></code>: Set new names of some measures in
@@ -4249,7 +4248,7 @@ facts. Example:</li>
 </ul>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/rename_measures.html">rename_measures</a></span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span>,</span>
+<span>  <span class="va">st_mrs_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/rename_measures.html">rename_measures</a></span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span>,</span>
 <span>                                 new_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"num_deaths"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -4299,7 +4298,7 @@ of a star schema. Role playing dimensions are not considered.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dn</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dn</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_dimension_names.html">get_dimension_names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4308,7 +4307,7 @@ its name. Role dimensions can be obtained but not role playing
 dimensions. Example:</li>
 </ul>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"where"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level5">
@@ -4320,7 +4319,7 @@ dimensions. Example:</li>
 conformed dimensions of a constellation. Example:</li>
 </ul>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dn</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dn</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_conformed_dimension_names.html">get_conformed_dimension_names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4328,7 +4327,7 @@ conformed dimensions of a constellation. Example:</li>
 a constellation given its name. Example:</li>
 </ul>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">when</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_conformed_dimension.html">get_conformed_dimension</a></span><span class="op">(</span><span class="st">"when"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4336,7 +4335,7 @@ a constellation given its name. Example:</li>
 schemas of a constellation. Example:</li>
 </ul>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stn</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">stn</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_star_schema_names.html">get_star_schema_names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4344,7 +4343,7 @@ schemas of a constellation. Example:</li>
 given its name. Example:</li>
 </ul>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">age</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">age</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_star_schema.html">get_star_schema</a></span><span class="op">(</span><span class="st">"mrs_age"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -4373,7 +4372,7 @@ the combination of values of the rest of attributes of the first record
 so that they become the same as those of the second. Example:</li>
 </ul>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/match_records.html">match_records</a></span><span class="op">(</span>dimension <span class="op">=</span> <span class="va">where</span>,</span>
 <span>                old <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>                new <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
@@ -4385,7 +4384,7 @@ combination of values of the rest of attributes of the selected record
 so that they become those given. Example:</li>
 </ul>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_record.html">update_record</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">who</span>,</span>
 <span>    old <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -4400,7 +4399,7 @@ the combination of old values in the columns with the new values in
 those same columns. Example:</li>
 </ul>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection.html">update_selection</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">where</span>,</span>
 <span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span><span class="op">)</span>,</span>
@@ -4417,7 +4416,7 @@ records that have the combination of old values in the first column
 vector with the new values in the second column vector. Example:</li>
 </ul>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/update_selection_general.html">update_selection_general</a></span><span class="op">(</span></span>
 <span>    dimension <span class="op">=</span> <span class="va">where</span>,</span>
 <span>    columns_old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"state"</span>, <span class="st">"city"</span><span class="op">)</span>,</span>
@@ -4442,7 +4441,7 @@ record update operations, they are applied on the dimensions of the
 the set of functions available for that purpose. Example:</li>
 </ul>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/modify_dimension_records.html">modify_dimension_records</a></span><span class="op">(</span><span class="va">updates_st_mrs_age</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level5">
@@ -4457,7 +4456,7 @@ must be defined with the set of functions available for that purpose.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/modify_conformed_dimension_records.html">modify_conformed_dimension_records</a></span><span class="op">(</span><span class="va">updates_st_mrs_age</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -4543,7 +4542,7 @@ possible values of the <code>existing</code> parameter are: “ignore”,
 “replace”, “group” or “delete”. Example:</li>
 </ul>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span></span></code></pre></div>
 <p>Sometimes the data refresh consists of eliminating data that is no
 longer necessary, generally because it corresponds to a period that has
@@ -4557,11 +4556,11 @@ can be deleted using the <code>incremental_refresh_star_schema</code>
 function. Example:</li>
 </ul>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_fact_rows.html">filter_fact_rows</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_fact_rows.html">filter_fact_rows</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/filter_fact_rows.html">filter_fact_rows</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Bridgeport"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">st2</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">st2</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_star_schema.html">incremental_refresh_star_schema</a></span><span class="op">(</span><span class="va">st</span>, existing <span class="op">=</span> <span class="st">"delete"</span><span class="op">)</span></span></code></pre></div>
 <p>Once the fact data is removed (using the other incremental refresh
 functions), we can remove the data for the dimensions that are no longer
@@ -4572,7 +4571,7 @@ needed using the following function:</p>
 dimensions not related to facts in a star schema. Example:</li>
 </ul>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">st3</span> <span class="op">&lt;-</span> <span class="va">st2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">st3</span> <span class="op">&lt;-</span> <span class="va">st2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/purge_dimensions_star_schema.html">purge_dimensions_star_schema</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level5">
@@ -4585,7 +4584,7 @@ refresh a star schema in a constellation with the content of a new star
 schema that is integrated into the first. Example:</li>
 </ul>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/incremental_refresh_constellation.html">incremental_refresh_constellation</a></span><span class="op">(</span><span class="va">st_mrs_age_w10</span>, existing <span class="op">=</span> <span class="st">"replace"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4595,7 +4594,7 @@ operation for each of the component <code>star_schemas</code> and also
 for the conformed dimensions. Example:</li>
 </ul>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/purge_dimensions_constellation.html">purge_dimensions_constellation</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -4616,7 +4615,7 @@ table, implemented using a <code>tibble</code>, from a star schema.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/star_schema_as_flat_table.html">star_schema_as_flat_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4626,7 +4625,7 @@ between general and conformed dimensions, each dimension has its own
 data. It can contain multiple fact tables. Example:</li>
 </ul>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/star_schema_as_multistar.html">star_schema_as_multistar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4635,7 +4634,7 @@ data. It can contain multiple fact tables. Example:</li>
 optionally included. Example:</li>
 </ul>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/star_schema_as_tibble_list.html">star_schema_as_tibble_list</a></span><span class="op">(</span>include_role_playing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -4649,7 +4648,7 @@ between general and conformed dimensions, each dimension has its own
 data. It can contain multiple fact tables. Example:</li>
 </ul>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/constellation_as_multistar.html">constellation_as_multistar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4658,7 +4657,7 @@ data. It can contain multiple fact tables. Example:</li>
 optionally included. Example:</li>
 </ul>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tl</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/constellation_as_tibble_list.html">constellation_as_tibble_list</a></span><span class="op">(</span>include_role_playing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -4673,7 +4672,7 @@ implemented using a <code>tibble</code>, from a <code>multistar</code>
 is not necessary to provide its name. Example:</li>
 </ul>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">ms_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/multistar_as_flat_table.html">multistar_as_flat_table</a></span><span class="op">(</span>fact <span class="op">=</span> <span class="st">"mrs_age"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -4693,7 +4692,7 @@ fact measures, dimension attributes and filter dimension rows.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms_mrs</span> <span class="op">&lt;-</span> <span class="va">ct_mrs</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/constellation_as_multistar.html">constellation_as_multistar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span></span></code></pre></div>
@@ -4708,18 +4707,18 @@ aggregation function is included, those defined for the measures are
 considered. Examples:</li>
 </ul>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span>,</span>
 <span>    agg_functions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAX"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
 <span>              measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mrs_age"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4730,9 +4729,9 @@ indicated, it is considered that all its attributes should be added.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>,</span>
-<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4744,8 +4743,8 @@ for the dimension). The selection is made based on the function
 way as in that function. Example:</li>
 </ul>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Boston"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -4756,21 +4755,21 @@ not want to unify the facts in the case of having the same grain.
 Example:</li>
 </ul>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dimensional_query.html">dimensional_query</a></span><span class="op">(</span><span class="va">ms_mrs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>,</span>
-<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_dimension.html">select_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>,</span>
-<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when_happened_year"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when_happened_year"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_age"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n_deaths"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/select_fact.html">select_fact</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"mrs_cause"</span>,</span>
 <span>    measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pneumonia_and_influenza_deaths"</span>, <span class="st">"other_deaths"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Boston"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Boston"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/run_query.html">run_query</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>

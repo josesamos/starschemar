@@ -12,7 +12,7 @@ classification data test."><!-- mathjax --><script src="https://cdnjs.cloudflare
     
     <a class="navbar-brand me-2" href="../index.html">starschemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,10 +69,8 @@ classification data test.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Defined by:</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">st_mrs_cause_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_cause_test</span>, <span class="va">dm_mrs_cause</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">st_mrs_cause_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="star_schema.html">star_schema</a></span><span class="op">(</span><span class="va">mrs_cause_test</span>, <span class="va">dm_mrs_cause</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="snake_case.html">snake_case</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="character_dimensions.html">character_dimensions</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    NA_replacement_value <span class="op">=</span> <span class="st">"Unknown"</span>,</span></span>
 <span class="r-in"><span>    length_integers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
@@ -80,7 +78,7 @@ classification data test.</p>
 <span class="r-in"><span>      data_availability_week <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>      reception_week <span class="op">=</span> <span class="fl">2</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="role_playing_dimension.html">role_playing_dimension</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    dim_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"when"</span>, <span class="st">"when_received"</span>, <span class="st">"when_available"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    name <span class="op">=</span> <span class="st">"when_common"</span>,</span></span>

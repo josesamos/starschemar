@@ -16,7 +16,7 @@ second."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
     
     <a class="navbar-brand me-2" href="../index.html">starschemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,17 +119,15 @@ one: Two have been generated due to some data error.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">dim_names</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="get_dimension_names.html">get_dimension_names</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st_mrs_age</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"where"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># head(where, 2)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">updates</span> <span class="op">&lt;-</span> <span class="fu"><a href="record_update_set.html">record_update_set</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">match_records</span><span class="op">(</span>dimension <span class="op">=</span> <span class="va">where</span>,</span></span>
 <span class="r-in"><span>                old <span class="op">=</span> <span class="fl">1</span>,</span></span>
 <span class="r-in"><span>                new <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
