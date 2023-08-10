@@ -224,10 +224,9 @@ dput(colnames(mrs_age))
 The definition of the dimensional model for the data considered is shown below.
 
 ```{r}
-library(tidyr)
 library(starschemar)
 
-dm_mrs_age <- dimensional_model() %>%
+dm_mrs_age <- dimensional_model() |>
   define_fact(
     name = "mrs_age",
     measures = c(
@@ -237,7 +236,7 @@ dm_mrs_age <- dimensional_model() %>%
       "SUM"
     ),
     nrow_agg = "nrow_agg"
-  ) %>%
+  ) |>
   define_dimension(
     name = "when",
     attributes = c(
@@ -245,7 +244,7 @@ dm_mrs_age <- dimensional_model() %>%
       "WEEK",
       "Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "when_available",
     attributes = c(
@@ -253,7 +252,7 @@ dm_mrs_age <- dimensional_model() %>%
       "Data Availability Week",
       "Data Availability Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "where",
     attributes = c(
@@ -261,7 +260,7 @@ dm_mrs_age <- dimensional_model() %>%
       "State",
       "City"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "who",
     attributes = c(
@@ -277,14 +276,14 @@ In this case, all the elements have been explicitly defined, including aggregati
 In the case of data according to cause of death, the definition of the model is shown below.
 
 ```{r}
-dm_mrs_cause <- dimensional_model() %>%
+dm_mrs_cause <- dimensional_model() |>
   define_fact(
     name = "mrs_cause",
     measures = c(
       "Pneumonia and Influenza Deaths",
       "Other Deaths"
     ),
-  ) %>%
+  ) |>
   define_dimension(
     name = "when",
     attributes = c(
@@ -292,7 +291,7 @@ dm_mrs_cause <- dimensional_model() %>%
       "WEEK",
       "Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "when_received",
     attributes = c(
@@ -300,7 +299,7 @@ dm_mrs_cause <- dimensional_model() %>%
       "Reception Week",
       "Reception Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "when_available",
     attributes = c(
@@ -308,7 +307,7 @@ dm_mrs_cause <- dimensional_model() %>%
       "Data Availability Week",
       "Data Availability Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "where",
     attributes = c(
@@ -351,13 +350,13 @@ The data from the original flat table has been structured in the form of dimensi
 Next, we will apply format modification operations to the original structure obtained.
 
 ```{r}
-st_mrs_age <- st_mrs_age %>%
+st_mrs_age <- st_mrs_age |>
   role_playing_dimension(
     dim_names = c("when", "when_available"),
     name = "When Common",
     attributes = c("date", "week", "year")
-  ) %>%
-  snake_case() %>%
+  ) |>
+  snake_case() |>
   character_dimensions(NA_replacement_value = "Unknown",
                        length_integers = list(week = 2))
 ```
@@ -383,8 +382,8 @@ In the result, it can be seen that the dimensions related to date are now role d
 We are going to define the star schema and apply similar transformations to the other flat table. The transformations can be applied in any order. 
 
 ```{r}
-st_mrs_cause <- star_schema(mrs_cause, dm_mrs_cause) %>%
-  snake_case() %>%
+st_mrs_cause <- star_schema(mrs_cause, dm_mrs_cause) |>
+  snake_case() |>
   character_dimensions(
     NA_replacement_value = "Unknown",
     length_integers = list(
@@ -392,7 +391,7 @@ st_mrs_cause <- star_schema(mrs_cause, dm_mrs_cause) %>%
       data_availability_week = 2,
       reception_week = 2
     )
-  ) %>%
+  ) |>
   role_playing_dimension(
     dim_names = c("when", "when_received", "when_available"),
     name = "when_common",
@@ -429,7 +428,7 @@ Data according to age:
 
 ```{r}
 st_mrs_age <-
-  st_mrs_age %>% rename_dimension_attributes(
+  st_mrs_age |> rename_dimension_attributes(
     name = "when",
     attributes = c("week_ending_date", "week", "year"),
     new_names = c(
@@ -437,7 +436,7 @@ st_mrs_age <-
       "when_happened_week",
       "when_happened_year"
     )
-  ) %>%
+  ) |>
   rename_dimension_attributes(
     name = "where",
     attributes = c("region"),
@@ -449,7 +448,7 @@ And data according to cause:
 
 ```{r}
 st_mrs_cause <-
-  st_mrs_cause %>% rename_dimension_attributes(
+  st_mrs_cause |> rename_dimension_attributes(
     name = "when",
     attributes = c("week_ending_date", "week", "year"),
     new_names = c(
@@ -457,7 +456,7 @@ st_mrs_cause <-
       "when_happened_week",
       "when_happened_year"
     )
-  ) %>%
+  ) |>
   rename_dimension_attributes(
     name = "where",
     attributes = c("region"),
@@ -469,7 +468,7 @@ We are also going to modify the name of the measure for data according to age:
 
 ```{r}
 st_mrs_age <-
-  st_mrs_age %>% rename_measures(measures = c("deaths"),
+  st_mrs_age |> rename_measures(measures = c("deaths"),
                                  new_names = c("n_deaths"))
 ```
 
@@ -481,22 +480,22 @@ Additionally, functions are available to modify the names of dimensions and fact
 Using the following code, first of all, we get the names of the dimensions of a star schema, then, we get them by their name (we can see the rows using the `utils::View` function). If there are several role dimensions, it is enough to consult one of them, updates defined on it will be propagated to the rest.
 
 ```{r}
-dim_names <- st_mrs_age %>%
+dim_names <- st_mrs_age |>
     get_dimension_names()
 
-where <- st_mrs_age %>%
+where <- st_mrs_age |>
   get_dimension("where")
 
 # View(where)
 # where[where$where_key %in% c(1, 2, 62), ]
 
-when <- st_mrs_age %>%
+when <- st_mrs_age |>
   get_dimension("when")
 
 # View(when)
 # when[when$when_key %in% c(36, 37, 73), ]
 
-who <- st_mrs_age %>%
+who <- st_mrs_age |>
   get_dimension("who")
 
 # View(who)
@@ -517,7 +516,7 @@ Updates can be defined in several ways. One of them is referencing the surrogate
 Next, we define the update that indicates that the values of record "1" ("Bridgepor") of the *where* dimension must match those of record "2" ("Bridgeport").
 
 ```{r}
-updates_st_mrs_age <- record_update_set() %>%
+updates_st_mrs_age <- record_update_set() |>
   match_records(dimension = where,
                 old = 1,
                 new = 2) 
@@ -526,7 +525,7 @@ updates_st_mrs_age <- record_update_set() %>%
 For the case of the other city, we define an update that replaces the value in the indicated fields for the records that meet the defined condition, as shown below.
 
 ```{r}
-updates_st_mrs_age <- updates_st_mrs_age %>%
+updates_st_mrs_age <- updates_st_mrs_age |>
   update_selection_general(
     dimension = where,
     columns_old = c("state", "city"),
@@ -548,10 +547,10 @@ pander::pandoc.table(when[when$when_key %in% c(36, 37, 73), ], split.table = Inf
 The corresponding updates are shown below.
 
 ```{r}
-updates_st_mrs_age <- updates_st_mrs_age %>%
+updates_st_mrs_age <- updates_st_mrs_age |>
   match_records(dimension = when,
                 old = 37,
-                new = 36) %>%
+                new = 36) |>
   update_record(
     dimension = when,
     old = 73,
@@ -567,31 +566,31 @@ The values of record "37" must match those of record "36" (both registers will b
 In the case of the *who* dimension, we want to include a code in each value of `age_range` attribute so that they are sorted increasingly based on their value.
 
 ```{r}
-updates_st_mrs_age <- updates_st_mrs_age %>%
+updates_st_mrs_age <- updates_st_mrs_age |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("<1 year"),
     new_values = c("1: <1 year")
-  ) %>%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("1-24 years"),
     new_values = c("2: 1-24 years")
-  ) %>%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("25-44 years"),
     new_values = c("3: 25-44 years")
-  ) %>%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("45-64 years"),
     new_values = c("4: 45-64 years")
-  ) %>%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
@@ -607,7 +606,7 @@ In each case, we substitute the old value for the new one in the indicated attri
 Once updates are defined, they can be applied on the star schema from which they have been defined, as shown below. 
 
 ```{r}
-st_mrs_age <- st_mrs_age %>%
+st_mrs_age <- st_mrs_age |>
   modify_dimension_records(updates_st_mrs_age)
 ```
 
@@ -627,7 +626,7 @@ It can be seen that the row with the value "Bridgepor" in the *city* column has 
 The same updates can also be applied to other star schemas with dimensions in common with the original star schema, as shown below.
 
 ```{r}
-st_mrs_cause <- st_mrs_cause %>%
+st_mrs_cause <- st_mrs_cause |>
   modify_dimension_records(updates_st_mrs_age)
 ```
 
@@ -677,7 +676,7 @@ We enrich the dimension considering the new data in the table.
 
 ```{r}
 st_mrs_age <-
-  st_mrs_age %>%
+  st_mrs_age |>
   enrich_dimension_import(name = "who", tb_who)
 ```
 
@@ -744,11 +743,11 @@ tb_where <-
   )
 
 st_mrs_age <-
-  st_mrs_age %>%
+  st_mrs_age |>
   enrich_dimension_import(name = "where", tb_where)
 
 st_mrs_cause <-
-  st_mrs_cause %>%
+  st_mrs_cause |>
   enrich_dimension_import(name = "where", tb_where)
 ```
 
@@ -758,7 +757,7 @@ However, if we operate in the same way, when importing the data an error occurs.
 
 ```{r}
 tb_missing <-
-  st_mrs_age %>%
+  st_mrs_age |>
   enrich_dimension_import_test(name = "where", ft_usa_states)
 ```
 
@@ -771,15 +770,15 @@ pander::pandoc.table(tb_missing, split.table = Inf)
 In all cases, the problem occurs for the value "Unknown" in the *state* attribute. We must add a row to the data before importing it.
 
 ```{r}
-tb_where_state <- ft_usa_states %>%
+tb_where_state <- ft_usa_states |>
   tibble::add_row(state = "Unknown", state_name = "Unknown")
 
 st_mrs_age <-
-  st_mrs_age %>%
+  st_mrs_age |>
   enrich_dimension_import(name = "where", tb_where_state)
 
 st_mrs_cause <-
-  st_mrs_cause %>%
+  st_mrs_cause |>
   enrich_dimension_import(name = "where", tb_where_state)
 ```
 
@@ -788,17 +787,17 @@ The same problem occurs and we apply the same solution to add the county data[^4
 [^4]: This is how I have located the problem with the value "Wilimington" in the *city* attribute, which we have already corrected, so it no longer appears.
 
 ```{r}
-tb_where_county <- ft_usa_city_county %>%
+tb_where_county <- ft_usa_city_county |>
   tibble::add_row(city = "Unknown",
                   state = "Unknown",
                   county = "Unknown")
 
 st_mrs_age <-
-  st_mrs_age %>%
+  st_mrs_age |>
   enrich_dimension_import(name = "where", tb_where_county)
 
 st_mrs_cause <-
-  st_mrs_cause %>%
+  st_mrs_cause |>
   enrich_dimension_import(name = "where", tb_where_county)
 ```
 
@@ -853,15 +852,15 @@ mrs_age_definition <-
            tb_where,
            tb_where_state,
            tb_where_county) {
-    star_schema(ft, dm) %>%
+    star_schema(ft, dm) |>
       role_playing_dimension(
         dim_names = c("when", "when_available"),
         name = "When Common",
         attributes = c("date", "week", "year")
-      ) %>%
-      snake_case() %>%
+      ) |>
+      snake_case() |>
       character_dimensions(NA_replacement_value = "Unknown",
-                           length_integers = list(week = 2)) %>%
+                           length_integers = list(week = 2)) |>
       rename_dimension_attributes(
         name = "when",
         attributes = c("week_ending_date", "week", "year"),
@@ -870,18 +869,18 @@ mrs_age_definition <-
           "when_happened_week",
           "when_happened_year"
         )
-      ) %>%
+      ) |>
       rename_dimension_attributes(
         name = "where",
         attributes = c("region"),
         new_names = c("division")
-      ) %>%
+      ) |>
       rename_measures(measures = c("deaths"),
-                      new_names = c("n_deaths")) %>%
-      modify_dimension_records(updates) %>%
-      enrich_dimension_import(name = "who", tb_who) %>%
-      enrich_dimension_import(name = "where", tb_where) %>%
-      enrich_dimension_import(name = "where", tb_where_state) %>%
+                      new_names = c("n_deaths")) |>
+      modify_dimension_records(updates) |>
+      enrich_dimension_import(name = "who", tb_who) |>
+      enrich_dimension_import(name = "where", tb_where) |>
+      enrich_dimension_import(name = "where", tb_where_state) |>
       enrich_dimension_import(name = "where", tb_where_county)
   }
 ```
@@ -919,8 +918,8 @@ Errors may occur because the data is different from the original, especially in 
 Once we have the data in the same format, we can apply the incremental refresh to the original star schema, as follows.
 
 ```{r}
-st_mrs_age <- st_mrs_age %>%
-  incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace") %>%
+st_mrs_age <- st_mrs_age |>
+  incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace") |>
   incremental_refresh_star_schema(st_mrs_age_w11, existing = "replace")
 ```
 
@@ -929,8 +928,8 @@ In this case, it has been assumed that if data from previous periods appears amo
 If the star schema has been integrated into a constellation, the incremental refresh can be performed on it, as follows.
 
 ```{r}
-ct_mrs <- ct_mrs %>%
-  incremental_refresh_constellation(st_mrs_age_w10, existing = "replace") %>%
+ct_mrs <- ct_mrs |>
+  incremental_refresh_constellation(st_mrs_age_w10, existing = "replace") |>
   incremental_refresh_constellation(st_mrs_age_w11, existing = "replace")
 
 ```
@@ -949,8 +948,8 @@ mrs_cause_definition <-
            tb_where,
            tb_where_state,
            tb_where_county) {
-    star_schema(ft, dm) %>%
-      snake_case() %>%
+    star_schema(ft, dm) |>
+      snake_case() |>
       character_dimensions(
         NA_replacement_value = "Unknown",
         length_integers = list(
@@ -958,12 +957,12 @@ mrs_cause_definition <-
           data_availability_week = 2,
           reception_week = 2
         )
-      ) %>%
+      ) |>
       role_playing_dimension(
         dim_names = c("when", "when_received", "when_available"),
         name = "when_common",
         attributes = c("date", "week", "year")
-      ) %>%
+      ) |>
       rename_dimension_attributes(
         name = "when",
         attributes = c("week_ending_date", "week", "year"),
@@ -972,15 +971,15 @@ mrs_cause_definition <-
           "when_happened_week",
           "when_happened_year"
         )
-      ) %>%
+      ) |>
       rename_dimension_attributes(
         name = "where",
         attributes = c("region"),
         new_names = c("division")
-      ) %>%
-      modify_dimension_records(updates) %>%
-      enrich_dimension_import(name = "where", tb_where) %>%
-      enrich_dimension_import(name = "where", tb_where_state) %>%
+      ) |>
+      modify_dimension_records(updates) |>
+      enrich_dimension_import(name = "where", tb_where) |>
+      enrich_dimension_import(name = "where", tb_where_state) |>
       enrich_dimension_import(name = "where", tb_where_county)
   }
 
@@ -1004,12 +1003,12 @@ st_mrs_cause_w11 <-
     tb_where_county
   )
 
-st_mrs_cause <- st_mrs_cause %>%
-  incremental_refresh_star_schema(st_mrs_cause_w10, existing = "group") %>%
+st_mrs_cause <- st_mrs_cause |>
+  incremental_refresh_star_schema(st_mrs_cause_w10, existing = "group") |>
   incremental_refresh_star_schema(st_mrs_cause_w11, existing = "group")
 
-ct_mrs <- ct_mrs %>%
-  incremental_refresh_constellation(st_mrs_cause_w10, existing = "group") %>%
+ct_mrs <- ct_mrs |>
+  incremental_refresh_constellation(st_mrs_cause_w10, existing = "group") |>
   incremental_refresh_constellation(st_mrs_cause_w11, existing = "group")
 ```
 
@@ -1022,20 +1021,20 @@ Sometimes the data refresh consists of eliminating data that is no longer necess
 Suppose we want to delete the *Boston* data working at the constellation level. First, we select them considering the stars that make up the constellation.
 
 ```{r}
-st1 <- ct_mrs %>%
-  get_star_schema("mrs_age") %>%
+st1 <- ct_mrs |>
+  get_star_schema("mrs_age") |>
   filter_fact_rows(name = "where", city == "Boston")
 
-st2 <- ct_mrs %>%
-  get_star_schema("mrs_cause") %>%
+st2 <- ct_mrs |>
+  get_star_schema("mrs_cause") |>
   filter_fact_rows(name = "where", city == "Boston")
 ```
 
 We can work both at the star or constellation level. In this example, we are going to do it at the constellation level  (working on a temporary variable so as not to lose data), as we have been doing. 
 
 ```{r}
-ct_tmp <- ct_mrs %>%
-  incremental_refresh_constellation(st1, existing = "delete") %>%
+ct_tmp <- ct_mrs |>
+  incremental_refresh_constellation(st1, existing = "delete") |>
   incremental_refresh_constellation(st2, existing = "delete")
 ```
 
@@ -1048,7 +1047,7 @@ pander::pandoc.table(head(ct_tmp$dimension$where), split.table = Inf)
 Once the fact data is removed, we can remove the data for the dimensions that are no longer needed using the following function.
 
 ```{r}
-ct_tmp <- ct_tmp %>%
+ct_tmp <- ct_tmp |>
   purge_dimensions_constellation()
 ```
 
@@ -1073,7 +1072,7 @@ Various export possibilities are offered. Specifically, for a star schema one of
 To work with databases, it is useful to be able to export a star schema as a list of `tibble` with dimension and fact tables, as shown below. 
 
 ```{r}
-tl <- st_mrs_age %>%
+tl <- st_mrs_age |>
   star_schema_as_tibble_list()
 ```
 
@@ -1084,7 +1083,7 @@ Optionally, the export function allows the role playing dimensions to be include
 To export constellation data, as well as a `tibble` list, the `multistar` format may be interesting, where you have a list of `tibble` for fact tables and another for dimension tables.
 
 ```{r}
-ms_mrs <- ct_mrs %>%
+ms_mrs <- ct_mrs |>
   constellation_as_multistar()
 ```
 
@@ -1093,7 +1092,7 @@ ms_mrs <- ct_mrs %>%
 We can obtain a flat table, implemented using a `tibble`, from a `multistar` (which can be the result of a query). If it only has one fact table, it is not necessary to provide its name.
 
 ```{r}
-ft <- ms_mrs %>%
+ft <- ms_mrs |>
   multistar_as_flat_table(fact = "mrs_age")
 ```
 
@@ -1111,33 +1110,33 @@ The main motivation of the query functions of this package is to have the possib
 We can define queries on data in `multistar` format. Data in this format can be obtained from a star or a constellation.
 
 ```{r}
-ms_mrs <- ct_mrs %>%
+ms_mrs <- ct_mrs |>
   constellation_as_multistar()
 ```
 
 The query is created using `dimensional_query` and executed using `run_query.` We can refine it using `select_dimension`, `select_fact` and `filter_dimension` as much as we deem appropriate.
 
 ```{r}
-ms <- dimensional_query(ms_mrs) %>%
+ms <- dimensional_query(ms_mrs) |>
   select_dimension(name = "where",
-                   attributes = c("city", "state")) %>%
+                   attributes = c("city", "state")) |>
   select_dimension(name = "when",
-                   attributes = c("when_happened_year")) %>%
+                   attributes = c("when_happened_year")) |>
   select_fact(name = "mrs_age",
-              measures = c("n_deaths")) %>%
+              measures = c("n_deaths")) |>
   select_fact(
     name = "mrs_cause",
     measures = c("pneumonia_and_influenza_deaths", "other_deaths")
-  ) %>%
-  filter_dimension(name = "when", when_happened_week <= "03") %>%
-  filter_dimension(name = "where", city == "Bridgeport") %>%
+  ) |>
+  filter_dimension(name = "when", when_happened_week <= "03") |>
+  filter_dimension(name = "where", city == "Bridgeport") |>
   run_query()
 ```
 
 The result of a query is an `multistar` structure. In this way, we can define queries on the result of others. The result can also be transformed into a flat table.
 
 ```{r}
-ft <- ms %>%
+ft <- ms |>
   multistar_as_flat_table()
 ```
 
@@ -1180,7 +1179,7 @@ dm <- dimensional_model()
 
 - `define_dimension()`: To define a dimension in a `dimensional_model` object, we have to define its name and the set of attributes that make it up. Example:
 ```{r}
-dm <- dimensional_model() %>%
+dm <- dimensional_model() |>
   define_dimension(name = "When",
                    attributes = c("Week Ending Date",
                                   "WEEK",
@@ -1190,7 +1189,7 @@ dm <- dimensional_model() %>%
 
 - `define_fact()`: To define facts in a `dimensional_model` object, the essential data is a name and a set of measurements that can be empty (does not have explicit measurements). Associated with each measurement, an aggregation function is required, which by default is SUM. Examples:
 ```{r}
-dm <- dimensional_model() %>%
+dm <- dimensional_model() |>
   define_fact(
     name = "mrs_age",
     measures = c("Deaths"),
@@ -1198,7 +1197,7 @@ dm <- dimensional_model() %>%
     nrow_agg = "nrow_agg"
   )
 
-dm <- dimensional_model() %>%
+dm <- dimensional_model() |>
   define_fact(name = "Factless fact")
 ```
 
@@ -1218,7 +1217,7 @@ st <- star_schema(mrs_age, dm_mrs_age)
 
 - `role_playing_dimension()`: Given a list of `star_schema` dimension names, all with the same structure, a role playing dimension with the indicated name and attributes is generated. The original dimensions become role dimensions defined from the new role playing dimension. Example:
 ```{r}
-st <- star_schema(mrs_age, dm_mrs_age) %>%
+st <- star_schema(mrs_age, dm_mrs_age) |>
   role_playing_dimension(
     dim_names = c("when", "when_available"),
     name = "When Common",
@@ -1228,13 +1227,13 @@ st <- star_schema(mrs_age, dm_mrs_age) %>%
 
 - `snake_case()`: Transform fact, dimension, measurement, and attribute names according to the snake case style. Example:
 ```{r}
-st <- star_schema(mrs_age, dm_mrs_age) %>%
+st <- star_schema(mrs_age, dm_mrs_age) |>
   snake_case()
 ```
 
 - `character_dimensions()`: Transforms numeric type attributes of dimensions into character type. In a `star_schema` numerical data are measurements that are situated in the facts. Numerical data in dimensions are usually codes, day, week, month or year numbers. There are tools that consider any numerical data to be a measurement, for this reason it is appropriate to transform the numerical data of dimensions into character data. It also allows indicating the literal to be used in case the numerical value is not defined. Example:
 ```{r}
-st <- star_schema(mrs_age, dm_mrs_age) %>%
+st <- star_schema(mrs_age, dm_mrs_age) |>
   character_dimensions()
 ```
 
@@ -1244,20 +1243,20 @@ Once a star schema is defined, we can rename its elements. It is necessary to be
 
 - `rename_dimension()`: Set new name for a dimension. Example:
 ```{r}
-st <- st_mrs_age %>%
+st <- st_mrs_age |>
   rename_dimension(name = "when", new_name = "when_happened")
 ```
 
 - `get_dimension_attribute_names()`: Get the name of attributes in a dimension, so that it is easier to modify them if necessary. Example:
 ```{r}
 attribute_names <- 
-  st_mrs_age %>% get_dimension_attribute_names("when")
+  st_mrs_age |> get_dimension_attribute_names("when")
 ```
 
 - `rename_dimension_attributes()`: Set new names of some attributes in a dimension. Example:
 ```{r}
 st <-
-  st_mrs_age %>% rename_dimension_attributes(
+  st_mrs_age |> rename_dimension_attributes(
     name = "when",
     attributes = c("when_happened_week", "when_happened_year"),
     new_names = c("week", "year")
@@ -1266,20 +1265,20 @@ st <-
 
 - `rename_fact()`: Set new name for facts. Example:
 ```{r}
-st <- st_mrs_age %>% rename_fact("age") 
+st <- st_mrs_age |> rename_fact("age") 
 ```
 
 
 - `get_measure_names()`: Get the name of the measures in fact, so that it is easier to modify them if necessary. Example:
 ```{r}
 measure_names <- 
-  st_mrs_age %>% get_measure_names()
+  st_mrs_age |> get_measure_names()
 ```
 
 - `rename_measures()`: Set new names of some measures in facts. Example:
 ```{r}
 st <-
-  st_mrs_age %>% rename_measures(measures = c("n_deaths"),
+  st_mrs_age |> rename_measures(measures = c("n_deaths"),
                                  new_names = c("num_deaths"))
 ```
 
@@ -1313,13 +1312,13 @@ We can obtain dimensions from a star schema or conformed dimensions from a fact 
 
 - `get_dimension_names()`: Get the names of the dimensions of a star schema. Role playing dimensions are not considered. Example:
 ```{r}
-dn <- st_mrs_age %>%
+dn <- st_mrs_age |>
   get_dimension_names()
 ```
 
 - `get_dimension()`: Get a dimension of a star schema given its name. Role dimensions can be obtained but not role playing dimensions. Example:
 ```{r}
-where <- st_mrs_age %>%
+where <- st_mrs_age |>
   get_dimension("where")
 ```
 
@@ -1328,26 +1327,26 @@ where <- st_mrs_age %>%
 
 - `get_conformed_dimension_names()`: Get the names of the conformed dimensions of a constellation. Example:
 ```{r}
-dn <- ct_mrs %>%
+dn <- ct_mrs |>
   get_conformed_dimension_names()
 ```
 
 - `get_conformed_dimension()`: Get a conformed dimension of a constellation given its name. Example:
 ```{r}
-when <- ct_mrs %>%
+when <- ct_mrs |>
   get_conformed_dimension("when")
 ```
 
 
 - `get_star_schema_names()`: Get the names of the star schemas of a constellation. Example:
 ```{r}
-stn <- ct_mrs %>%
+stn <- ct_mrs |>
   get_star_schema_names()
 ```
 
 - `get_star_schema()`: Get a star schema of a constellation given its name. Example:
 ```{r}
-age <- ct_mrs %>%
+age <- ct_mrs |>
   get_star_schema("mrs_age")
 ```
 
@@ -1362,7 +1361,7 @@ updates <- record_update_set()
 
 - `match_records()`: For a dimension, given the primary key of two records, it adds an update to the set of updates that modifies the combination of values of the rest of attributes of the first record so that they become the same as those of the second. Example:
 ```{r}
-updates <- record_update_set() %>%
+updates <- record_update_set() |>
   match_records(dimension = where,
                 old = 1,
                 new = 2)
@@ -1370,7 +1369,7 @@ updates <- record_update_set() %>%
 
 - `update_record()`: For a dimension, given the primary key of one record, it adds an update to the set of updates that modifies the combination of values of the rest of attributes of the selected record so that they become those given. Example:
 ```{r}
-updates <- record_update_set() %>%
+updates <- record_update_set() |>
   update_record(
     dimension = who,
     old = 1,
@@ -1380,7 +1379,7 @@ updates <- record_update_set() %>%
 
 - `update_selection()`: For a dimension, given a vector of column names, a vector of old values and a vector of new values, it adds an update to the set of updates that modifies all the records that have the combination of old values in the columns with the new values in those same columns. Example:
 ```{r}
-updates <- record_update_set() %>%
+updates <- record_update_set() |>
   update_selection(
     dimension = where,
     columns = c("city"),
@@ -1391,7 +1390,7 @@ updates <- record_update_set() %>%
 
 - `update_selection_general()`: For a dimension, given a vector of column names, a vector of old values for those columns, another vector column names, and a vector of new values for those columns, it adds an update to the set of updates that modifies all the records that have the combination of old values in the first column vector with the new values in the second column vector. Example:
 ```{r}
-updates <- record_update_set() %>%
+updates <- record_update_set() |>
   update_selection_general(
     dimension = where,
     columns_old = c("state", "city"),
@@ -1410,7 +1409,7 @@ Defined updates can be applied on a star schema or on the conformed dimension of
 
 - `modify_dimension_records()`: Given a list of dimension record update operations, they are applied on the dimensions of the `star_schema` object. Update operations must be defined with the set of functions available for that purpose. Example:
 ```{r}
-st <- st_mrs_age %>%
+st <- st_mrs_age |>
   modify_dimension_records(updates_st_mrs_age)
 ```
 
@@ -1419,7 +1418,7 @@ st <- st_mrs_age %>%
 
 - `modify_conformed_dimension_records()`: Given a list of dimension record update operations, they are applied on the conformed dimensions of the `constellation` object. Update operations must be defined with the set of functions available for that purpose. Example:
 ```{r}
-ct <- ct_mrs %>%
+ct <- ct_mrs |>
   modify_conformed_dimension_records(updates_st_mrs_age)
 ```
 
@@ -1472,7 +1471,7 @@ When new data is obtained, an incremental refresh of the data can be carried out
 
 - `incremental_refresh_star_schema()`: Incrementally refresh a star schema with the content of a new one that is integrated into the first. Once the dimensions are integrated, if there are records in the fact table whose keys match the new ones, new ones can be ignored, they can be replaced by new ones, all of them can be grouped using the aggregation functions, or they can be deleted. Therefore, the possible values of the `existing` parameter are: "ignore", "replace", "group" or "delete". Example:
 ```{r}
-st <- st_mrs_age %>%
+st <- st_mrs_age |>
   incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace")
 ```
 
@@ -1480,11 +1479,11 @@ Sometimes the data refresh consists of eliminating data that is no longer necess
 
 - `filter_fact_rows()`: Filter fact rows based on dimension conditions in a star schema. Dimensions remain unchanged. Filtered rows can be deleted using the `incremental_refresh_star_schema` function. Example:
 ```{r}
-st <- st_mrs_age %>%
-  filter_fact_rows(name = "when", when_happened_week <= "03") %>%
+st <- st_mrs_age |>
+  filter_fact_rows(name = "when", when_happened_week <= "03") |>
   filter_fact_rows(name = "where", city == "Bridgeport")
 
-st2 <- st_mrs_age %>%
+st2 <- st_mrs_age |>
   incremental_refresh_star_schema(st, existing = "delete")
 ```
 
@@ -1493,7 +1492,7 @@ Once the fact data is removed (using the other incremental refresh functions), w
 
 - `purge_dimensions_star_schema()`: Delete instances of dimensions not related to facts in a star schema. Example:
 ```{r}
-st3 <- st2 %>%
+st3 <- st2 |>
   purge_dimensions_star_schema()
 ```
 
@@ -1502,13 +1501,13 @@ st3 <- st2 %>%
 
 - `incremental_refresh_constellation()`: Incrementally refresh a star schema in a constellation with the content of a new star schema that is integrated into the first. Example:
 ```{r}
-ct <- ct_mrs %>%
+ct <- ct_mrs |>
   incremental_refresh_constellation(st_mrs_age_w10, existing = "replace")
 ```
 
 - `purge_dimensions_constellation()`: Delete instances of dimensions not related to facts in a star schema. It performs the operation for each of the component `star_schemas` and also for the conformed dimensions. Example:
 ```{r}
-ct <- ct_mrs %>%
+ct <- ct_mrs |>
   purge_dimensions_constellation()
 ```
 
@@ -1521,21 +1520,21 @@ Once the data has been properly structured and transformed, it can be exported t
 
 - `star_schema_as_flat_table()`: We can again obtain a flat table, implemented using a `tibble`, from a star schema. Example:
 ```{r}
-ft <- st_mrs_age %>%
+ft <- st_mrs_age |>
   star_schema_as_flat_table()
 ```
 
 
 - `star_schema_as_multistar()`: We can obtain a `multistar`. A `multistar` only distinguishes between general and conformed dimensions, each dimension has its own data. It can contain multiple fact tables. Example:
 ```{r}
-ms <- st_mrs_age %>%
+ms <- st_mrs_age |>
   star_schema_as_multistar()
 ```
 
 
 - `star_schema_as_tibble_list()`: We can obtain a `tibble` list with them. Role playing dimensions can be optionally included. Example:
 ```{r}
-tl <- st_mrs_age %>%
+tl <- st_mrs_age |>
   star_schema_as_tibble_list(include_role_playing = TRUE)
 ```
 
@@ -1544,14 +1543,14 @@ tl <- st_mrs_age %>%
 
 - `constellation_as_multistar()`: We can obtain a `multistar`. A `multistar` only distinguishes between general and conformed dimensions, each dimension has its own data. It can contain multiple fact tables. Example:
 ```{r}
-ms <- ct_mrs %>%
+ms <- ct_mrs |>
   constellation_as_multistar()
 ```
 
 
 - `constellation_as_tibble_list()`: We can obtain a `tibble` list with them. Role playing dimensions can be optionally included. Example:
 ```{r}
-tl <- ct_mrs %>%
+tl <- ct_mrs |>
   constellation_as_tibble_list(include_role_playing = TRUE)
 ```
 
@@ -1560,7 +1559,7 @@ tl <- ct_mrs %>%
 
 - `multistar_as_flat_table()`: We can obtain a flat table, implemented using a `tibble`, from a `multistar` (which can be the result of a query). If it only has one fact table, it is not necessary to provide its name. Example:
 ```{r}
-ft <- ms_mrs %>%
+ft <- ms_mrs |>
   multistar_as_flat_table(fact = "mrs_age")
 ```
 
@@ -1571,7 +1570,7 @@ There are many multidimensional query tools available. The exported data, once s
 
 - `dimensional_query()`: An empty `dimensional_query` object is created where you can select fact measures, dimension attributes and filter dimension rows. Example:
 ```{r}
-ms_mrs <- ct_mrs %>%
+ms_mrs <- ct_mrs |>
   constellation_as_multistar()
 
 dq <- dimensional_query(ms_mrs)
@@ -1579,53 +1578,53 @@ dq <- dimensional_query(ms_mrs)
 
 - `select_fact()`: To define the fact to be consulted, its name is indicated, optionally, a vector of names of selected measures and another of aggregation functions are also indicated. If the name of any measure is not indicated, only the one corresponding to the number of aggregated rows is included, which is always included. If no aggregation function is included, those defined for the measures are considered. Examples:
 ```{r}
-dq <- dimensional_query(ms_mrs) %>%
+dq <- dimensional_query(ms_mrs) |>
   select_fact(
     name = "mrs_age",
     measures = c("n_deaths"),
     agg_functions = c("MAX")
   )
 
-dq <- dimensional_query(ms_mrs) %>%
+dq <- dimensional_query(ms_mrs) |>
   select_fact(name = "mrs_age",
               measures = c("n_deaths"))
 
-dq <- dimensional_query(ms_mrs) %>%
+dq <- dimensional_query(ms_mrs) |>
   select_fact(name = "mrs_age")
 ```
 
 - `select_dimension()`: To add a dimension in a `dimensional_query` object, we have to define its name and a subset of the dimension attributes. If only the name of the dimension is indicated, it is considered that all its attributes should be added. Example:
 ```{r}
-dq <- dimensional_query(ms_mrs) %>%
+dq <- dimensional_query(ms_mrs) |>
   select_dimension(name = "where",
-                   attributes = c("city", "state")) %>%
+                   attributes = c("city", "state")) |>
   select_dimension(name = "when")
 ```
 
 - `filter_dimension()`: Allows you to define selection conditions for dimension rows. Conditions can be defined on any attribute of the dimension (not only on attributes selected in the query for the dimension). The selection is made based on the function `dplyr::filter`. Conditions are defined in exactly the same way as in that function. Example:
 ```{r}
-dq <- dimensional_query(ms_mrs) %>%
-  filter_dimension(name = "when", when_happened_week <= "03") %>%
+dq <- dimensional_query(ms_mrs) |>
+  filter_dimension(name = "when", when_happened_week <= "03") |>
   filter_dimension(name = "where", city == "Boston")
 ```
 
 - `run_query()`: Once we have selected the facts, dimensions and defined the conditions on the instances, we can execute the query to obtain the result. As an option, we can indicate if we do not want to unify the facts in the case of having the same grain. Example:
 ```{r}
-ms <- dimensional_query(ms_mrs) %>%
+ms <- dimensional_query(ms_mrs) |>
   select_dimension(name = "where",
-                   attributes = c("city", "state")) %>%
+                   attributes = c("city", "state")) |>
   select_dimension(name = "when",
-                   attributes = c("when_happened_year")) %>%
+                   attributes = c("when_happened_year")) |>
   select_fact(
     name = "mrs_age",
     measures = c("n_deaths")
-  ) %>%
+  ) |>
   select_fact(
     name = "mrs_cause",
     measures = c("pneumonia_and_influenza_deaths", "other_deaths")
-  ) %>%
-  filter_dimension(name = "when", when_happened_week <= "03") %>%
-  filter_dimension(name = "where", city == "Boston") %>%
+  ) |>
+  filter_dimension(name = "when", when_happened_week <= "03") |>
+  filter_dimension(name = "where", city == "Boston") |>
   run_query()
 ```
 

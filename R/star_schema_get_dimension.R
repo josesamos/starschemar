@@ -16,9 +16,8 @@
 #' @family data cleaning functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' d <- st_mrs_age %>%
+#' d <- st_mrs_age |>
 #'   get_dimension("when")
 #'
 #' @export
@@ -65,9 +64,8 @@ get_dimension.star_schema <- function(st, name) {
 #' @family data cleaning functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' dn <- st_mrs_age %>%
+#' dn <- st_mrs_age |>
 #'   get_dimension_names()
 #'
 #' @export

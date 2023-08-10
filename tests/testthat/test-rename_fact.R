@@ -1,7 +1,7 @@
 context("test rename_fact")
 
 test_that("rename_fact works", {
-  st <- st_mrs_age_test %>% rename_fact("age")
+  st <- st_mrs_age_test |> rename_fact("age")
 
   expect_equal(
     attributes(st$fact[[1]]),

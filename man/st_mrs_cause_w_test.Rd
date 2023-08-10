@@ -19,10 +19,8 @@ considered before.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, dm_mrs_cause) \%>\%
-  snake_case() \%>\%
+st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, dm_mrs_cause) |>
+  snake_case() |>
   character_dimensions(
     NA_replacement_value = "Unknown",
     length_integers = list(
@@ -30,7 +28,7 @@ st_mrs_cause_w_test <- star_schema(mrs_cause_w_test, dm_mrs_cause) \%>\%
       data_availability_week = 2,
       reception_week = 2
     )
-  ) \%>\%
+  ) |>
   role_playing_dimension(
     dim_names = c("when", "when_received", "when_available"),
     name = "when_common",

@@ -1,9 +1,9 @@
 context("test purge_dimensions_star_schema")
 
 test_that("purge_dimensions_star_schema works", {
-  st <- st_mrs_age_test %>%
-    filter_fact_rows(name = "when", week <= "01") %>%
-    filter_fact_rows(name = "where", city == "Bridgeport") %>%
+  st <- st_mrs_age_test |>
+    filter_fact_rows(name = "when", week <= "01") |>
+    filter_fact_rows(name = "where", city == "Bridgeport") |>
     purge_dimensions_star_schema()
 
   expect_equal(

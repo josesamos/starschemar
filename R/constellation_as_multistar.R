@@ -12,9 +12,8 @@
 #' @family results export functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ms <- ct_mrs %>%
+#' ms <- ct_mrs |>
 #'   constellation_as_multistar()
 #'
 #' @export

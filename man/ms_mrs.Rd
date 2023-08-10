@@ -17,9 +17,7 @@ classification. It is the result obtained in the vignette.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-ms_mrs <- ct_mrs \%>\%
+ms_mrs <- ct_mrs |>
   constellation_as_multistar()
 
 }

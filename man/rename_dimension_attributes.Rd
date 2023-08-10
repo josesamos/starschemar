@@ -25,10 +25,9 @@ A \code{star_schema} object.
 Set new names of some attributes in a dimension.
 }
 \examples{
-library(tidyr)
 
 st <-
-  st_mrs_age \%>\% rename_dimension_attributes(
+  st_mrs_age |> rename_dimension_attributes(
     name = "when",
     attributes = c("week", "year"),
     new_names = c("w", "y")

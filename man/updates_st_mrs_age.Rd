@@ -17,60 +17,58 @@ System by age.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-(dim_names <- st_mrs_age \%>\%
+(dim_names <- st_mrs_age |>
     get_dimension_names())
 
-where <- st_mrs_age \%>\%
+where <- st_mrs_age |>
   get_dimension("where")
 
-when <- st_mrs_age \%>\%
+when <- st_mrs_age |>
   get_dimension("when")
 
-who <- st_mrs_age \%>\%
+who <- st_mrs_age |>
   get_dimension("who")
 
-updates_st_mrs_age <- record_update_set() \%>\%
+updates_st_mrs_age <- record_update_set() |>
   update_selection_general(
     dimension = where,
     columns_old = c("state", "city"),
     old_values = c("CT", "Bridgepor"),
     columns_new = c("city"),
     new_values = c("Bridgeport")
-  ) \%>\%
+  ) |>
   match_records(dimension = when,
                 old = 37,
-                new = 36) \%>\%
+                new = 36) |>
   update_record(
     dimension = when,
     old = 73,
     values = c("1962-02-17", "07", "1962")
-  ) \%>\%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("<1 year"),
     new_values = c("1: <1 year")
-  ) \%>\%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("1-24 years"),
     new_values = c("2: 1-24 years")
-  ) \%>\%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("25-44 years"),
     new_values = c("3: 25-44 years")
-  ) \%>\%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),
     old_values = c("45-64 years"),
     new_values = c("4: 45-64 years")
-  ) \%>\%
+  ) |>
   update_selection(
     dimension = who,
     columns = c("age_range"),

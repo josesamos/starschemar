@@ -17,9 +17,7 @@ classification data test.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-ms_mrs_test <- ct_mrs_test \%>\%
+ms_mrs_test <- ct_mrs_test |>
   constellation_as_multistar()
 
 }

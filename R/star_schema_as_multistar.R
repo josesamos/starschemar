@@ -13,9 +13,8 @@
 #' @family results export functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ms <- st_mrs_age %>%
+#' ms <- st_mrs_age |>
 #'   star_schema_as_multistar()
 #'
 #' @export

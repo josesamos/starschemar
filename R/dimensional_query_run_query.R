@@ -15,24 +15,23 @@
 #' @family query functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ms <- dimensional_query(ms_mrs) %>%
+#' ms <- dimensional_query(ms_mrs) |>
 #'   select_dimension(name = "where",
-#'                    attributes = c("city", "state")) %>%
+#'                    attributes = c("city", "state")) |>
 #'   select_dimension(name = "when",
-#'                    attributes = c("when_happened_year")) %>%
+#'                    attributes = c("when_happened_year")) |>
 #'   select_fact(
 #'     name = "mrs_age",
 #'     measures = c("n_deaths"),
 #'     agg_functions = c("MAX")
-#'   ) %>%
+#'   ) |>
 #'   select_fact(
 #'     name = "mrs_cause",
 #'     measures = c("pneumonia_and_influenza_deaths", "other_deaths")
-#'   ) %>%
-#'   filter_dimension(name = "when", when_happened_week <= "03") %>%
-#'   filter_dimension(name = "where", city == "Boston") %>%
+#'   ) |>
+#'   filter_dimension(name = "when", when_happened_week <= "03") |>
+#'   filter_dimension(name = "where", city == "Boston") |>
 #'   run_query()
 #'
 #' @export

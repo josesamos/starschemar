@@ -14,9 +14,8 @@
 #' @family incremental refresh functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' d <- ct_mrs %>%
+#' d <- ct_mrs |>
 #'   get_star_schema("mrs_age")
 #'
 #' @export
@@ -50,9 +49,8 @@ get_star_schema.constellation <- function(ct, name) {
 #' @family incremental refresh functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' d <- ct_mrs %>%
+#' d <- ct_mrs |>
 #'   get_star_schema_names()
 #'
 #' @export

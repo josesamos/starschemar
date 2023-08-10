@@ -11,10 +11,9 @@
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' measure_names <-
-#'   st_mrs_age %>% get_measure_names()
+#'   st_mrs_age |> get_measure_names()
 #'
 #' @export
 get_measure_names <- function(st) {
@@ -43,10 +42,9 @@ get_measure_names.star_schema <- function(st) {
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' st <-
-#'   st_mrs_age %>% rename_measures(measures = c("deaths"),
+#'   st_mrs_age |> rename_measures(measures = c("deaths"),
 #'                                  new_names = c("n_deaths"))
 #'
 #' @export
@@ -87,10 +85,9 @@ rename_measures.star_schema <- function(st, measures, new_names) {
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' attribute_names <-
-#'   st_mrs_age %>% get_dimension_attribute_names("when")
+#'   st_mrs_age |> get_dimension_attribute_names("when")
 #'
 #' @export
 get_dimension_attribute_names <- function(st, name) {
@@ -121,10 +118,9 @@ get_dimension_attribute_names.star_schema <- function(st, name) {
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' st <-
-#'   st_mrs_age %>% rename_dimension_attributes(
+#'   st_mrs_age |> rename_dimension_attributes(
 #'     name = "when",
 #'     attributes = c("week", "year"),
 #'     new_names = c("w", "y")
@@ -164,9 +160,8 @@ rename_dimension_attributes.star_schema <-
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' st <- st_mrs_age %>% rename_fact("age")
+#' st <- st_mrs_age |> rename_fact("age")
 #'
 #' @export
 rename_fact <- function(st, name) {
@@ -198,9 +193,8 @@ rename_fact.star_schema <- function(st, name) {
 #' @family rename functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' st <- st_mrs_age %>%
+#' st <- st_mrs_age |>
 #'   rename_dimension(name = "when", new_name = "when_happened")
 #'
 #' @export

@@ -21,9 +21,8 @@ A \code{dimension_table} object.
 Get a conformed dimension of a constellation given its name.
 }
 \examples{
-library(tidyr)
 
-d <- ct_mrs \%>\%
+d <- ct_mrs |>
   get_conformed_dimension("when")
 
 }

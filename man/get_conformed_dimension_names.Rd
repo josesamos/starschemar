@@ -19,9 +19,8 @@ A vector of dimension names.
 Get the names of the conformed dimensions of a constellation.
 }
 \examples{
-library(tidyr)
 
-d <- ct_mrs \%>\%
+d <- ct_mrs |>
   get_conformed_dimension_names()
 
 }

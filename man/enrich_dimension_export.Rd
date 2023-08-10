@@ -28,7 +28,6 @@ If it is a role dimension they cannot be exported, you have to work with the
 associated role playing dimension.
 }
 \examples{
-library(tidyr)
 
 tb <-
   enrich_dimension_export(st_mrs_age,

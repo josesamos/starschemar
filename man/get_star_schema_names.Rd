@@ -19,9 +19,8 @@ A vector of star schema names.
 Get the names of the star schemas in a constellation.
 }
 \examples{
-library(tidyr)
 
-d <- ct_mrs \%>\%
+d <- ct_mrs |>
   get_star_schema_names()
 
 }

@@ -17,10 +17,9 @@
 #' @family query functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' dq <- dimensional_query(ms_mrs) %>%
-#'   filter_dimension(name = "when", when_happened_week <= "03") %>%
+#' dq <- dimensional_query(ms_mrs) |>
+#'   filter_dimension(name = "when", when_happened_week <= "03") |>
 #'   filter_dimension(name = "where", city == "Boston")
 #'
 #' @export

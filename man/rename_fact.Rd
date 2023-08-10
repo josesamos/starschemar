@@ -21,9 +21,8 @@ A \code{star_schema} object.
 Set new name for facts.
 }
 \examples{
-library(tidyr)
 
-st <- st_mrs_age \%>\% rename_fact("age")
+st <- st_mrs_age |> rename_fact("age")
 
 }
 \seealso{

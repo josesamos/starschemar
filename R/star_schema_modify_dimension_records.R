@@ -23,9 +23,8 @@
 #' @family data cleaning functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' st <- st_mrs_age %>%
+#' st <- st_mrs_age |>
 #'   modify_dimension_records(updates_st_mrs_age)
 #'
 #' @export

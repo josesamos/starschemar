@@ -17,9 +17,8 @@ An empty \code{dimensional_query} object is created where you can select fact
 measures, dimension attributes and filter dimension rows.
 }
 \examples{
-library(tidyr)
 
-ms_mrs <- ct_mrs \%>\%
+ms_mrs <- ct_mrs |>
   constellation_as_multistar()
 
 dq <- dimensional_query(ms_mrs)

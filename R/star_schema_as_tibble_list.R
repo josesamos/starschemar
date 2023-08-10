@@ -13,12 +13,11 @@
 #' @family results export functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' tl <- st_mrs_age %>%
+#' tl <- st_mrs_age |>
 #'   star_schema_as_tibble_list()
 #'
-#' tl <- st_mrs_age %>%
+#' tl <- st_mrs_age |>
 #'   star_schema_as_tibble_list(include_role_playing = TRUE)
 #'
 #' @export

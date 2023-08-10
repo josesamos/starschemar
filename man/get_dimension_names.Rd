@@ -22,9 +22,8 @@ Get the names of the dimensions of a star schema.
 Role playing dimensions are not considered.
 }
 \examples{
-library(tidyr)
 
-dn <- st_mrs_age \%>\%
+dn <- st_mrs_age |>
   get_dimension_names()
 
 }

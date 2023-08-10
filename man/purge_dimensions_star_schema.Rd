@@ -19,9 +19,8 @@ A \code{star_schema} object.
 Delete instances of dimensions not related to facts in a star schema.
 }
 \examples{
-library(tidyr)
 
-st <- st_mrs_age \%>\%
+st <- st_mrs_age |>
   purge_dimensions_star_schema()
 
 }

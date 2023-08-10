@@ -1,19 +1,17 @@
 context("test update_selection_general")
 
 test_that("update_selection_general works", {
-  library(tidyr)
-
-  where <- st_mrs_age_test %>%
+  where <- st_mrs_age_test |>
     get_dimension("where")
 
-  updates <- record_update_set() %>%
+  updates <- record_update_set() |>
     update_selection_general(
       dimension = where,
       columns_old = c("region", "state", "city"),
       old_values = c("1", "CT", "Bridgepor"),
       columns_new = c("region", "state", "city"),
       new_values = c("1", "CT", "Bridgeport")
-    ) %>%
+    ) |>
     update_selection_general(
       dimension = where,
       columns_old = c("region", "state", "city"),

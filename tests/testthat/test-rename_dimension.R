@@ -1,7 +1,7 @@
 context("test rename_dimension")
 
 test_that("rename_dimension works", {
-  st <- st_mrs_age_test %>%
+  st <- st_mrs_age_test |>
     rename_dimension(name = "when", new_name = "when_n")
 
   expect_equal(
@@ -41,7 +41,7 @@ test_that("rename_dimension works", {
   )
 
 
-  st <- st_mrs_age_test %>%
+  st <- st_mrs_age_test |>
     rename_dimension(name = "when_common", new_name = "when_n")
 
   expect_equal(

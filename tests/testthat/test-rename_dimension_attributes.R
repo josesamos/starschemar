@@ -2,7 +2,7 @@ context("test rename_dimension_attributes")
 
 test_that("rename_dimension_attributes works", {
   st <-
-    st_mrs_age_test %>% rename_dimension_attributes(
+    st_mrs_age_test |> rename_dimension_attributes(
       name = "when",
       attributes = c("week", "year"),
       new_names = c("w", "y")

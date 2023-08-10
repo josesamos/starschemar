@@ -1,15 +1,13 @@
 context("test match_records")
 
 test_that("match_records works", {
-  library(tidyr)
-
-  where <- st_mrs_age_test %>%
+  where <- st_mrs_age_test |>
     get_dimension("where")
 
-  updates <- record_update_set() %>%
+  updates <- record_update_set() |>
     match_records(dimension = where,
                   old = 1,
-                  new = 2) %>%
+                  new = 2) |>
     match_records(dimension = where,
                   old = 1,
                   new = 2)

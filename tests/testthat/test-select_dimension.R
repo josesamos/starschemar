@@ -1,9 +1,9 @@
 context("test select_dimension")
 
 test_that("select_dimension works", {
-  dq <- dimensional_query(ms_mrs_test) %>%
+  dq <- dimensional_query(ms_mrs_test) |>
     select_dimension(name = "where",
-                    attributes = c("city", "state")) %>%
+                    attributes = c("city", "state")) |>
     select_dimension(name = "when")
 
   expect_equal(dq$dimension$where, c("where_key", "city", "state"))

@@ -43,17 +43,15 @@ the new values in those same columns.
 }
 \examples{
 
-library(tidyr)
-
-dim_names <- st_mrs_age \%>\%
+dim_names <- st_mrs_age |>
     get_dimension_names()
 
-where <- st_mrs_age \%>\%
+where <- st_mrs_age |>
   get_dimension("where")
 
 # head(where, 2)
 
-updates <- record_update_set() \%>\%
+updates <- record_update_set() |>
   update_selection(
     dimension = where,
     columns = c("city"),

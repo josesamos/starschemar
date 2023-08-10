@@ -75,7 +75,6 @@ The transformation to obtain a star schema from the flat table using
 
 ``` r
 library(starschemar)
-library(tidyr)
 
 # columns to consider in the definition
 dput(colnames(ft))
@@ -83,14 +82,14 @@ dput(colnames(ft))
 #> "Pneumonia and Influenza Deaths", "All Deaths", "Other Deaths"
 #> )
 
-dm <- dimensional_model() %>%
+dm <- dimensional_model() |>
   define_fact(
     name = "mrs_cause",
     measures = c(
       "Pneumonia and Influenza Deaths",
       "Other Deaths"
     ),
-  ) %>%
+  ) |>
   define_dimension(
     name = "when",
     attributes = c(
@@ -98,7 +97,7 @@ dm <- dimensional_model() %>%
       "WEEK",
       "Year"
     )
-  ) %>%
+  ) |>
   define_dimension(
     name = "where",
     attributes = c(
@@ -108,8 +107,8 @@ dm <- dimensional_model() %>%
     )
   )
 
-st <- star_schema(ft, dm) %>%
-  snake_case() %>%
+st <- star_schema(ft, dm) |>
+  snake_case() |>
   character_dimensions(
     NA_replacement_value = "Unknown",
     length_integers = list(week = 2)
@@ -145,24 +144,24 @@ The tables show the erroneous and missing data. We are going to perform
 some data cleaning operations to correct them.
 
 ``` r
-where <- st %>%
+where <- st |>
   get_dimension("where")
 
-when <- st %>%
+when <- st |>
   get_dimension("when")
 
-updates <- record_update_set() %>%
+updates <- record_update_set() |>
   update_selection(
     dimension = where,
     columns = c("city"),
     old_values = c("Bridgepor"),
     new_values = c("Bridgeport")
-  ) %>%
+  ) |>
   match_records(dimension = when,
                 old = 3,
                 new = 2)
 
-st <- st %>%
+st <- st |>
   modify_dimension_records(updates)
 ```
 

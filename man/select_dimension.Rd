@@ -26,11 +26,10 @@ dimension is indicated, it is considered that all its attributes should be
 added.
 }
 \examples{
-library(tidyr)
 
-dq <- dimensional_query(ms_mrs) \%>\%
+dq <- dimensional_query(ms_mrs) |>
   select_dimension(name = "where",
-                  attributes = c("city", "state")) \%>\%
+                  attributes = c("city", "state")) |>
   select_dimension(name = "when")
 
 }

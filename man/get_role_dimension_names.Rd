@@ -7,7 +7,9 @@
 get_role_dimension_names(st, name)
 }
 \arguments{
-\item{dimension}{A \code{star_schema} object.}
+\item{st}{A \code{star_schema} object.}
+
+\item{name}{A string, dimension name.}
 }
 \value{
 A vector of dimension names.

@@ -29,10 +29,9 @@ based on the function \code{dplyr::filter}. Conditions are defined in exactly th
 same way as in that function.
 }
 \examples{
-library(tidyr)
 
-dq <- dimensional_query(ms_mrs) \%>\%
-  filter_dimension(name = "when", when_happened_week <= "03") \%>\%
+dq <- dimensional_query(ms_mrs) |>
+  filter_dimension(name = "when", when_happened_week <= "03") |>
   filter_dimension(name = "where", city == "Boston")
 
 }

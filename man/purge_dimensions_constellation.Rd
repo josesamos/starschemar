@@ -19,9 +19,8 @@ A \code{constellation} object.
 Delete instances of dimensions not related to facts in a constellation.
 }
 \examples{
-library(tidyr)
 
-ct <- ct_mrs \%>\%
+ct <- ct_mrs |>
   purge_dimensions_constellation()
 
 }

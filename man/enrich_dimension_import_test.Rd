@@ -28,7 +28,6 @@ instances. Returns the dimension instances that do not match the imported
 data.
 }
 \examples{
-library(tidyr)
 
 tb <-
   enrich_dimension_export(st_mrs_age,

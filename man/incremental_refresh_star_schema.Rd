@@ -32,12 +32,11 @@ they can be deleted. Therefore, the possible values of the \code{existing}
 parameter are: "ignore", "replace", "group" or "delete".
 }
 \examples{
-library(tidyr)
 
-st <- st_mrs_age \%>\%
+st <- st_mrs_age |>
   incremental_refresh_star_schema(st_mrs_age_w10, existing = "replace")
 
-st <- st_mrs_cause \%>\%
+st <- st_mrs_cause |>
   incremental_refresh_star_schema(st_mrs_cause_w10, existing = "group")
 
 }

@@ -14,9 +14,8 @@
 #' @family data cleaning functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' d <- ct_mrs %>%
+#' d <- ct_mrs |>
 #'   get_conformed_dimension("when")
 #'
 #' @export
@@ -50,9 +49,8 @@ get_conformed_dimension.constellation <- function(ct, name) {
 #' @family data cleaning functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' d <- ct_mrs %>%
+#' d <- ct_mrs |>
 #'   get_conformed_dimension_names()
 #'
 #' @export

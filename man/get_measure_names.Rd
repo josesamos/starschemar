@@ -19,10 +19,9 @@ A vector of measure names.
 Get the name of measures in facts.
 }
 \examples{
-library(tidyr)
 
 measure_names <-
-  st_mrs_age \%>\% get_measure_names()
+  st_mrs_age |> get_measure_names()
 
 }
 \seealso{

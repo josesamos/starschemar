@@ -31,7 +31,6 @@ enriched, the new attributes are also added to the associated role
 dimensions.
 }
 \examples{
-library(tidyr)
 
 tb <-
   enrich_dimension_export(st_mrs_age,

@@ -33,9 +33,8 @@ new_dimensional_query <- function(ms = NULL) {
 #' @family query functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ms_mrs <- ct_mrs %>%
+#' ms_mrs <- ct_mrs |>
 #'   constellation_as_multistar()
 #'
 #' dq <- dimensional_query(ms_mrs)

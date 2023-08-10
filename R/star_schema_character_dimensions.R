@@ -27,14 +27,13 @@
 #' @family star schema and constellation definition functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' st <- star_schema(mrs_age_test, dm_mrs_age) %>%
+#' st <- star_schema(mrs_age_test, dm_mrs_age) |>
 #'   role_playing_dimension(
 #'     dim_names = c("when", "when_available"),
 #'     name = "When Common",
 #'     attributes = c("date", "week", "year")
-#'   ) %>%
+#'   ) |>
 #'   character_dimensions(length_integers = list(week = 2),
 #'                        NA_replacement_value = "Unknown")
 #'

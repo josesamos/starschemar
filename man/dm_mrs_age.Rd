@@ -17,9 +17,7 @@ considering the age classification.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-dm_mrs_age <- dimensional_model() \%>\%
+dm_mrs_age <- dimensional_model() |>
   define_fact(
     name = "mrs_age",
     measures = c(
@@ -29,7 +27,7 @@ dm_mrs_age <- dimensional_model() \%>\%
       "SUM"
     ),
     nrow_agg = "nrow_agg"
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "when",
     attributes = c(
@@ -37,7 +35,7 @@ dm_mrs_age <- dimensional_model() \%>\%
       "WEEK",
       "Year"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "when_available",
     attributes = c(
@@ -45,7 +43,7 @@ dm_mrs_age <- dimensional_model() \%>\%
       "Data Availability Week",
       "Data Availability Year"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "where",
     attributes = c(
@@ -53,7 +51,7 @@ dm_mrs_age <- dimensional_model() \%>\%
       "State",
       "City"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "who",
     attributes = c(

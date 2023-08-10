@@ -1,12 +1,10 @@
 context("test is_dimension_in_updates")
 
 test_that("is_dimension_in_updates works", {
-  library(tidyr)
-
-  where <- st_mrs_age_test %>%
+  where <- st_mrs_age_test |>
     get_dimension("where")
 
-  updates <- record_update_set() %>%
+  updates <- record_update_set() |>
     match_records(dimension = where,
                   old = 1,
                   new = 2)

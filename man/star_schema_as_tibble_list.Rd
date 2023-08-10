@@ -23,12 +23,11 @@ obtain a \code{tibble} list with them. Role playing dimensions can be optionally
 included.
 }
 \examples{
-library(tidyr)
 
-tl <- st_mrs_age \%>\%
+tl <- st_mrs_age |>
   star_schema_as_tibble_list()
 
-tl <- st_mrs_age \%>\%
+tl <- st_mrs_age |>
   star_schema_as_tibble_list(include_role_playing = TRUE)
 
 }

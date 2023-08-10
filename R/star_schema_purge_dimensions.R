@@ -10,9 +10,8 @@
 #' @family incremental refresh functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' st <- st_mrs_age %>%
+#' st <- st_mrs_age |>
 #'   purge_dimensions_star_schema()
 #'
 #' @export
@@ -67,7 +66,8 @@ purge_dimensions_star_schema.star_schema <- function(st) {
 #' This function allows us to obtain role dimension names for a role-playing
 #' dimension.
 #'
-#' @param dimension A `star_schema` object.
+#' @param st A `star_schema` object.
+#' @param name A string, dimension name.
 #'
 #' @return A vector of dimension names.
 #'

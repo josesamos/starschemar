@@ -35,9 +35,8 @@ The list of update operations can be applied repeatedly to new data received
 to be incorporated into the \code{star_schema} object.
 }
 \examples{
-library(tidyr)
 
-st <- st_mrs_age \%>\%
+st <- st_mrs_age |>
   modify_dimension_records(updates_st_mrs_age)
 
 }

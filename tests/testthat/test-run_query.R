@@ -1,20 +1,20 @@
 context("test run_query")
 
 test_that("run_query works", {
-  dq <- dimensional_query(ms_mrs_test) %>%
+  dq <- dimensional_query(ms_mrs_test) |>
     select_dimension(name = "where",
-                    attributes = c("city", "state")) %>%
+                    attributes = c("city", "state")) |>
     select_dimension(name = "when",
-                    attributes = c("year", "week")) %>%
+                    attributes = c("year", "week")) |>
     select_fact(
       name = "mrs_age",
       measures = c("deaths"),
       agg_functions = c("SUM")
-    ) %>%
+    ) |>
     select_fact(name = "mrs_cause",
-               measures = c("pneumonia_and_influenza_deaths", "other_deaths")) %>%
-    filter_dimension(name = "when", week <= "03") %>%
-    filter_dimension(name = "where", city == "Bridgeport") %>%
+               measures = c("pneumonia_and_influenza_deaths", "other_deaths")) |>
+    filter_dimension(name = "when", week <= "03") |>
+    filter_dimension(name = "where", city == "Bridgeport") |>
     run_query()
 
   dim <- list(
@@ -83,20 +83,20 @@ test_that("run_query works", {
   ))
   expect_equal(dq$dimension, dim)
 
-  dq <- dimensional_query(ms_mrs_test) %>%
+  dq <- dimensional_query(ms_mrs_test) |>
     select_dimension(name = "where",
-                    attributes = c("city", "state")) %>%
+                    attributes = c("city", "state")) |>
     select_dimension(name = "when",
-                    attributes = c("year", "week")) %>%
+                    attributes = c("year", "week")) |>
     select_fact(
       name = "mrs_age",
       measures = c("deaths"),
       agg_functions = c("SUM")
-    ) %>%
+    ) |>
     select_fact(name = "mrs_cause",
-               measures = c("pneumonia_and_influenza_deaths", "other_deaths")) %>%
-    filter_dimension(name = "when", week <= "03") %>%
-    filter_dimension(name = "where", city == "Bridgeport") %>%
+               measures = c("pneumonia_and_influenza_deaths", "other_deaths")) |>
+    filter_dimension(name = "when", week <= "03") |>
+    filter_dimension(name = "where", city == "Bridgeport") |>
     run_query(unify_by_grain = FALSE)
 
 

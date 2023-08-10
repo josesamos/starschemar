@@ -17,16 +17,14 @@ considering the cause classification.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-dm_mrs_cause <- dimensional_model() \%>\%
+dm_mrs_cause <- dimensional_model() |>
   define_fact(
     name = "mrs_cause",
     measures = c(
       "Pneumonia and Influenza Deaths",
       "Other Deaths"
     ),
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "when",
     attributes = c(
@@ -34,7 +32,7 @@ dm_mrs_cause <- dimensional_model() \%>\%
       "WEEK",
       "Year"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "when_received",
     attributes = c(
@@ -42,7 +40,7 @@ dm_mrs_cause <- dimensional_model() \%>\%
       "Reception Week",
       "Reception Year"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "when_available",
     attributes = c(
@@ -50,7 +48,7 @@ dm_mrs_cause <- dimensional_model() \%>\%
       "Data Availability Week",
       "Data Availability Year"
     )
-  ) \%>\%
+  ) |>
   define_dimension(
     name = "where",
     attributes = c(

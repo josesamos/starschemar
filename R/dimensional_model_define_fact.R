@@ -33,7 +33,6 @@
 #' @family star definition functions
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' # dput(colnames(mrs_age))
 #' #
@@ -54,7 +53,7 @@
 #' #   "Deaths"
 #' # )
 #'
-#' dm <- dimensional_model() %>%
+#' dm <- dimensional_model() |>
 #'   define_fact(
 #'     name = "mrs_age",
 #'     measures = c("Deaths"),
@@ -62,13 +61,13 @@
 #'     nrow_agg = "nrow_agg"
 #'   )
 #'
-#' dm <- dimensional_model() %>%
+#' dm <- dimensional_model() |>
 #'   define_fact(
 #'     name = "mrs_age",
 #'     measures = c("Deaths")
 #'   )
 #'
-#' dm <- dimensional_model() %>%
+#' dm <- dimensional_model() |>
 #'   define_fact(name = "Factless fact")
 #'
 #' @export

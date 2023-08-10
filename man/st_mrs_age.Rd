@@ -17,15 +17,13 @@ classification.
 \examples{
 # Defined by:
 
-library(tidyr)
-
-st_mrs_age <- star_schema(mrs_age, dm_mrs_age) \%>\%
+st_mrs_age <- star_schema(mrs_age, dm_mrs_age) |>
   role_playing_dimension(
     dim_names = c("when", "when_available"),
     name = "When Common",
     attributes = c("date", "week", "year")
-  ) \%>\%
-  snake_case() \%>\%
+  ) |>
+  snake_case() |>
   character_dimensions(NA_replacement_value = "Unknown",
                        length_integers = list(week = 2))
 

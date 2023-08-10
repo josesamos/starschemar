@@ -1,8 +1,8 @@
 context("test filter_fact_rows")
 
 test_that("filter_fact_rows works", {
-  st <- st_mrs_age_test %>%
-    filter_fact_rows(name = "when", week <= "01") %>%
+  st <- st_mrs_age_test |>
+    filter_fact_rows(name = "when", week <= "01") |>
     filter_fact_rows(name = "where", city == "Bridgeport")
 
   expect_equal(

@@ -10,9 +10,8 @@
 #' @family incremental refresh functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ct <- ct_mrs %>%
+#' ct <- ct_mrs |>
 #'   purge_dimensions_constellation()
 #'
 #' @export

@@ -20,12 +20,11 @@
 #' @family incremental refresh functions
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' ct <- ct_mrs %>%
+#' ct <- ct_mrs |>
 #'   incremental_refresh_constellation(st_mrs_age_w10, existing = "replace")
 #'
-#' ct <- ct_mrs %>%
+#' ct <- ct_mrs |>
 #'   incremental_refresh_constellation(st_mrs_cause_w10, existing = "group")
 #'
 #' @export
