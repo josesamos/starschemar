@@ -6,8 +6,8 @@
 **Based on this package, the
 [`rolap`](https://CRAN.R-project.org/package=rolap) package has been
 developed, which incorporates the main functionalities for which
-`starschemar` was initially intended, with the aim of facilitating its
-maintenance and evolution.**
+`starschemar` was initially intended, with a new data model defined with
+the aim of facilitating its maintenance and evolution.**
 
 # starschemar
 
