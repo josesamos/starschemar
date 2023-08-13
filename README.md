@@ -1,6 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# Notice
+
+**Based on this package, the
+[`rolap`](https://CRAN.R-project.org/package=rolap) package has been
+developed, which incorporates the main functionalities for which
+`starschemar` was initially intended, with the aim of facilitating its
+maintenance and evolution.**
+
 # starschemar
 
 <!-- badges: start -->
