@@ -3,6 +3,7 @@
 \docType{package}
 \name{starschemar}
 \alias{starschemar}
+\alias{starschemar-package}
 \title{Obtaining Star Schemas from Flat Tables}
 \description{
 Transformations that allow obtaining star schemas from flat tables.

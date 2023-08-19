@@ -120,6 +120,7 @@
 #' - [filter_dimension()]
 #' - [run_query()]
 #'
+#' @aliases starschemar-package
 #' @docType package
 #' @name starschemar
 NULL
