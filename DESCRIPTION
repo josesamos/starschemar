@@ -16,7 +16,8 @@ Description: Data in multidimensional systems is obtained from operational
     basic data cleaning, dimension enrichment, incremental data refresh
     and query operations, adapted to this context.
 License: MIT + file LICENSE
-URL: https://github.com/josesamos/starschemar
+URL: https://josesamos.github.io/starschemar/,
+    https://github.com/josesamos/starschemar
 BugReports: https://github.com/josesamos/starschemar/issues
 Depends: 
     R (>= 2.10)
