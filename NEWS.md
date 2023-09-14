@@ -1,4 +1,4 @@
-# starschemar (development version)
+# starschemar 1.2.2
 * Fix broken @docType package documentation.
 * Include notice about the rolap package.
 
