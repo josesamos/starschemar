@@ -4,12 +4,6 @@
 
 * This is a new release.
 
-## Troubleshooting why the package was archived
+## Fix broken @docType package documentation
 
-* There was a compatibility issue with the dplyr 1.1.0 package, it has been fixed now.  
-   - dplyr::group_by(as.data.frame(ft), .dots = dim_keys) 
-      becomes 
-      dplyr::group_by(as.data.frame(ft), dplyr::across(dplyr::all_of(dim_keys)))
-   - unique(append(class(ft), a_class)) 
-      becomes 
-      unique(c(a_class, class(ft)))
+- I received an email with the information to fix it. I've waited about a month since the last update to send this one.
