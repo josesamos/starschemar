@@ -3,11 +3,11 @@
 
 # Notice
 
-**Based on this package, the
+Based on this package, the
 [`rolap`](https://CRAN.R-project.org/package=rolap) package has been
 developed. It incorporates the main functionalities for which
 `starschemar` was initially intended and it has a new data model defined
-with the aim of facilitating its maintenance and evolution.**
+with the aim of facilitating its maintenance and evolution.
 
 # starschemar
 
@@ -16,6 +16,8 @@ with the aim of facilitating its maintenance and evolution.**
 [![CRAN
 status](https://www.r-pkg.org/badges/version/starschemar)](https://CRAN.R-project.org/package=starschemar)
 [![R-CMD-check](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/josesamos/starschemar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/starschemar?branch=master)
 [![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](http://www.r-pkg.org/pkg/starschemar)
 <!-- badges: end -->
 
