@@ -35,7 +35,6 @@ tl <- st_mrs_age |>
 Other results export functions: 
 \code{\link{constellation_as_multistar}()},
 \code{\link{constellation_as_tibble_list}()},
-\code{\link{multistar_as_flat_table}()},
 \code{\link{star_schema_as_flat_table}()},
 \code{\link{star_schema_as_multistar}()}
 }

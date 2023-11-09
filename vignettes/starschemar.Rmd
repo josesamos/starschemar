@@ -1133,7 +1133,7 @@ ms <- dimensional_query(ms_mrs) |>
   run_query()
 ```
 
-The result of a query is an `multistar` structure. In this way, we can define queries on the result of others. The result can also be transformed into a flat table.
+The result of a query is a `multistar` structure. In this way, we can define queries on the result of others. The result can also be transformed into a flat table.
 
 ```{r}
 ft <- ms |>
