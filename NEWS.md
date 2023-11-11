@@ -1,4 +1,4 @@
-# starschemar (development version)
+# starschemar 1.2.3
 * Define error messages.
 * Reorganization of the code to make the `geomultistar` package independent.
 
