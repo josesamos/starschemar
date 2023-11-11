@@ -69,13 +69,13 @@ define_dimension <- function(st,
 define_dimension.dimensional_model <- function(st,
                              name = NULL,
                              attributes = NULL) {
-  stopifnot(!is.null(name))
-  stopifnot(!(name %in% names(st$dimension)))
-  stopifnot(length(attributes) > 0)
-  stopifnot(length(attributes) == length(unique(attributes)))
+  stopifnot("The name of the dimension must be indicated." = !is.null(name))
+  stopifnot("The dimension is already defined." = !(name %in% names(st$dimension)))
+  stopifnot("We have to indicate attributes of the dimension." = length(attributes) > 0)
+  stopifnot("There are repeated attributes." = length(attributes) == length(unique(attributes)))
   attributes_defined <- get_attribute_names(st)
   for (attribute in attributes) {
-    stopifnot(!(attribute %in% attributes_defined))
+    stopifnot("There are attributes that have already been defined." = !(attribute %in% attributes_defined))
   }
 
   if (is.null(st$dimension)) {

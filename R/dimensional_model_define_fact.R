@@ -87,18 +87,18 @@ define_fact.dimensional_model <- function(st,
                                         measures = NULL,
                                         agg_functions = NULL,
                                         nrow_agg = "nrow_agg") {
-  stopifnot(!is.null(name))
+  stopifnot("The name of facts must be indicated." = !is.null(name))
   if (is.null(agg_functions)) {
     agg_functions <-  rep("SUM", length(measures))
   }
-  stopifnot(length(measures) == length(agg_functions))
+  stopifnot("Measures and aggregation functions do not correspond." = length(measures) == length(agg_functions))
   for (af in agg_functions) {
-    stopifnot(af %in% c("SUM", "MAX", "MIN"))
+    validate_names(c("SUM", "MAX", "MIN"), af, concept = 'aggregation function')
   }
-  stopifnot(length(c(measures, nrow_agg)) == length(unique(c(measures, nrow_agg))))
+  stopifnot("There are repeated measures." = length(c(measures, nrow_agg)) == length(unique(c(measures, nrow_agg))))
   attributes_defined <- get_attribute_names(st)
   for (measure in c(measures, nrow_agg)) {
-    stopifnot(!(measure %in% attributes_defined))
+    stopifnot("There are measures that have already been defined." = !(measure %in% attributes_defined))
   }
   st$fact <-
     list(

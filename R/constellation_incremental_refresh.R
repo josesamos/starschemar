@@ -37,7 +37,7 @@ incremental_refresh_constellation <- function(ct, st, existing = "ignore") {
 #' @export
 incremental_refresh_constellation.constellation <-
   function(ct, st, existing = "ignore") {
-    stopifnot(existing %in% c("ignore", "replace", "group", "delete"))
+    validate_names(c("ignore", "replace", "group", "delete"), existing, concept = 'existing')
 
     st_name <- get_fact_name(st)
     ct$star[[st_name]] <- incremental_refresh_star_schema(ct$star[[st_name]], st, existing)

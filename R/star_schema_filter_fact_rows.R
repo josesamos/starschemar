@@ -37,8 +37,8 @@ filter_fact_rows <- function(st,
 filter_fact_rows.star_schema <- function(st,
                                     name = NULL,
                                     ...) {
-  stopifnot(!is.null(name))
-  stopifnot(name %in% get_dimension_names(st))
+  stopifnot("The name of the dimension must be indicated." = !is.null(name))
+  validate_names(get_dimension_names(st), name, concept = 'dimension name')
   dimension <- get_dimension(st, name)
   key <- dplyr::filter(tibble::as_tibble(dimension), ...)[[1]]
   st$fact[[1]] <- st$fact[[1]][st$fact[[1]][[sprintf("%s_key", name)]] %in% key, ]

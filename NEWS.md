@@ -1,4 +1,6 @@
 # starschemar (development version)
+* Define error messages.
+* Use `multistar` class defined in the `geomultistar` package.
 
 # starschemar 1.2.2
 * Fix broken @docType package documentation.

@@ -17,8 +17,8 @@
 new_dimension_table <-
   function(ft = tibble::tibble(), name = NULL, type = "general") {
     # Check the type of the base object
-    stopifnot(tibble::is_tibble(ft))
-    stopifnot(!is.null(name))
+    stopifnot("Dimension table must be a 'tibble'." = tibble::is_tibble(ft))
+    stopifnot("The name of the dimension must be indicated." = !is.null(name))
 
     # remove duplicates and sort
     ft <- dplyr::arrange_all(unique(ft))
