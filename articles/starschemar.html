@@ -4008,7 +4008,7 @@ executed using <code>run_query.</code> We can refine it using
 <span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"when"</span>, <span class="va">when_happened_week</span> <span class="op">&lt;=</span> <span class="st">"03"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/filter_dimension.html">filter_dimension</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"where"</span>, <span class="va">city</span> <span class="op">==</span> <span class="st">"Bridgeport"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/run_query.html">run_query</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The result of a query is an <code>multistar</code> structure. In this
+<p>The result of a query is a <code>multistar</code> structure. In this
 way, we can define queries on the result of others. The result can also
 be transformed into a flat table.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
