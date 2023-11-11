@@ -47,7 +47,7 @@ match_records <- function(updates, dimension, old, new) {
 #' @export
 match_records.record_update_set <-
   function(updates, dimension, old, new) {
-    stopifnot(!is_role_playing_dimension(dimension))
+    stopifnot("The dimension is a role playing dimension." = !is_role_playing_dimension(dimension))
     dim_txt <- dimension
     dim_txt[, -1] <- prepare_join(dim_txt[, -1])
     dru <- new_record_update(

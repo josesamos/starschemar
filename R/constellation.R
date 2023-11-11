@@ -18,11 +18,11 @@ new_constellation <-
     } else {
       names <- c()
       for (s in seq_along(lst)) {
-        stopifnot(class(lst[[s]]) == "star_schema")
+        stopifnot("The object must be of class star_schema." = class(lst[[s]]) == "star_schema")
         names <- c(names, names(lst[[s]]$fact))
       }
       names <- unique(names)
-      stopifnot(length(lst) == length(names))
+      stopifnot("The numbers of objects and names do not correspond." = length(lst) == length(names))
       names(lst) <- names
     }
 

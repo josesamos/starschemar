@@ -58,10 +58,10 @@ update_selection_general.record_update_set <-
            old_values = vector(),
            columns_new = vector(),
            new_values = vector()) {
-    stopifnot(!is_role_playing_dimension(dimension))
+    stopifnot("The dimension is a role playing dimension." = !is_role_playing_dimension(dimension))
     dim_col <- names(dimension)[-1]
     for (n in unique(c(columns_old, columns_new))) {
-      stopifnot(n %in% dim_col)
+      validate_names(dim_col, n, concept = 'column')
     }
     dim_txt <- dimension
     dim_txt[, -1] <- prepare_join(dim_txt[, -1])

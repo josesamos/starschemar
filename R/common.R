@@ -1,33 +1,4 @@
 
-# prepare_join ------------------------------------------------------------
-
-#' Transform a `tibble` to join
-#'
-#' Transform all fields in a `tibble` to character type and replace the `NA`
-#' with a specific value.
-#'
-#' @param tb A `tibble`.
-#'
-#' @return A `tibble`.
-#' @keywords internal
-prepare_join <- function(tb) {
-  n_row <- nrow(tb)
-  # all attributes of type character
-  col <- colnames(tb)
-  tb <- data.frame(lapply(tb, as.character), stringsAsFactors = FALSE)
-  colnames(tb) <- col
-
-  # replace NA with unknown (for join)
-  tb <- apply(tb[, , drop = FALSE], 2, function(x)
-    tidyr::replace_na(x, "___UNKNOWN___"))
-  if (n_row == 1) {
-    tibble::as_tibble_row(tb)
-  } else {
-    tibble::as_tibble(tb)
-  }
-}
-
-
 # union_of_dimensions -----------------------------------------------------
 
 #' Perform union of dimensions
@@ -50,7 +21,7 @@ union_of_dimensions <- function(dimensions,
     dim_union <- as.data.frame(dimensions[1])
     for (i in 2:length(dimensions)) {
       dimension_structure <- unlist(dplyr::summarise_all(dimensions[[i]], class)) #
-      stopifnot(dimension_structure == common_structure) #
+      stopifnot("The dimensions do not have the same structure." = dimension_structure == common_structure) #
       dim_union <- dplyr::union_all(dim_union, as.data.frame(dimensions[[i]]))
     }
     dim_union <- tibble::as_tibble(dim_union)
@@ -85,4 +56,33 @@ update_dimensions <- function(dimensions, updates) {
     }
   }
   mod_dim
+}
+
+#' Validate names
+#'
+#' @param defined_names A vector of strings, defined attribute names.
+#' @param names A vector of strings, new attribute names.
+#' @param concept A string, treated concept.
+#' @param repeated A boolean, repeated names allowed.
+#'
+#' @return A vector of strings, names.
+#'
+#' @keywords internal
+validate_names <- function(defined_names, names, concept = 'name', repeated = FALSE) {
+  if (is.null(names)) {
+    names <- defined_names
+  } else {
+    if (!repeated) {
+      stopifnot("There are repeated values." = length(names) == length(unique(names)))
+    }
+    for (name in names) {
+      if (!(name %in% defined_names)) {
+        stop(sprintf(
+          "'%s' is not defined as %s.",
+          name, concept
+        ))
+      }
+    }
+  }
+  names
 }

@@ -56,13 +56,13 @@ rename_measures <- function(st, measures, new_names) {
 #' @rdname rename_measures
 #' @export
 rename_measures.star_schema <- function(st, measures, new_names) {
-  stopifnot(length(measures) == length(unique(new_names)))
+  stopifnot("There are repeated measures" = length(measures) == length(unique(new_names)))
   if (attr(st$fact[[1]], "nrow_agg") %in% measures) {
     attr(st$fact[[1]], "nrow_agg") <-
       new_names[which(measures == attr(st$fact[[1]], "nrow_agg"))]
   }
   for (i in seq_along(measures)) {
-    stopifnot(measures[i] %in% attr(st$fact[[1]], "measures"))
+    validate_names(attr(st$fact[[1]], "measures"), measures[i], concept = 'measure')
     attr(st$fact[[1]], "measures")[which(attr(st$fact[[1]], "measures") == measures[i])] <-
       new_names[i]
     names(st$fact[[1]])[which(names(st$fact[[1]]) == measures[i])] <-
@@ -98,7 +98,7 @@ get_dimension_attribute_names <- function(st, name) {
 #' @rdname get_dimension_attribute_names
 #' @export
 get_dimension_attribute_names.star_schema <- function(st, name) {
-  stopifnot(name %in% names(st$dimension))
+  validate_names(names(st$dimension), name, concept = 'dimension name')
   names(st$dimension[[name]])[-1]
 }
 
@@ -136,10 +136,10 @@ rename_dimension_attributes <- function(st, name, attributes, new_names) {
 #' @export
 rename_dimension_attributes.star_schema <-
   function(st, name, attributes, new_names) {
-    stopifnot(name %in% names(st$dimension))
-    stopifnot(length(attributes) == length(unique(new_names)))
+    validate_names(names(st$dimension), name, concept = 'dimension name')
+    stopifnot("There are repeated attributes." = length(attributes) == length(unique(new_names)))
     for (i in seq_along(attributes)) {
-      stopifnot(attributes[i] %in% names(st$dimension[[name]])[-1])
+      validate_names(names(st$dimension[[name]])[-1], attributes[i], concept = 'attribute')
       names(st$dimension[[name]])[which(names(st$dimension[[name]]) == attributes[i])] <-
         new_names[i]
     }
@@ -206,8 +206,8 @@ rename_dimension <- function(st, name, new_name) {
 #' @rdname rename_dimension
 #' @export
 rename_dimension.star_schema <- function(st, name, new_name) {
-  stopifnot(name %in% names(st$dimension))
-  stopifnot(!(new_name %in% names(st$dimension)))
+  validate_names(names(st$dimension), name, concept = 'dimension name')
+  stopifnot("There is already a dimension with that name." = !(new_name %in% names(st$dimension)))
   names(st$dimension)[which(names(st$dimension) == name)] <-
     new_name
   st$dimension[[new_name]] <-

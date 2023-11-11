@@ -15,13 +15,13 @@ new_star_schema <-
   function(ft = tibble::tibble(),
            sd = dimensional_model()) {
     # Check the type of the base object
-    stopifnot(tibble::is_tibble(ft))
+    stopifnot("Fact table must be a 'tibble'." = tibble::is_tibble(ft))
 
     measures_type <-
       dplyr::summarise_all(ft[, sd$fact$measures], class)
     for (n in seq_along(measures_type)) {
       type <- measures_type[[n]][1]
-      stopifnot(type %in% c("integer", "double", "integer64", "numeric"))
+      validate_names(c("integer", "double", "integer64", "numeric"), type, concept = 'type')
     }
 
     star <-

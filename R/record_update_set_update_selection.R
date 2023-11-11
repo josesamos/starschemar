@@ -53,12 +53,12 @@ update_selection.record_update_set <-
            columns = vector(),
            old_values = vector(),
            new_values = vector()) {
-    stopifnot(!is_role_playing_dimension(dimension))
-    stopifnot(length(columns) == length(old_values) &
+    stopifnot("The dimension is a role playing dimension." = !is_role_playing_dimension(dimension))
+    stopifnot("The quantities of columns and values do not correspond." = length(columns) == length(old_values) &
                 length(columns) == length(new_values))
     dim_col <- names(dimension)[-1]
     for (n in columns) {
-      stopifnot(n %in% dim_col)
+      validate_names(dim_col, n, concept = 'column')
     }
     dim_txt <- dimension
     dim_txt[, -1] <- prepare_join(dim_txt[, -1])

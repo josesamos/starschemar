@@ -38,7 +38,7 @@ incremental_refresh_star_schema <- function(st, st_new, existing = "ignore") {
 #' @keywords internal
 incremental_refresh_star_schema.star_schema <-
   function(st, st_new, existing = "ignore") {
-    stopifnot(existing %in% c("ignore", "replace", "group", "delete"))
+    validate_names(c("ignore", "replace", "group", "delete"), existing, concept = 'existing')
 
     dimensions <-
       get_name_of_uniquely_implemented_dimensions(st_new)

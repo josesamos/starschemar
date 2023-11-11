@@ -35,13 +35,13 @@ enrich_dimension_export <- function(st,
 enrich_dimension_export.star_schema <- function(st,
                                                 name = NULL,
                                                 attributes = NULL) {
-  stopifnot(!is.null(name))
-  stopifnot(name %in% names(st$dimension))
-  stopifnot(length(attributes) == length(unique(attributes)))
-  stopifnot(length(st$dimension[[name]][[1]]) > 0)
+  stopifnot("The name of the dimension must be indicated." = !is.null(name))
+  validate_names(names(st$dimension), name, concept = 'dimension name')
+  stopifnot("There are repeated attributes." = length(attributes) == length(unique(attributes)))
+  stopifnot("The dimension must have attributes defined." = length(st$dimension[[name]][[1]]) > 0)
   attributes_defined <- names(st$dimension[[name]])[-1]
   for (attribute in attributes) {
-    stopifnot(attribute %in% attributes_defined)
+    validate_names(attributes_defined, attribute, concept = 'attribute')
   }
   tibble::as_tibble(unique(st$dimension[[name]][, attributes]))
 }
@@ -89,15 +89,15 @@ enrich_dimension_import <- function(st, name = NULL, tb) {
 #' @export
 enrich_dimension_import.star_schema <-
   function(st, name = NULL, tb) {
-    stopifnot(!is.null(name))
-    stopifnot(name %in% names(st$dimension))
+    stopifnot("The name of the dimension must be indicated." = !is.null(name))
+    validate_names(names(st$dimension), name, concept = 'dimension name')
     length_dimension <- length(st$dimension[[name]][[1]])
-    stopifnot(length_dimension > 0)
+    stopifnot("The dimension must have attributes defined." = length_dimension > 0)
     enriched_dimension <- dplyr::inner_join(st$dimension[[name]],
                                             tb,
                                             by = intersect(names(st$dimension[[name]]),
                                                            names(tb)))
-    stopifnot(length_dimension == length(unique(enriched_dimension[[1]])))
+    stopifnot("The dimension cannot have repeated attributes." = length_dimension == length(unique(enriched_dimension[[1]])))
     names_dimension <- names(st$dimension[[name]])
     names_new <- setdiff(names(enriched_dimension), names_dimension)
     st$dimension[[name]] <- enriched_dimension[, c(names_dimension, names_new)]
@@ -154,10 +154,10 @@ enrich_dimension_import_test <- function(st, name = NULL, tb) {
 #' @export
 enrich_dimension_import_test.star_schema <-
   function(st, name = NULL, tb) {
-    stopifnot(!is.null(name))
-    stopifnot(name %in% names(st$dimension))
+    stopifnot("The name of the dimension must be indicated." = !is.null(name))
+    validate_names(names(st$dimension), name, concept = 'dimension name')
     length_dimension <- length(st$dimension[[name]][[1]])
-    stopifnot(length_dimension > 0)
+    stopifnot("The dimension must have attributes defined." = length_dimension > 0)
     enriched_dimension <- dplyr::inner_join(st$dimension[[name]],
                                             tb,
                                             by = intersect(names(st$dimension[[name]]),

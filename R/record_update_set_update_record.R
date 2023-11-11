@@ -51,11 +51,11 @@ update_record.record_update_set <-
            dimension,
            old,
            values = vector()) {
-    stopifnot(!is_role_playing_dimension(dimension))
+    stopifnot("The dimension is a role playing dimension." = !is_role_playing_dimension(dimension))
     dim_txt <- dimension
     dim_txt[, -1] <- prepare_join(dim_txt[, -1])
     old_values <- unlist(dim_txt[old,-1])
-    stopifnot(length(old_values) == length(values))
+    stopifnot("The amounts of values do not correspond." = length(old_values) == length(values))
     names(values) <- names(old_values)
     dru <- new_record_update(
       dimension = attr(dimension, "name"),
