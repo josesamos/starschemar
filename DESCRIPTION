@@ -24,7 +24,6 @@ Depends:
 Imports: 
     dplyr,
     generics,
-    geomultistar,
     methods,
     purrr,
     rlang,

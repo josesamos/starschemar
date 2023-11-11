@@ -2,9 +2,12 @@
 % Please edit documentation in R/geomultistar.R
 \name{select_dimension}
 \alias{select_dimension}
+\alias{select_dimension.dimensional_query}
 \title{Select dimension}
 \usage{
 select_dimension(dq, name = NULL, attributes = NULL)
+
+\method{select_dimension}{dimensional_query}(dq, name = NULL, attributes = NULL)
 }
 \arguments{
 \item{dq}{A \code{dimensional_query} object.}

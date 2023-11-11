@@ -2,9 +2,12 @@
 % Please edit documentation in R/geomultistar.R
 \name{select_fact}
 \alias{select_fact}
+\alias{select_fact.dimensional_query}
 \title{Select fact}
 \usage{
 select_fact(dq, name = NULL, measures = NULL, agg_functions = NULL)
+
+\method{select_fact}{dimensional_query}(dq, name = NULL, measures = NULL, agg_functions = NULL)
 }
 \arguments{
 \item{dq}{A \code{dimensional_query} object.}

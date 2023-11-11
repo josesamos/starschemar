@@ -2,9 +2,12 @@
 % Please edit documentation in R/geomultistar.R
 \name{run_query}
 \alias{run_query}
+\alias{run_query.dimensional_query}
 \title{Run query}
 \usage{
 run_query(dq, unify_by_grain = TRUE)
+
+\method{run_query}{dimensional_query}(dq, unify_by_grain = TRUE)
 }
 \arguments{
 \item{dq}{A \code{dimensional_query} object.}

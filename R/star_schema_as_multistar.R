@@ -70,5 +70,5 @@ star_schema_as_mst.star_schema <- function(st,
     }
   }
   names(dl) <- dl_names
-  geomultistar:::new_multistar(fl, dl)
+  new_multistar(fl, dl)
 }

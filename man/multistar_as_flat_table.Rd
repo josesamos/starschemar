@@ -2,9 +2,12 @@
 % Please edit documentation in R/geomultistar.R
 \name{multistar_as_flat_table}
 \alias{multistar_as_flat_table}
+\alias{multistar_as_flat_table.multistar}
 \title{Export a \code{multistar} as a flat table}
 \usage{
 multistar_as_flat_table(ms, fact = NULL)
+
+\method{multistar_as_flat_table}{multistar}(ms, fact = NULL)
 }
 \arguments{
 \item{ms}{A \code{multistar} object.}

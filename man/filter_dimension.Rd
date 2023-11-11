@@ -2,9 +2,12 @@
 % Please edit documentation in R/geomultistar.R
 \name{filter_dimension}
 \alias{filter_dimension}
+\alias{filter_dimension.dimensional_query}
 \title{Filter dimension}
 \usage{
 filter_dimension(dq, name = NULL, ...)
+
+\method{filter_dimension}{dimensional_query}(dq, name = NULL, ...)
 }
 \arguments{
 \item{dq}{A \code{dimensional_query} object.}
