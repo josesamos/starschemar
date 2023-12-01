@@ -23,9 +23,10 @@ Based on this package, the [`rolap`](https://CRAN.R-project.org/package=rolap) p
 [![CRAN status](https://www.r-pkg.org/badges/version/starschemar)](https://CRAN.R-project.org/package=starschemar)
 [![R-CMD-check](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/josesamos/starschemar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/starschemar?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
 <!-- badges: end -->
 
-<!-- [![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](http://www.r-pkg.org/pkg/starschemar) -->
 
 
 The *multidimensional data model* was defined in the 1990s with the aim of supporting data analysis. Data in multidimensional systems is obtained from operational systems and is transformed to adapt it to the new structure.

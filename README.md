@@ -18,9 +18,9 @@ status](https://www.r-pkg.org/badges/version/starschemar)](https://CRAN.R-projec
 [![R-CMD-check](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/josesamos/starschemar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/starschemar?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
 <!-- badges: end -->
-
-<!-- [![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](http://www.r-pkg.org/pkg/starschemar) -->
 
 The *multidimensional data model* was defined in the 1990s with the aim
 of supporting data analysis. Data in multidimensional systems is
@@ -69,6 +69,8 @@ To illustrate how the package works we will use a small part of the
 System](https://catalog.data.gov/dataset/deaths-in-122-u-s-cities-1962-2016-122-cities-mortality-reporting-system)
 data set in the form of a flat table, the first rows of which are shown
 below.
+
+    #> Warning: package 'starschemar' was built under R version 4.3.2
 
 | Year | WEEK | Week Ending Date | REGION | State |    City    | Pneumonia and Influenza Deaths | All Deaths | Other Deaths |
 |:----:|:----:|:----------------:|:------:|:-----:|:----------:|:------------------------------:|:----------:|:------------:|
