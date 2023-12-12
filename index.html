@@ -84,19 +84,15 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="notice">Notice<a class="anchor" aria-label="anchor" href="#notice"></a>
+<div class="page-header"><h1 id="starschemar">starschemar<a class="anchor" aria-label="anchor" href="#starschemar"></a>
 </h1></div>
-<p>Based on this package, the <a href="https://CRAN.R-project.org/package=rolap" class="external-link"><code>rolap</code></a> package has been developed. It incorporates the main functionalities for which <code>starschemar</code> was initially intended and it has a new data model defined with the aim of facilitating its maintenance and evolution.</p>
-</div>
-<div class="section level1">
-<h1 id="starschemar">starschemar<a class="anchor" aria-label="anchor" href="#starschemar"></a>
-</h1>
 <!-- badges: start -->
 
 <p>The <em>multidimensional data model</em> was defined in the 1990s with the aim of supporting data analysis. Data in multidimensional systems is obtained from operational systems and is transformed to adapt it to the new structure.</p>
 <p>Transformations can be carried out using professional ETL (extract, transform and load) tools. Recently, tools aimed at end users have emerged, which are also aimed at performing transformation operations. All these tools are very useful to carry out the transformation process, they provide a development environment to define the transformation operations in a general way.</p>
 <p>Frequently, the operations to be performed aim to transform a flat table (with data that comes from operational systems) into a star schema (which implements a multidimensional system). With the tools mentioned above, this transformation can be carried out, but it requires a lot of work. I am not aware of any tools with operations designed to specifically support this transformation process.</p>
 <p>The goal of <code>starschemar</code> is to define transformations that allow you to easily obtain star schemas from flat tables. In addition, it includes basic data cleaning, dimension enrichment, incremental data refresh and query operations, adapted to this context.</p>
+<p>Based on this package, the <a href="https://CRAN.R-project.org/package=rolap" class="external-link"><code>rolap</code></a> package has been developed. It incorporates the main functionalities for which <code>starschemar</code> was initially intended and it has a new data model defined with the aim of facilitating its maintenance and evolution.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -112,7 +108,6 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>To illustrate how the package works we will use a small part of the <a href="https://catalog.data.gov/dataset/deaths-in-122-u-s-cities-1962-2016-122-cities-mortality-reporting-system" class="external-link">Deaths in 122 U.S. cities - 1962-2016. 122 Cities Mortality Reporting System</a> data set in the form of a flat table, the first rows of which are shown below.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: package 'starschemar' was built under R version 4.3.2</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="5%">
@@ -207,7 +202,7 @@
 </table>
 <p>The original data has been modified to have some erroneous or missing data.</p>
 <p>The transformation to obtain a star schema from the flat table using <code>starschemar</code> package is as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://josesamos.github.io/starschemar/">starschemar</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># columns to consider in the definition</span></span>
@@ -371,7 +366,7 @@
 </tbody>
 </table>
 <p>The tables show the erroneous and missing data. We are going to perform some data cleaning operations to correct them.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="va">st</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/get_dimension.html">get_dimension</a></span><span class="op">(</span><span class="st">"where"</span><span class="op">)</span></span>
 <span></span>
@@ -505,7 +500,6 @@
 <p>In addition to the operations in the examples shown, <code>starschemar</code> offers support for defining role playing and role dimensions in a star schema, fact constellations with conformed dimensions, dimension enrichment, incremental data refresh operations, the ability to export results in various <code>tibble</code>-based formats, and query operations, adapted to this context.</p>
 </div>
 </div>
-
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
