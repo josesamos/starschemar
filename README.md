@@ -1,14 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Notice
-
-Based on this package, the
-[`rolap`](https://CRAN.R-project.org/package=rolap) package has been
-developed. It incorporates the main functionalities for which
-`starschemar` was initially intended and it has a new data model defined
-with the aim of facilitating its maintenance and evolution.
-
 # starschemar
 
 <!-- badges: start -->
@@ -46,6 +38,12 @@ easily obtain star schemas from flat tables. In addition, it includes
 basic data cleaning, dimension enrichment, incremental data refresh and
 query operations, adapted to this context.
 
+Based on this package, the
+[`rolap`](https://CRAN.R-project.org/package=rolap) package has been
+developed. It incorporates the main functionalities for which
+`starschemar` was initially intended and it has a new data model defined
+with the aim of facilitating its maintenance and evolution.
+
 ## Installation
 
 You can install the released version of `starschemar` from
@@ -69,8 +67,6 @@ To illustrate how the package works we will use a small part of the
 System](https://catalog.data.gov/dataset/deaths-in-122-u-s-cities-1962-2016-122-cities-mortality-reporting-system)
 data set in the form of a flat table, the first rows of which are shown
 below.
-
-    #> Warning: package 'starschemar' was built under R version 4.3.2
 
 | Year | WEEK | Week Ending Date | REGION | State |    City    | Pneumonia and Influenza Deaths | All Deaths | Other Deaths |
 |:----:|:----:|:----------------:|:------:|:-----:|:----------:|:------------------------------:|:----------:|:------------:|
