@@ -13,9 +13,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Notice
-
-Based on this package, the [`rolap`](https://CRAN.R-project.org/package=rolap) package has been developed. It incorporates the main functionalities for which `starschemar` was initially intended and it has a new data model defined with the aim of facilitating its maintenance and evolution.
 
 # starschemar
 
@@ -37,6 +34,7 @@ Frequently, the operations to be performed aim to transform a flat table (with d
 
 The goal of `starschemar` is to define transformations that allow you to easily obtain star schemas from flat tables. In addition, it includes basic data cleaning, dimension enrichment, incremental data refresh and query operations, adapted to this context.
 
+Based on this package, the [`rolap`](https://CRAN.R-project.org/package=rolap) package has been developed. It incorporates the main functionalities for which `starschemar` was initially intended and it has a new data model defined with the aim of facilitating its maintenance and evolution.
 
 ## Installation
 
