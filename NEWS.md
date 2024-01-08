@@ -1,4 +1,6 @@
 # starschemar (development version)
+* Modify the cph field of the description.
+* Include logo on website.
 
 # starschemar 1.2.3
 * Define error messages.

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# starschemar
+# starschemar <a href="https://josesamos.github.io/starschemar/"><img src="man/figures/logo.png" align="right" height="139" alt="starschemar website" /></a>
 
 <!-- badges: start -->
 
@@ -10,7 +10,6 @@ status](https://www.r-pkg.org/badges/version/starschemar)](https://CRAN.R-projec
 [![R-CMD-check](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/starschemar/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/josesamos/starschemar/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/starschemar?branch=master)
-[![Downloads](http://cranlogs.r-pkg.org/badges/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/starschemar?color=brightgreen)](https://www.r-pkg.org:443/pkg/starschemar)
 <!-- badges: end -->
 
