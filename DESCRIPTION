@@ -1,6 +1,6 @@
 Package: starschemar
 Title: Obtaining Stars from Flat Tables
-Version: 1.2.3.9000
+Version: 1.2.4
 Authors@R: c(
     person("Jose", "Samos", , "jsamos@ugr.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4457-3439")),

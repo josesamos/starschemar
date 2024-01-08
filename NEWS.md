@@ -1,4 +1,4 @@
-# starschemar (development version)
+# starschemar 1.2.4
 * Modify the cph field of the description.
 * Include logo on website.
 * Divide the available vignette into two parts.
