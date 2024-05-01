@@ -18,15 +18,15 @@ test_that("rename_measures works", {
         "n_agg"
       ),
       row.names = 1:24,
-      class = c("tbl_df",
-                "tbl", "data.frame", "fact_table"),
       name = "mrs_age",
       foreign_keys = c("when_key",
                        "when_available_key", "where_key", "who_key"),
       measures = c("n_deaths",
                    "n_agg"),
       agg_functions = c("SUM", "SUM"),
-      nrow_agg = "n_agg"
+      nrow_agg = "n_agg",
+      class = c("fact_table", "tbl_df",
+                "tbl", "data.frame")
     )
   )
 })

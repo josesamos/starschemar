@@ -29,8 +29,8 @@ st <- st_mrs_age |> rename_fact("age")
 Other rename functions: 
 \code{\link{get_dimension_attribute_names}()},
 \code{\link{get_measure_names}()},
-\code{\link{rename_dimension_attributes}()},
 \code{\link{rename_dimension}()},
+\code{\link{rename_dimension_attributes}()},
 \code{\link{rename_measures}()}
 }
 \concept{rename functions}

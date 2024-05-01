@@ -13,10 +13,10 @@ test_that("rename_dimension_attributes works", {
     list(
       names = c("when_key", "week_ending_date", "w", "y"),
       row.names = integer(0),
-      class = c("tbl_df", "tbl", "data.frame", "dimension_table"),
       name = "when",
       type = "role",
-      role_playing = "when_common"
+      role_playing = "when_common",
+      class = c("dimension_table", "tbl_df", "tbl", "data.frame")
     )
   )
 })

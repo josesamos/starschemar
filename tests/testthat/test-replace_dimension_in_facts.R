@@ -8,11 +8,10 @@ test_that("replace_dimension_in_facts works", {
     list(
       names = c("when_key", "week_ending_date", "week", "year"),
       row.names = integer(0),
-      class = c("tbl_df", "tbl", "data.frame",
-                "dimension_table"),
       name = "when",
       type = c("role", "conformed"),
-      role_playing = "when_common"
+      role_playing = "when_common",
+      class = c("dimension_table", "tbl_df", "tbl", "data.frame")
     )
   )
 
