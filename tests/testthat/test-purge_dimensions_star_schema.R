@@ -16,7 +16,7 @@ test_that("purge_dimensions_star_schema works", {
         city = "Bridgeport"
       ),
       row.names = c(NA,-1L),
-      class = c("tbl_df", "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df", "tbl", "data.frame"),
       name = "where",
       type = "general"
     )
@@ -31,8 +31,8 @@ test_that("purge_dimensions_star_schema works", {
                       "45-64 years", "65+ years")
       ),
       row.names = c(NA, -3L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "who",
       type = "general"
     )
@@ -49,8 +49,8 @@ test_that("purge_dimensions_star_schema works", {
                  "1962")
       ),
       row.names = c(NA, -2L),
-      class = c("tbl_df", "tbl",
-                "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df", "tbl",
+                "data.frame"),
       name = "when_common",
       type = "role_playing"
     )

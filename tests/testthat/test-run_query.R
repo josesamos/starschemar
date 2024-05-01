@@ -25,8 +25,8 @@ test_that("run_query works", {
         state = "CT"
       ),
       row.names = c(NA,-1L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "where",
       type = "conformed"
     ),
@@ -38,8 +38,8 @@ test_that("run_query works", {
         week = c("01", "02", "03")
       ),
       row.names = c(NA,-3L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "when",
       type = "conformed"
     )

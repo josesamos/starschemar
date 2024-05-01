@@ -121,7 +121,7 @@
 #' - [run_query()]
 #'
 #' @aliases starschemar-package
-#' @docType package
+#' _PACKAGE
 #' @name starschemar
 NULL
 

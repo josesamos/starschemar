@@ -18,7 +18,7 @@ test_that("filter_fact_rows works", {
         nrow_agg = c(1L, 1L, 1L)
       ),
       row.names = c(NA,-3L),
-      class = c("tbl_df", "tbl", "data.frame", "fact_table"),
+      class = c("fact_table", "tbl_df", "tbl", "data.frame"),
       name = "mrs_age",
       foreign_keys = c("when_key",
                        "when_available_key", "where_key", "who_key"),

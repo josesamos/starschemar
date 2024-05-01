@@ -11,8 +11,8 @@ test_that("role_dimension works", {
         city = logical(0)
       ),
       row.names = integer(0),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "where",
       type = "role",
       role_playing = "test"

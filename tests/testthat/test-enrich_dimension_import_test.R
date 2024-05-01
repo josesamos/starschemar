@@ -20,8 +20,8 @@ test_that("enrich_dimension_import_test works", {
                  "1962")
       ),
       row.names = c(NA,-2L),
-      class = c("tbl_df", "tbl",
-                "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df", "tbl",
+                "data.frame"),
       name = "when_common",
       type = "role_playing"
     )

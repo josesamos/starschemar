@@ -38,8 +38,8 @@ test_that("enrich_dimension_import works", {
               3, 3, 3, 3, 3, 3)
       ),
       row.names = c(NA,-9L),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "when_common",
       type = "role_playing"
     )
@@ -57,8 +57,9 @@ test_that("enrich_dimension_import works", {
         z = character(0)
       ),
       row.names = integer(0),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table",
+                "tbl_df",
+                "tbl", "data.frame"),
       name = "when",
       type = "role",
       role_playing = "when_common"
@@ -77,8 +78,8 @@ test_that("enrich_dimension_import works", {
         z = character(0)
       ),
       row.names = integer(0),
-      class = c("tbl_df",
-                "tbl", "data.frame", "dimension_table"),
+      class = c("dimension_table", "tbl_df",
+                "tbl", "data.frame"),
       name = "when_available",
       type = "role",
       role_playing = "when_common"

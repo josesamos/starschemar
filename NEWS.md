@@ -1,4 +1,7 @@
 # starschemar (development version)
+* Update cph information.
+* Update the dataset classes.
+* Update tests according to the datasets.
 
 # starschemar 1.2.4
 * Modify the cph field of the description.

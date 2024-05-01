@@ -27,14 +27,14 @@ d <- ct_mrs |>
 \seealso{
 Other data cleaning functions: 
 \code{\link{get_conformed_dimension}()},
-\code{\link{get_dimension_names}()},
 \code{\link{get_dimension}()},
+\code{\link{get_dimension_names}()},
 \code{\link{match_records}()},
 \code{\link{modify_conformed_dimension_records}()},
 \code{\link{modify_dimension_records}()},
 \code{\link{record_update_set}()},
 \code{\link{update_record}()},
-\code{\link{update_selection_general}()},
-\code{\link{update_selection}()}
+\code{\link{update_selection}()},
+\code{\link{update_selection_general}()}
 }
 \concept{data cleaning functions}

@@ -43,8 +43,8 @@ ct <- ct_mrs |>
 \seealso{
 Other incremental refresh functions: 
 \code{\link{filter_fact_rows}()},
-\code{\link{get_star_schema_names}()},
 \code{\link{get_star_schema}()},
+\code{\link{get_star_schema_names}()},
 \code{\link{incremental_refresh_star_schema}()},
 \code{\link{purge_dimensions_constellation}()},
 \code{\link{purge_dimensions_star_schema}()}
