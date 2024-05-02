@@ -1,4 +1,4 @@
-# starschemar (development version)
+# starschemar 1.2.5
 * Update cph information.
 * Update the dataset classes.
 * Update tests according to the datasets.
